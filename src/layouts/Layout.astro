@@ -1,0 +1,43 @@
+---
+import { fade } from "astro:transitions";
+
+/* Components */
+import BaseHead from "../components/shared/BaseHead.astro";
+import Header from "../components/shared/Header.astro";
+import Footer from "../components/shared/Footer.astro";
+
+/* Styles */
+import '../styles/global.css' 
+
+/* Props */
+interface Props {
+  lang: string;
+  location: string;
+  title: string;
+  metaDescription: string;
+  keywords: string[];
+}
+
+const {
+  lang = "es",
+  location = "/",
+  title = "Mordisko Criollo",
+  metaDescription = "Mordisko Criollo",
+  keywords = ["Mordisko Criollo"],
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <BaseHead
+    location={location}
+    title={title}
+    metaDescription={metaDescription}
+    keywords={keywords}
+  />
+  <body>
+    <Header />
+    <slot transition:animate={fade({ duration: "1s" })} />
+    <Footer />
+  </body>
+</html>

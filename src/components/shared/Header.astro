@@ -1,1 +1,20 @@
-<h3>Header</h3>
+---
+import MainLogo from "./header/Main-logo.astro";
+import SecondaryLogo from "./header/Secondary-logo.astro";
+import HeaderMenu from "./header/HeaderMenu.astro";
+import HeaderSocialMedia from "./header/Header-social-media.astro";
+---
+
+<header class="Header">
+    <MainLogo />
+    <SecondaryLogo />
+    <HeaderMenu />
+    <HeaderSocialMedia />
+</header>
+
+<style>
+    @reference "tailwindcss";
+    .Header {
+        @apply bg-[var(--primary)] text-[var(--secondary-darker)] p-3 flex justify-between items-center lg:items-stretch lg:h-full gap-x-3;
+    }
+</style>

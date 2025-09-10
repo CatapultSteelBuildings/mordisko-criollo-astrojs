@@ -1,0 +1,34 @@
+<div class="HeaderMenu">
+    <button>Button</button>
+    <nav>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </nav>
+</div>
+
+<style>
+    @reference "tailwindcss";
+    .HeaderMenu {
+        @apply w-[100px] flex justify-end lg:items-end relative lg:w-full;
+    }
+
+    .HeaderMenu button {
+        @apply lg:hidden;
+    }
+
+    .HeaderMenu nav {
+        @apply lg:mx-auto;
+    }
+
+    .HeaderMenu nav ul {
+        @apply hidden lg:block lg:flex lg:flex-row lg:gap-x-3;
+    }
+
+    .HeaderMenu nav ul li {
+        @apply lg:block text-nowrap;
+    }
+
+</style>

@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+:root {
+    --primary: #FEBD2B;
+    --primary-lighter: #FFD67C;
+    --primary-light: #FFC952;
+    --primary-dark: #DE9B05;
+    --primary-darker: #AE7800;
+    --secondary: #1A385A;
+    --secondary-lighter: #557190;
+    --secondary-light: #557190;
+    --secondary-dark: #09233F;
+    --secondary-darker: #021326;
+    --third: #CA3224;
+    --third-lighter: #FF897D;
+    --third-light: #DF594B; 
+    --third-dark: #A31E10;
+    --third-darker: #7B0C00;
+    --black: #000000;
+    --white: #FFFFFF;
+    --green: #5d9d26;
+    --red: #ca3224;
+    --black_: #010b13;
+    --dark: #141414;
+    --dark-text: #000409;
+    --light: #fffbf6;
+    --facebook: #3b5998;
+    --twitter: #1da1f2;
+}
+
+body {
+    @apply bg-[var(--light)] text-[var(--dark-text)] dark:bg-[var(--dark)] dark:text-[var(--light)]
+}

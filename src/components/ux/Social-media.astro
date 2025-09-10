@@ -1,0 +1,21 @@
+---
+import FacebookLink from "./Facebook.link.astro";
+import InstagramLink from "./Instagram.link.astro";
+import TiktokLink from "./Tiktok.link.astro";
+import WhatsappLink from "./Whatsapp.link.astro";
+
+const iconSize = "w-16 h-16";
+---
+<div class="SocialMedia">
+    <WhatsappLink class={iconSize} />
+    <FacebookLink class={iconSize} />
+    <TiktokLink class={iconSize} />
+    <InstagramLink class={iconSize} />
+</div>
+
+<style>
+    @reference "tailwindcss";
+    .SocialMedia {
+        @apply w-full max-w-[400px] flex flex-row gap-x-3;
+    }
+</style>

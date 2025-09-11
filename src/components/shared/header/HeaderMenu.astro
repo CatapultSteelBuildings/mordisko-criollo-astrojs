@@ -2,13 +2,24 @@
 import { Icon } from "astro-icon/components";
 
 import { menuDataSpanish } from "@data/index.data";
+
+import SocialMedia from "@components/ux/Social-media.astro";
 ---
 
 <div class="HeaderMenu">
-  <button>
+  <input type="checkbox" id="HeaderMenu__Toggle" class="HeaderMenu__Toggle" />
+  <label for="HeaderMenu__Toggle" class="HeaderMenu__Open">
     <Icon name="tabler:menu-2" size={48} />
-  </button>
-  <nav>
+  </label>
+  <nav class="HeaderMenu__Nav">
+    <label for="HeaderMenu__Toggle" class="HeaderMenu__Close">
+      <Icon name="tabler:x" size={36} />
+    </label>
+    <img
+      class="w-full max-w-[150px] lg:hidden"
+      src="/assets/images/logo/mordisko-criollo-text-logo.webp"
+      alt="Mordisko Criollo"
+    />
     <ul>
       {
         menuDataSpanish.map((item) => (
@@ -18,28 +29,48 @@ import { menuDataSpanish } from "@data/index.data";
         ))
       }
     </ul>
+    <div class="lg:hidden">
+      <SocialMedia />
+    </div>
   </nav>
 </div>
 
 <style>
   @reference "tailwindcss";
   .HeaderMenu {
-    @apply w-[100px] flex justify-end lg:items-end relative lg:w-full;
+    @apply w-[100px] flex justify-end lg:items-end lg:w-full;
   }
 
-  .HeaderMenu button {
+  .HeaderMenu label {
+    @apply cursor-pointer;
+  }
+
+  .HeaderMenu input {
+    @apply hidden;
+  }
+
+  .HeaderMenu__Open,
+  .HeaderMenu__Close {
     @apply lg:hidden;
   }
 
-  .HeaderMenu nav {
-    @apply lg:mx-auto;
+  .HeaderMenu__Nav {
+    @apply max-lg:fixed max-lg:top-0 max-lg:bottom-0 max-lg:right-0 max-lg:left-0 max-lg:w-full max-lg:h-screen max-lg:p-12 max-lg:translate-x-[100%] max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out flex flex-col justify-between items-center lg:mx-auto bg-[var(--primary)];
   }
 
-  .HeaderMenu nav ul {
-    @apply hidden lg:block lg:flex lg:flex-row lg:gap-x-3;
+  .HeaderMenu__Close {
+    @apply absolute top-3 right-3;
+  }
+
+  .HeaderMenu__Nav ul {
+    @apply lg:block lg:flex lg:flex-row lg:gap-x-3 w-full grow flex flex-col justify-center items-center gap-y-6;
   }
 
   .HeaderMenu nav ul li {
     @apply lg:block text-nowrap;
+  }
+
+  #HeaderMenu__Toggle:checked ~ .HeaderMenu__Nav {
+    @apply translate-x-0;
   }
 </style>

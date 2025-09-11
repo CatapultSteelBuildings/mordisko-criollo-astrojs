@@ -7,7 +7,7 @@ export const menuDataSpanish: MenuItemInterface[] = [
   },
   {
     title: "Productos",
-    url: "/products",
+    url: "/productos",
   },
   {
     title: "Contacto",

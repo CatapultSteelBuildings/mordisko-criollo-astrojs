@@ -1,0 +1,17 @@
+---
+import { businessDataSpanish } from "../../../core/data/index.data"
+
+---
+<div class="CopyRight">
+    <h5>{businessDataSpanish.name} © {new Date().getFullYear()}</h6>
+    <span class="hidden">-</span>
+     <h6>{businessDataSpanish.copyRight}</h6>
+</div>
+
+<style>
+    @reference "tailwindcss";
+
+    .CopyRight {
+        @apply text-center text-sm;
+    }
+</style>

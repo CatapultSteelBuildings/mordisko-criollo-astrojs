@@ -1,16 +1,17 @@
 ---
-import FacebookLink from "./Facebook.link.astro";
-import InstagramLink from "./Instagram.link.astro";
-import TiktokLink from "./Tiktok.link.astro";
+import { Icon } from 'astro-icon/components'
 import WhatsappLink from "./Whatsapp.link.astro";
+import FacebookLink from "./Facebook.link.astro";
+import TiktokLink from "./Tiktok.link.astro";
+import InstagramLink from "./Instagram.link.astro";
 
-const iconSize = "w-16 h-16";
+const size = 40;
 ---
 <div class="SocialMedia">
-    <WhatsappLink class={iconSize} />
-    <FacebookLink class={iconSize} />
-    <TiktokLink class={iconSize} />
-    <InstagramLink class={iconSize} />
+    <WhatsappLink size={size} />
+    <FacebookLink size={size} />
+    <TiktokLink size={size} />
+    <InstagramLink size={size} />
 </div>
 
 <style>

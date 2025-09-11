@@ -1,7 +1,11 @@
 ---
-import InstagramIcon from "./icons/Instagram.icon.astro";
+interface Props {
+    size?: number;
+}
+import { Icon } from 'astro-icon/components'
+const { size = 48 } = Astro.props;
 ---
 
 <a href="#" target="_blank">
-    <InstagramIcon />
+    <Icon name="tabler:brand-instagram" size={size} />
 </a>

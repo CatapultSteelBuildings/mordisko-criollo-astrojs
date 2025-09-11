@@ -1,41 +1,45 @@
 ---
-import { Icon } from 'astro-icon/components'
-import MenuIcon from "../../ux/icons/Menu.icon.astro";
+import { Icon } from "astro-icon/components";
+
+import { menuDataSpanish } from "@data/index.data";
 ---
 
 <div class="HeaderMenu">
-    <button>
-        <Icon name="tabler:menu-2" size={48} />
-    </button>
-    <nav>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ul>
-    </nav>
+  <button>
+    <Icon name="tabler:menu-2" size={48} />
+  </button>
+  <nav>
+    <ul>
+      {
+        menuDataSpanish.map((item) => (
+          <li>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </div>
 
 <style>
-    @reference "tailwindcss";
-    .HeaderMenu {
-        @apply w-[100px] flex justify-end lg:items-end relative lg:w-full;
-    }
+  @reference "tailwindcss";
+  .HeaderMenu {
+    @apply w-[100px] flex justify-end lg:items-end relative lg:w-full;
+  }
 
-    .HeaderMenu button {
-        @apply lg:hidden;
-    }
+  .HeaderMenu button {
+    @apply lg:hidden;
+  }
 
-    .HeaderMenu nav {
-        @apply lg:mx-auto;
-    }
+  .HeaderMenu nav {
+    @apply lg:mx-auto;
+  }
 
-    .HeaderMenu nav ul {
-        @apply hidden lg:block lg:flex lg:flex-row lg:gap-x-3;
-    }
+  .HeaderMenu nav ul {
+    @apply hidden lg:block lg:flex lg:flex-row lg:gap-x-3;
+  }
 
-    .HeaderMenu nav ul li {
-        @apply lg:block text-nowrap;
-    }
-
+  .HeaderMenu nav ul li {
+    @apply lg:block text-nowrap;
+  }
 </style>

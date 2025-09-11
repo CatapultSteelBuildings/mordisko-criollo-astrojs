@@ -9,6 +9,7 @@
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
       "@data/*": ["./core/data/*"],
+      "@interfaces/*": ["./core/interfaces/*"],
       "@utils/*": ["./core/utils/*"]
     }
   }

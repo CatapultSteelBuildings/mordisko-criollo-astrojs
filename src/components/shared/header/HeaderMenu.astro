@@ -5,6 +5,8 @@ import { menuDataSpanish, menuDataEnglish } from "@data/index.data";
 
 import SocialMedia from "@components/ux/Social-media.astro";
 
+import ChangeLanguageButton from "@components/ux/buttons/ChangeLanguageButton.astro";
+
 interface Props {
     lang: string;
 }
@@ -17,10 +19,14 @@ const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
 
 <div class="HeaderMenu">
   <input type="checkbox" id="HeaderMenu__Toggle" class="HeaderMenu__Toggle" />
+
   <label for="HeaderMenu__Toggle" class="HeaderMenu__Open">
     <Icon name="tabler:menu-2" size={48} />
   </label>
   <nav class="HeaderMenu__Nav">
+    <div class="absolute top-3 left-3">
+      <ChangeLanguageButton lang={lang} />
+    </div>
     <label for="HeaderMenu__Toggle" class="HeaderMenu__Close">
       <Icon name="tabler:x" size={36} />
     </label>

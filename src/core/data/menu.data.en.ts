@@ -3,7 +3,7 @@ import type { MenuItemInterface } from "@interfaces/index.interfaces";
 export const menuDataEnglish: MenuItemInterface[] = [
   {
     title: "Home",
-    url: "/en/",
+    url: "/en",
   },
   {
     title: "Products",

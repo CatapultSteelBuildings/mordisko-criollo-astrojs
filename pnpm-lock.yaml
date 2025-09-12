@@ -21,6 +21,9 @@ importers:
         specifier: ^4.1.13
         version: 4.1.13
     devDependencies:
+      '@iconify-json/flag':
+        specifier: ^1.2.9
+        version: 1.2.9
       '@iconify-json/tabler':
         specifier: ^1.2.22
         version: 1.2.22
@@ -228,6 +231,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify-json/flag@1.2.9':
+    resolution: {integrity: sha512-4KEIO17qmdFMz8QiKPD4Wahu2mEcv7qEfLePf99Jf/Mk9R3Dx2ss9gyUxFgWykUZBCjzxsBXe5Z6ctMcyt67SQ==}
 
   '@iconify-json/tabler@1.2.22':
     resolution: {integrity: sha512-KmCtTzZyz7dtszdQGJ5wbWqko6exhI38e4aCQqWZE1Z2wGUqBsMXrRWawXkAp6/XNBebt54h0lcxFCaTYBwFJg==}
@@ -2178,6 +2184,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.9':
     optional: true
+
+  '@iconify-json/flag@1.2.9':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/tabler@1.2.22':
     dependencies:

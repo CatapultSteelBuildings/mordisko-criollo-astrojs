@@ -3,14 +3,14 @@ import type { MenuItemInterface } from "@interfaces/index.interfaces";
 export const menuDataEnglish: MenuItemInterface[] = [
   {
     title: "Home",
-    url: "/",
+    url: "/en/",
   },
   {
     title: "Products",
-    url: "/products",
+    url: "/en/products",
   },
   {
     title: "Contact",
-    url: "/contact",
+    url: "/en/contact",
   },
 ];

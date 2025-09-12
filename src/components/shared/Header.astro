@@ -3,12 +3,18 @@ import MainLogo from "@components/shared/header/Main-logo.astro";
 import SecondaryLogo from "@components/shared/header/Secondary-logo.astro";
 import HeaderMenu from "@components/shared/header/HeaderMenu.astro";
 import HeaderSocialMedia from "@components/shared/header/Header-social-media.astro";
+
+interface Props {
+    lang: string;
+}
+
+const { lang = "es" } = Astro.props;
 ---
 
 <header class="Header">
     <MainLogo />
     <SecondaryLogo />
-    <HeaderMenu />
+    <HeaderMenu lang={lang} />
     <HeaderSocialMedia />
 </header>
 

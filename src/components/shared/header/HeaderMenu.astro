@@ -1,9 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
 
-import { menuDataSpanish } from "@data/index.data";
+import { menuDataSpanish, menuDataEnglish } from "@data/index.data";
 
 import SocialMedia from "@components/ux/Social-media.astro";
+
+interface Props {
+    lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+
+const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
+
 ---
 
 <div class="HeaderMenu">
@@ -22,7 +31,7 @@ import SocialMedia from "@components/ux/Social-media.astro";
     />
     <ul>
       {
-        menuDataSpanish.map((item) => (
+        menuData.map((item) => (
           <li>
             <a href={item.url}>{item.title}</a>
           </li>

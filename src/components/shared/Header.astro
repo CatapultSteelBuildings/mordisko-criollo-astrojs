@@ -3,6 +3,7 @@ import MainLogo from "@components/shared/header/Main-logo.astro";
 import SecondaryLogo from "@components/shared/header/Secondary-logo.astro";
 import HeaderMenu from "@components/shared/header/HeaderMenu.astro";
 import HeaderSocialMedia from "@components/shared/header/Header-social-media.astro";
+import ChangeLanguageButton from "../ux/buttons/ChangeLanguageButton.astro";
 
 interface Props {
     lang: string;
@@ -16,11 +17,14 @@ const { lang = "es" } = Astro.props;
     <SecondaryLogo />
     <HeaderMenu lang={lang} />
     <HeaderSocialMedia />
+    <div class="hidden lg:inline lg:absolute lg:top-auto lg:bottom-0 lg:right-3 lg:left-auto lg:z-50">
+        <ChangeLanguageButton lang={lang} />
+    </div>
 </header>
 
 <style>
     @reference "tailwindcss";
     .Header {
-        @apply bg-[var(--primary)] text-[var(--secondary-darker)] p-3 flex justify-between items-center lg:items-stretch lg:h-full gap-x-3 lg:px-6;
+        @apply bg-[var(--primary)] text-[var(--secondary-darker)] p-3 flex justify-between items-center lg:items-stretch lg:h-full gap-x-3 lg:px-6 lg:relative;
     }
 </style>

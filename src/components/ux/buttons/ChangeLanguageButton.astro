@@ -11,15 +11,15 @@ const { lang = "es", size = 40 } = Astro.props;
 const iconName = lang === "es" ? "flag:us-1x1" : "flag:es-1x1";
 ---
 
-<button id="changeLanguageButton" class="cursor-pointer">
+<button id="changeLanguageButton" class="changeLanguageButtons cursor-pointer">
   <Icon name={iconName} size={size} />
 </button>
 
 <script>
   import { menuDataSpanish, menuDataEnglish } from "@data/index.data";
   window.addEventListener("load", () => {
-    const button = document.querySelector("#changeLanguageButton");
-    button?.addEventListener("click", () => {
+    const buttons = document.querySelectorAll(".changeLanguageButtons")
+    const changeLanguaje = () => {
       const currentUrl = new URL(window.location.href);
       const domain = currentUrl.origin;
       const pathname = currentUrl.pathname;
@@ -37,15 +37,16 @@ const iconName = lang === "es" ? "flag:us-1x1" : "flag:es-1x1";
       }
       let currentIndex = 0;
       if (pathNameArrow.length > 1) {
-        currentIndex = currentMenu.findIndex(
-          (item) => item.url === pathname
-        );
+        currentIndex = currentMenu.findIndex((item) => item.url === pathname);
         const url = otherMenu[currentIndex].url;
         window.location.href = domain + url;
       } else {
         const url = otherMenu[0].url;
         window.location.href = domain + url;
       }
+    }
+    buttons.forEach(button => {
+      button.addEventListener("click", changeLanguaje);
     });
   });
 </script>

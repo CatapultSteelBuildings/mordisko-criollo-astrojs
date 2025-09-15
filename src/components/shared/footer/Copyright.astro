@@ -1,11 +1,19 @@
 ---
 import { businessDataSpanish } from "@data/index.data"
+import { businessDataEnglish } from "@data/index.data"
 
+interface Props {
+    lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+
+const businessData = lang === "es" ? businessDataSpanish : businessDataEnglish;
 ---
 <div class="CopyRight">
-    <h5>{businessDataSpanish.name} © {new Date().getFullYear()}</h6>
+    <h5>{businessData.name} © {new Date().getFullYear()}</h6>
     <span class="hidden">-</span>
-     <h6>{businessDataSpanish.copyRight}</h6>
+     <h6>{businessData.copyRight}</h6>
 </div>
 
 <style>

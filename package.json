@@ -9,12 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^7.2.1",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.6",
     "astro-icon": "^1.1.5",
+    "svelte": "^5.43.2",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
+    "typescript": "^5.9.3",
     "@iconify-json/flag": "^1.2.9",
     "@iconify-json/tabler": "^1.2.22"
   }

@@ -1,25 +1,26 @@
 ---
-import { businessDataSpanish } from "@data/index.data"
-import { businessDataEnglish } from "@data/index.data"
+import { businessDataSpanish } from "@data/index.data";
+import { businessDataEnglish } from "@data/index.data";
 
 interface Props {
-    lang: string;
+  lang: string;
 }
 
 const { lang = "es" } = Astro.props;
 
 const businessData = lang === "es" ? businessDataSpanish : businessDataEnglish;
 ---
+
 <div class="CopyRight">
-    <h5>{businessData.name} © {new Date().getFullYear()}</h6>
-    <span class="hidden">-</span>
-     <h6>{businessData.copyRight}</h6>
+  <h5>{businessData.name} © {new Date().getFullYear()}</h5>
+  <span class="hidden">-</span>
+  <h6>{businessData.copyRight}</h6>
 </div>
 
 <style>
-    @reference "tailwindcss";
+  @reference "tailwindcss";
 
-    .CopyRight {
-        @apply text-center text-sm bg-[var(--primary)] text-[var(--secondary-darker)] p-3;
-    }
+  .CopyRight {
+    @apply text-center text-sm bg-[var(--secondary)] text-[var(--white)] p-3;
+  }
 </style>

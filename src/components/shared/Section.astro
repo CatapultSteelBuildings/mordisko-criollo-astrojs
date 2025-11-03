@@ -12,6 +12,6 @@ const getClasses = (v: Props['variant']) => {
 };
 ---
 <section class={getClasses(variant) + ' py-3 px-1'}>
-    <h2>{title}</h2>
+    <h2 class="mb-3">{title}</h2>
     <slot />
 </section>

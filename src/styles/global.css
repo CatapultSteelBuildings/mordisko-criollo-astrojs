@@ -1,66 +1,81 @@
 @import "tailwindcss";
 
 :root {
-    --primary: #FEBD2B;
-    --primary-lighter: #FFD67C;
-    --primary-light: #FFC952;
-    --primary-dark: #DE9B05;
-    --primary-darker: #AE7800;
-    --secondary: #1A385A;
-    --secondary-lighter: #557190;
-    --secondary-light: #557190;
-    --secondary-dark: #09233F;
-    --secondary-darker: #021326;
-    --third: #CA3224;
-    --third-lighter: #FF897D;
-    --third-light: #DF594B; 
-    --third-dark: #A31E10;
-    --third-darker: #7B0C00;
-    --black: #000000;
-    --white: #FFFFFF;
-    --green: #5d9d26;
-    --red: #ca3224;
-    --black_: #010b13;
-    --dark: #141414;
-    --dark-text: #000409;
-    --light: #fffbf6;
-    --facebook: #3b5998;
-    --twitter: #1da1f2;
+  --primary: #febd2b;
+  --primary-lighter: #ffd67c;
+  --primary-light: #ffc952;
+  --primary-dark: #de9b05;
+  --primary-darker: #ae7800;
+  --secondary: #1a385a;
+  --secondary-lighter: #557190;
+  --secondary-light: #557190;
+  --secondary-dark: #09233f;
+  --secondary-darker: #021326;
+  --third: #ca3224;
+  --third-lighter: #ff897d;
+  --third-light: #df594b;
+  --third-dark: #a31e10;
+  --third-darker: #7b0c00;
+  --black: #000000;
+  --white: #ffffff;
+  --green: #5d9d26;
+  --red: #ca3224;
+  --black_: #010b13;
+  --dark: #141414;
+  --dark-text: #000409;
+  --light: #fffbf6;
+  --facebook: #3b5998;
+  --twitter: #1da1f2;
 }
 
 html {
-    @apply scroll-smooth text-base md:text-lg lg:text-xl text-[var(--dark-text)] dark:text-[var(--light)];
+  @apply scroll-smooth text-base md:text-lg lg:text-xl text-[var(--dark-text)] dark:text-[var(--light)];
 }
 
 body {
-    @apply bg-[var(--light)] text-[var(--dark-text)] dark:bg-[var(--dark)] dark:text-[var(--light)]
+  @apply bg-[var(--light)] text-[var(--dark-text)] dark:bg-[var(--dark)] dark:text-[var(--light)];
 }
 
-h1, h2, h3, h4, h5, h6 {
-    @apply text-center;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-center;
 }
 
 h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+  @apply text-4xl md:text-5xl lg:text-6xl;
 }
 
 h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+  @apply text-3xl md:text-4xl lg:text-5xl;
 }
 
 h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+  @apply text-2xl md:text-3xl lg:text-4xl;
 }
 
 h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+  @apply text-xl md:text-2xl lg:text-3xl;
 }
 
 h5 {
-    @apply text-lg md:text-xl lg:text-2xl;
+  @apply text-lg md:text-xl lg:text-2xl;
 }
 
 h6 {
-    @apply text-base md:text-lg lg:text-xl;
-}   
+  @apply text-base md:text-lg lg:text-xl;
+}
 
+.form-group {
+  @apply w-full mb-6 relative;
+}
+.form-group input, .form-group textarea {
+  @apply block w-full border mb-0 py-2 px-3 rounded-lg;
+}
+
+.form-group p {
+  @apply text-[var(--red)] text-xs pl-1 font-bold absolute;
+}

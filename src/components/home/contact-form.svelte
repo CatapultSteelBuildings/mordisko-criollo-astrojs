@@ -1,5 +1,6 @@
 <script lang="ts">
   import Input from "../shared/Input.svelte";
+  import TextArea from "../shared/TextArea.svelte";
   let message = $state({
     fullname: "",
     email: "",
@@ -110,7 +111,13 @@
       bind:value={message.phone}
       error={errors.phone}
     />
-    <textarea placeholder="Mensaje" bind:value={message.message}></textarea>
+    <TextArea
+      name="message"
+      id="message"
+      rows={4}
+      placeholder="Mensaje"
+      bind:value={message.message}
+    ></TextArea>
     <button type="submit">Enviar</button>
   </form>
 </section>

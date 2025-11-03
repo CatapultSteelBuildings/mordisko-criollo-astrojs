@@ -1,6 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
+import ContactForm from "@components/home/contact-form.svelte";
+
 const title = "Mordisko Criollo";
 const metaDescription = "Mordisko Criollo";
 const keywords = ["Mordisko Criollo"];
@@ -15,4 +17,5 @@ const location = Astro.url.href;
   keywords={keywords}
 >
   <h1>Inicio</h1>
+  <ContactForm />
 </Layout>

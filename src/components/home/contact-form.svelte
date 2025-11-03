@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Input from "../shared/Input.svelte";
   let message = $state({
     fullname: "",
     email: "",
@@ -19,24 +20,25 @@
   };
 
   function isValidColombianPhone(phone: string) {
-  const digits = phone.replace(/\D/g, '');
+    const digits = phone.replace(/\D/g, "");
 
-  const clean = digits.startsWith('57') && digits.length > 10 
-    ? digits.substring(2) 
-    : digits;
+    const clean =
+      digits.startsWith("57") && digits.length > 10
+        ? digits.substring(2)
+        : digits;
 
-  if (clean.length < 7 || clean.length > 10) return false;
+    if (clean.length < 7 || clean.length > 10) return false;
 
-  if (clean.length === 10 && clean[0] === '3') {
-    return true;
+    if (clean.length === 10 && clean[0] === "3") {
+      return true;
+    }
+
+    if ((clean.length === 7 || clean.length === 8) && clean[0] !== "3") {
+      return true;
+    }
+
+    return false;
   }
-
-  if ((clean.length === 7 || clean.length === 8) && clean[0] !== '3') {
-    return true;
-  }
-
-  return false;
-}
 
   const validateFullname = () => {
     if (!message.fullname.trim()) {
@@ -59,7 +61,7 @@
   };
 
   const validatePhone = () => {
-    if (!message.phone.trim()) {    
+    if (!message.phone.trim()) {
       errors.phone = "El teléfono es requerido";
     } else if (!isValidColombianPhone(message.phone.trim())) {
       errors.phone = "El teléfono es inválido";
@@ -83,33 +85,30 @@
 </script>
 
 <section class="form">
-  <form action="">
-    <input
+  <form onsubmit={(e) => handleSubmit(e)}>
+    <Input
+      name="fullname"
       type="text"
       placeholder="Nombre"
-      onchange={validateFullname}
-      onblur={validateFullname}
+      validator={validateFullname}
       bind:value={message.fullname}
-      aria-invalid={errors.fullname !== ""}
-      aria-describedby="contact-home-fullname-error"
+      error={errors.fullname}
     />
-    <input
+    <Input
+      name="email"
       type="email"
       placeholder="Email"
-      onchange={validateEmail}
-      onblur={validateEmail}
+      validator={validateEmail}
       bind:value={message.email}
-      aria-invalid={errors.email !== ""}
-      aria-describedby="contact-home-email-error"
+      error={errors.email}
     />
-    <input
+    <Input
+      name="phone"
       type="tel"
       placeholder="Teléfono"
-      onchange={validatePhone}
-      onblur={validatePhone}
+      validator={validatePhone}
       bind:value={message.phone}
-      aria-invalid={errors.phone !== ""}
-      aria-describedby="contact-home-phone-error"
+      error={errors.phone}
     />
     <textarea placeholder="Mensaje" bind:value={message.message}></textarea>
     <button type="submit">Enviar</button>

@@ -1,6 +1,7 @@
 <script lang="ts">
-  import Input from "../shared/Input.svelte";
-  import TextArea from "../shared/TextArea.svelte";
+  import Input from "@components/shared/Input.svelte";
+  import TextArea from "@components/shared/TextArea.svelte";
+  import Button from "@components/shared/Button.svelte";
   let message = $state({
     fullname: "",
     email: "",
@@ -85,39 +86,39 @@
   };
 </script>
 
-<section class="form">
-  <form onsubmit={(e) => handleSubmit(e)}>
-    <Input
-      name="fullname"
-      type="text"
-      placeholder="Nombre"
-      validator={validateFullname}
-      bind:value={message.fullname}
-      error={errors.fullname}
-    />
-    <Input
-      name="email"
-      type="email"
-      placeholder="Email"
-      validator={validateEmail}
-      bind:value={message.email}
-      error={errors.email}
-    />
-    <Input
-      name="phone"
-      type="tel"
-      placeholder="Teléfono"
-      validator={validatePhone}
-      bind:value={message.phone}
-      error={errors.phone}
-    />
-    <TextArea
-      name="message"
-      id="message"
-      rows={4}
-      placeholder="Mensaje"
-      bind:value={message.message}
-    ></TextArea>
-    <button type="submit">Enviar</button>
-  </form>
-</section>
+<form onsubmit={(e) => handleSubmit(e)}>
+  <Input
+    name="fullname"
+    type="text"
+    placeholder="Nombre"
+    validator={validateFullname}
+    bind:value={message.fullname}
+    error={errors.fullname}
+  />
+  <Input
+    name="email"
+    type="email"
+    placeholder="Email"
+    validator={validateEmail}
+    bind:value={message.email}
+    error={errors.email}
+  />
+  <Input
+    name="phone"
+    type="tel"
+    placeholder="Teléfono"
+    validator={validatePhone}
+    bind:value={message.phone}
+    error={errors.phone}
+  />
+  <TextArea
+    name="message"
+    id="message"
+    rows={4}
+    placeholder="Mensaje"
+    bind:value={message.message}
+  ></TextArea>
+  <div class="w-full flex items-center justify-center">
+    <Button variant="secondary" label="Enviar" type="submit" />
+  </div>
+</form>

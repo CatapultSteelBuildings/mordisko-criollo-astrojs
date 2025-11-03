@@ -83,7 +83,6 @@
 </script>
 
 <section class="form">
-  <h2>Escríbenos tus pedidos o sugerencias</h2>
   <form action="">
     <input
       type="text"

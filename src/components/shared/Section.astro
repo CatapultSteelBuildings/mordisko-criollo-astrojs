@@ -1,0 +1,17 @@
+---
+interface Props {
+    title: string;
+    variant: "primary" | "secondary";
+}
+
+const { title, variant } = Astro.props;
+
+const getClasses = (v: Props['variant']) => {
+  if (v === 'primary') return 'bg-[var(--primary)] text-[var(--secondary)]';
+  return 'bg-[var(--secondary)] text-[var(--primary)]';
+};
+---
+<section class={getClasses(variant) + ' py-3 px-1'}>
+    <h2>{title}</h2>
+    <slot />
+</section>

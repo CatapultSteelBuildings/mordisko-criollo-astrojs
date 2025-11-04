@@ -1,5 +1,9 @@
 ---
+/* Components */
 import Layout from "@layouts/Layout.astro";
+import Section from "@components/shared/Section.astro";
+import ContactForm from "@components/home/contact-form.svelte";
+
 
 const lang = "en";
 const title = "Mordisko Criollo";
@@ -15,5 +19,7 @@ const location = Astro.url.href;
   metaDescription={metaDescription}
   keywords={keywords}
 >
-  <h1>Home</h1>
+  <Section variant="primary" title="Send us your orders or suggestions">
+    <ContactForm lang={lang} />
+  </Section>
 </Layout>

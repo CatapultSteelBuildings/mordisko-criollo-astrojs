@@ -2,6 +2,9 @@
   import Input from "@components/shared/Input.svelte";
   import TextArea from "@components/shared/TextArea.svelte";
   import Button from "@components/shared/Button.svelte";
+
+  const { lang = "es" } = $props();
+
   let message = $state({
     fullname: "",
     email: "",
@@ -84,13 +87,30 @@
     console.log(message);
     if (!validateForm()) return;
   };
+
+  const getPlaceholder = (lang: string) => {
+    if (lang === "es") {
+      return {
+        fullname: "Nombre",
+        email: "Correo electrónico",
+        phone: "Teléfono",
+        message: "Mensaje",
+      };
+    }
+    return {
+      fullname: "Fullname",
+      email: "Email",
+      phone: "Phone",
+      message: "Message",
+    };
+  };
 </script>
 
 <form onsubmit={(e) => handleSubmit(e)}>
   <Input
     name="fullname"
     type="text"
-    placeholder="Nombre"
+    placeholder={getPlaceholder(lang).fullname}
     validator={validateFullname}
     bind:value={message.fullname}
     error={errors.fullname}
@@ -98,7 +118,7 @@
   <Input
     name="email"
     type="email"
-    placeholder="Email"
+    placeholder={getPlaceholder(lang).email}
     validator={validateEmail}
     bind:value={message.email}
     error={errors.email}
@@ -106,7 +126,7 @@
   <Input
     name="phone"
     type="tel"
-    placeholder="Teléfono"
+    placeholder={getPlaceholder(lang).phone}
     validator={validatePhone}
     bind:value={message.phone}
     error={errors.phone}
@@ -115,10 +135,10 @@
     name="message"
     id="message"
     rows={4}
-    placeholder="Mensaje"
+    placeholder={getPlaceholder(lang).message}
     bind:value={message.message}
   ></TextArea>
   <div class="w-full flex items-center justify-center">
-    <Button variant="secondary" label="Enviar" type="submit" />
+    <Button variant="secondary" label={lang === "es" ? "Enviar" : "Send"} type="submit" />
   </div>
 </form>

@@ -1,0 +1,26 @@
+---
+import Section from "@components/shared/Section.astro";
+import ContactForm from "@components/home/contact-form.svelte";
+import ContactLogo from "@components/home/contact-logo.astro";
+
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+
+const title = lang === "es" ? "Escríbenos tus pedidos o sugerencias" : "Write us your orders or suggestions";
+---
+<Section variant="primary" title={title}>
+  <div class="ContactHomeSection">
+    <ContactForm client:visible lang={lang} classes="max-w-[400px] xl:max-w-[600px] mx-auto" />
+    <ContactLogo />
+  </div>
+</Section>
+  
+<style>
+  @reference "tailwindcss";
+  .ContactHomeSection {
+    @apply lg:grid lg:grid-cols-2 max-w-[1200px] mx-auto;
+  }
+</style>

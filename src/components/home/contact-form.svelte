@@ -3,7 +3,7 @@
   import TextArea from "@components/shared/TextArea.svelte";
   import Button from "@components/shared/Button.svelte";
 
-  const { lang = "es" } = $props();
+  const { lang = "es", classes = "" } = $props();
 
   let message = $state({
     fullname: "",
@@ -106,7 +106,7 @@
   };
 </script>
 
-<form onsubmit={(e) => handleSubmit(e)}>
+<form onsubmit={(e) => handleSubmit(e)} class={classes}>
   <Input
     name="fullname"
     type="text"

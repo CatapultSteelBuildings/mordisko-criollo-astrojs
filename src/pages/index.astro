@@ -6,7 +6,6 @@ import ContactForm from "@components/home/contact-form.svelte";
 
 const title = "Mordisko Criollo";
 const metaDescription = "Mordisko Criollo";
-const keywords = ["Mordisko Criollo"];
 const location = Astro.url.href;
 ---
 
@@ -15,10 +14,9 @@ const location = Astro.url.href;
   location={location}
   title={title}
   metaDescription={metaDescription}
-  keywords={keywords}
 >
   <h1>Home Page</h1>
   <Section variant="primary" title="Escríbenos tus pedidos o sugerencias">
-    <ContactForm />
+    <ContactForm client:visible />
   </Section>
 </Layout>

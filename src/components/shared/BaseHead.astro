@@ -1,17 +1,14 @@
 ---
-import { generateKeywords } from "@utils/index.utils";
 interface Props {
   location: string;
   title: string;
   metaDescription: string;
-  keywords: string[];
 }
 
 const {
   location,
   title = "Mordisko Criollo",
   metaDescription = "",
-  keywords = [],
 } = Astro.props;
 ---
 
@@ -22,5 +19,4 @@ const {
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <meta name="description" content={metaDescription} />
-  <meta name="keywords" content={generateKeywords(keywords)} />
 </head>

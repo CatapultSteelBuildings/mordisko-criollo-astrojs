@@ -139,6 +139,10 @@
     bind:value={message.message}
   ></TextArea>
   <div class="w-full flex items-center justify-center">
-    <Button variant="secondary" label={lang === "es" ? "Enviar" : "Send"} type="submit" />
+    <Button
+      variant="secondary"
+      label={lang === "es" ? "Enviar" : "Send"}
+      type="submit"
+    />
   </div>
 </form>

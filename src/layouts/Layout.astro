@@ -15,7 +15,6 @@ interface Props {
   location: string;
   title: string;
   metaDescription: string;
-  keywords: string[];
 }
 
 const {
@@ -23,21 +22,13 @@ const {
   location = "/",
   title = "Mordisko Criollo",
   metaDescription = "Mordisko Criollo",
-  keywords = ["Mordisko Criollo"],
 } = Astro.props;
 ---
 
-<!doctype html
-<html lang={lang}>
-  <BaseHead
-    location={location}
-    title={title}
-    metaDescription={metaDescription}
-    keywords={keywords}
-  />
-  <body>
-    <Header lang={lang} />
-    <slot transition:animate={fade({ duration: "1s" })} />
-    <Footer lang={lang} />
-  </body>
-</html>
+<!doctype html>
+<BaseHead location={location} title={title} metaDescription={metaDescription} />
+<body>
+  <Header lang={lang} />
+  <slot transition:animate={fade({ duration: "1s" })} />
+  <Footer lang={lang} />
+</body>

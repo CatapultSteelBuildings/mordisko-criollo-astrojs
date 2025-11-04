@@ -1,19 +1,13 @@
 ---
 /* Components */
-import Layout from "@layouts/Layout.astro";
-import ContactHomeSection from "@components/home/contact-home-section.astro";
+import Home from "@components/home.astro";
 
-const lang = "en";
-const title = "Mordisko Criollo";
-const metaDescription = "Mordisko Criollo";
 const location = Astro.url.href;
+const lang = "en";
 ---
-
-<Layout
-  lang="en"
+<Home
+  lang={lang}
   location={location}
-  title={title}
-  metaDescription={metaDescription}
->
-  <ContactHomeSection lang="en" />
-</Layout>
+/>
+
+

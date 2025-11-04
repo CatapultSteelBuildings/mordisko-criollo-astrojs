@@ -1,0 +1,12 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;    
+---
+<h2>Hero {lang}</h2>
+
+<style>
+  @reference "tailwindcss";
+</style>

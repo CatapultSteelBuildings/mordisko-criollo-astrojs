@@ -1,0 +1,31 @@
+---
+/* Components */
+import Layout from "@layouts/Layout.astro";
+import HeroHomeSection from "@components/home/hero-home.astro";
+import BusinessHomeSection from "@components/home/business-home.astro";
+import ProductsHomeSection from "@components/home/products-home.astro";
+import BannerHomeSection from "@components/home/banner-home.astro";
+import ContactHomeSection from "@components/home/contact-home-section.astro";
+interface Props {
+  lang: string;
+  location: string;
+}
+
+const { lang = "es", location } = Astro.props;
+
+const title = "Mordisko Criollo";
+const metaDescription = "Mordisko Criollo";
+---
+
+<Layout
+  lang={lang}
+  location={location}
+  title={title}
+  metaDescription={metaDescription}
+>
+  <HeroHomeSection lang={lang} />
+  <BusinessHomeSection lang={lang} />
+  <ProductsHomeSection lang={lang} />
+  <BannerHomeSection lang={lang} />
+  <ContactHomeSection lang={lang} />
+</Layout>

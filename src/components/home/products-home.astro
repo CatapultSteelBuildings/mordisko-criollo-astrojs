@@ -1,0 +1,10 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang = "es" } = Astro.props;
+---
+<main class="bg-[var(--primary)] text-[var(--secondary)]">
+    <h1>Productos {lang}</h1>
+</main>

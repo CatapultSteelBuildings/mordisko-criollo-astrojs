@@ -1,14 +1,37 @@
 ---
+import { Image } from 'astro:assets';
 import Section from '@components/shared/Section.astro';
 
-interface Props {
-  lang: string;
-}
+/* Data */
+import { businessDataEnglish } from '@data/business.data.en';
+import { businessDataSpanish } from '@data/business.data.es';
+
+/* Images */
+import logo from '@assets/images/logo/mordisko-criollo-logo-mid.webp';
 
 const { lang = 'es' } = Astro.props;
+
+const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 ---
 
-<Section variant="secondary" title="Mordisko Criollo" />
+<Section variant="secondary" title={businessData.name}>
+  <div
+    class="m-auto flex w-full max-w-[1200px] flex-col items-center gap-y-6 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:gap-y-0">
+    <Image
+      src={logo}
+      alt={businessData.name}
+      widths={[360, 500]}
+      sizes="(max-width: 768px) 100vw, 500px"
+      loading="lazy"
+      fetchpriority="low"
+      class="w-full max-w-[300px] max-lg:object-cover md:max-w-[500px]"
+      decoding="async"
+    />
+    <div class="Business-home__history">
+      {businessData.history.map(item => <p>{item}</p>)}
+    </div>
+  </div>
+</Section>
 
 <style>
   @reference "tailwindcss";

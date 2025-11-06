@@ -1,14 +1,14 @@
 ---
-import Section from "@components/shared/Section.astro";
+import Section from '@components/shared/Section.astro';
 
 interface Props {
   lang: string;
 }
 
-const { lang = "es" } = Astro.props;
+const { lang = 'es' } = Astro.props;
 ---
 
-<Section variant="secondary" title="Mordisko Criollo"></Section>
+<Section variant="secondary" title="Mordisko Criollo" />
 
 <style>
   @reference "tailwindcss";

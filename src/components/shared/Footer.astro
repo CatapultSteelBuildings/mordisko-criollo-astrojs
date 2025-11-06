@@ -1,11 +1,12 @@
 ---
-import Copyright from "@components/shared/footer/Copyright.astro";
+import Copyright from '@components/shared/footer/Copyright.astro';
 interface Props {
-    lang: string;
+  lang: string;
 }
 
-const { lang = "es" } = Astro.props;
+const { lang = 'es' } = Astro.props;
 ---
+
 <footer class="Footer">
-    <Copyright lang={lang} />
+  <Copyright lang={lang} />
 </footer>

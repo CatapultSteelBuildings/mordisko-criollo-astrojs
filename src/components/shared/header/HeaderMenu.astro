@@ -1,20 +1,19 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
-import { menuDataSpanish, menuDataEnglish } from "@data/index.data";
+import { menuDataSpanish, menuDataEnglish } from '@data/index.data';
 
-import SocialMedia from "@components/ux/Social-media.astro";
+import SocialMedia from '@components/ux/Social-media.astro';
 
-import ChangeLanguageButton from "@components/ux/buttons/ChangeLanguageButton.astro";
+import ChangeLanguageButton from '@components/ux/buttons/ChangeLanguageButton.astro';
 
 interface Props {
-    lang: string;
+  lang: string;
 }
 
-const { lang = "es" } = Astro.props;
+const { lang = 'es' } = Astro.props;
 
-const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
-
+const menuData = lang === 'es' ? menuDataSpanish : menuDataEnglish;
 ---
 
 <div class="HeaderMenu">
@@ -37,7 +36,7 @@ const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
     />
     <ul>
       {
-        menuData.map((item) => (
+        menuData.map(item => (
           <li>
             <a href={item.url}>{item.title}</a>
           </li>
@@ -53,7 +52,7 @@ const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
 <style>
   @reference "tailwindcss";
   .HeaderMenu {
-    @apply z-20 w-[100px] flex justify-end lg:items-end lg:w-full;
+    @apply z-20 flex w-[100px] justify-end lg:w-full lg:items-end;
   }
 
   .HeaderMenu label {
@@ -70,7 +69,7 @@ const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
   }
 
   .HeaderMenu__Nav {
-    @apply max-lg:fixed max-lg:top-0 max-lg:bottom-0 max-lg:right-0 max-lg:left-0 max-lg:w-full max-lg:h-screen max-lg:p-12 max-lg:translate-x-[100%] max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out flex flex-col justify-between items-center lg:mx-auto bg-[var(--primary)];
+    @apply flex flex-col items-center justify-between bg-[var(--primary)] max-lg:fixed max-lg:top-0 max-lg:right-0 max-lg:bottom-0 max-lg:left-0 max-lg:h-screen max-lg:w-full max-lg:translate-x-[100%] max-lg:p-12 max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out lg:mx-auto;
   }
 
   .HeaderMenu__Close {
@@ -78,11 +77,11 @@ const menuData = lang === "es" ? menuDataSpanish : menuDataEnglish;
   }
 
   .HeaderMenu__Nav ul {
-    @apply lg:block lg:flex lg:flex-row lg:gap-x-3 w-full grow flex flex-col justify-center items-center gap-y-6;
+    @apply flex w-full grow flex-col items-center justify-center gap-y-6 lg:block lg:flex lg:flex-row lg:gap-x-3;
   }
 
   .HeaderMenu nav ul li {
-    @apply lg:block text-nowrap;
+    @apply text-nowrap lg:block;
   }
 
   #HeaderMenu__Toggle:checked ~ .HeaderMenu__Nav {

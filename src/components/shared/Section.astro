@@ -1,7 +1,7 @@
 ---
 interface Props {
-    title: string;
-    variant: "primary" | "secondary";
+  title: string;
+  variant: 'primary' | 'secondary';
 }
 
 const { title, variant } = Astro.props;
@@ -11,7 +11,8 @@ const getClasses = (v: Props['variant']) => {
   return 'bg-[var(--secondary)] text-[var(--primary)]';
 };
 ---
+
 <section class={getClasses(variant) + ' py-6 lg:py-12 px-3 xl-px-0'}>
-    <h2 class="mb-6 lg:mb-12">{title}</h2>
-    <slot />
+  <h2 class="mb-6 lg:mb-12">{title}</h2>
+  <slot />
 </section>

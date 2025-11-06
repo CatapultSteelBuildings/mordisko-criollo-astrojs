@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --primary: #febd2b;
@@ -29,7 +29,7 @@
 }
 
 html {
-  @apply scroll-smooth text-base md:text-lg lg:text-xl text-[var(--dark-text)] dark:text-[var(--light)];
+  @apply scroll-smooth text-base text-[var(--dark-text)] md:text-lg lg:text-xl dark:text-[var(--light)];
 }
 
 body {
@@ -70,12 +70,13 @@ h6 {
 }
 
 .form-group {
-  @apply w-full mb-6 relative;
+  @apply relative mb-6 w-full;
 }
-.form-group input, .form-group textarea {
-  @apply block w-full border mb-0 py-2 px-3 rounded-lg outline-0 focus:shadow transition-all duration-150;
+.form-group input,
+.form-group textarea {
+  @apply mb-0 block w-full rounded-lg border px-3 py-2 outline-0 transition-all duration-150 focus:shadow;
 }
 
 .form-group p {
-  @apply text-[var(--red)] text-xs pl-1 font-bold absolute;
+  @apply absolute pl-1 text-xs font-bold text-[var(--red)];
 }

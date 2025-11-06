@@ -1,9 +1,10 @@
 ---
 interface Props {
-    lang: string;
+  lang: string;
 }
-const { lang = "es" } = Astro.props;
+const { lang = 'es' } = Astro.props;
 ---
-<section class="bg-[var(--secondary)] text-[var(--primary)] py-6">
-    <h2>{lang === "es" ? "Este será un banner" : "This will be a banner"}</h2>
+
+<section class="bg-[var(--secondary)] py-6 text-[var(--primary)]">
+  <h2>{lang === 'es' ? 'Este será un banner' : 'This will be a banner'}</h2>
 </section>

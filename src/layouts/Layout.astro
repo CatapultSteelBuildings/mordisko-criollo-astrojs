@@ -1,13 +1,13 @@
 ---
-import { fade } from "astro:transitions";
+import { fade } from 'astro:transitions';
 
 /* Components */
-import BaseHead from "@components/shared/BaseHead.astro";
-import Header from "@components/shared/Header.astro";
-import Footer from "@components/shared/Footer.astro";
+import BaseHead from '@components/shared/BaseHead.astro';
+import Header from '@components/shared/Header.astro';
+import Footer from '@components/shared/Footer.astro';
 
 /* Styles */
-import "../styles/global.css";
+import '../styles/global.css';
 
 /* Props */
 interface Props {
@@ -18,10 +18,10 @@ interface Props {
 }
 
 const {
-  lang = "es",
-  location = "/",
-  title = "Mordisko Criollo",
-  metaDescription = "Mordisko Criollo",
+  lang = 'es',
+  location = '/',
+  title = 'Mordisko Criollo',
+  metaDescription = 'Mordisko Criollo',
 } = Astro.props;
 ---
 
@@ -29,6 +29,6 @@ const {
 <BaseHead location={location} title={title} metaDescription={metaDescription} />
 <body>
   <Header lang={lang} />
-  <slot transition:animate={fade({ duration: "1s" })} />
+  <slot transition:animate={fade({ duration: '1s' })} />
   <Footer lang={lang} />
 </body>

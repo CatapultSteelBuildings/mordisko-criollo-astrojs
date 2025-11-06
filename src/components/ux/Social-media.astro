@@ -1,21 +1,22 @@
 ---
-import WhatsappLink from "@components/ux/Whatsapp.link.astro";
-import FacebookLink from "@components/ux/Facebook.link.astro";
-import TiktokLink from "@components/ux/Tiktok.link.astro";
-import InstagramLink from "@components/ux/Instagram.link.astro";
+import WhatsappLink from '@components/ux/Whatsapp.link.astro';
+import FacebookLink from '@components/ux/Facebook.link.astro';
+import TiktokLink from '@components/ux/Tiktok.link.astro';
+import InstagramLink from '@components/ux/Instagram.link.astro';
 
 const size = 40;
 ---
+
 <div class="SocialMedia">
-    <WhatsappLink size={size} />
-    <FacebookLink size={size} />
-    <TiktokLink size={size} />
-    <InstagramLink size={size} />
+  <WhatsappLink size={size} />
+  <FacebookLink size={size} />
+  <TiktokLink size={size} />
+  <InstagramLink size={size} />
 </div>
 
 <style>
-    @reference "tailwindcss";
-    .SocialMedia {
-        @apply w-full max-w-[400px] flex flex-row gap-x-3 justify-center lg:justify-end xl:gap-x-9 2xl:gap-x-12;
-    }
+  @reference "tailwindcss";
+  .SocialMedia {
+    @apply flex w-full max-w-[400px] flex-row justify-center gap-x-3 lg:justify-end xl:gap-x-9 2xl:gap-x-12;
+  }
 </style>

@@ -1,11 +1,101 @@
 ---
+import { Image } from 'astro:assets';
+import { empanadaSpanish } from '@data/products.data.es';
+import { empanadaEnglish } from '@data/products.data.en';
+import hero from '@assets/images/hero/empanada-01.webp';
 interface Props {
   lang: string;
 }
 
 const { lang = 'es' } = Astro.props;
+
+const title =
+  lang === 'es'
+    ? 'Las mejores empanadas de Medellín'
+    : 'The best empanadas in Medellín';
+const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 ---
 
-<main class="bg-[var(--primary)] text-[var(--secondary)]">
-  <h1>Productos {lang}</h1>
+<main class="ProductsHome">
+  <div class="ProductsHome__filter"></div>
+  <div class="ProductsHome__container">
+    <article class="ProductsHome__article ProductsHome__article--title">
+      <Image
+        src={hero}
+        class="ProductsHome__image"
+        alt={title}
+        widths={[360, 640, 768, 1200]}
+        sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
+        loading="eager"
+        fetchpriority="low"
+        class="ProductsHome__image"
+        decoding="async"
+      />
+      <h1 class="ProductsHome__title">{title}</h1>
+    </article>
+    {
+      products.map((product: any) => (
+        <article class="ProductsHome__article">
+          <Image
+            src={product.image}
+            class="ProductsHome__image"
+            alt={product.title}
+            widths={[150, 300, 400, 600]}
+            sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
+            loading="eager"
+            fetchpriority="low"
+            class="ProductsHome__image"
+            decoding="async"
+          />
+          <h3 class="ProductsHome__subtitle">{product.title}</h3>
+        </article>
+      ))
+    }
+  </div>
 </main>
+
+<style>
+  @reference "tailwindcss";
+  .ProductsHome {
+    @apply relative -z-50 px-3 py-16 text-(--white) lg:px-0;
+    background-image: url('assets/images/products/empanada-background.webp');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-opacity: 1;
+  }
+
+  .ProductsHome__filter {
+    @apply absolute top-0 right-0 bottom-0 left-0 h-full w-full bg-(--third) opacity-50;
+  }
+
+  .ProductsHome__container {
+    @apply mx-auto grid w-full max-w-[1200px] grid-cols-2 2xl:gap-12;
+  }
+
+  .ProductsHome__article {
+    @apply relative overflow-hidden p-0;
+  }
+
+  .ProductsHome__article--title {
+    @apply col-span-2;
+  }
+
+  .ProductsHome__title,
+  .ProductsHome__subtitle {
+    @apply absolute top-[50%] left-[50%] m-0 translate-x-[-50%] translate-y-[-50%] transform p-0 text-shadow-[0_0_2px_var(--secondary)];
+  }
+
+  .ProductsHome__title {
+    @apply text-2xl font-bold sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl;
+  }
+
+  .ProductsHome__subtitle {
+    @apply text-lg sm:text-3xl md:text-4xl xl:text-5xl;
+  }
+
+  .ProductsHome__image {
+    @apply h-auto max-h-[80vh] w-full object-cover opacity-85 transition-all duration-300 hover:opacity-100 lg:hover:scale-125;
+  }
+</style>

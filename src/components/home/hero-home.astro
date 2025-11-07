@@ -1,14 +1,21 @@
 ---
 import { Image } from 'astro:assets';
 
-import hero1 from '@assets/images/products/empanada-01.webp';
-import hero2 from '@assets/images/products/empanada-02.webp';
-import hero3 from '@assets/images/products/empanada-03.webp';
-import hero4 from '@assets/images/products/empanada-04.webp';
+import hero1 from '@assets/images/hero/empanada-01.webp';
+import hero2 from '@assets/images/hero/empanada-02.webp';
+import hero3 from '@assets/images/hero/empanada-03.webp';
+import hero4 from '@assets/images/hero/empanada-04.webp';
+
+const { lang = 'es' } = Astro.props;
 
 const images = [hero1, hero2, hero3, hero4];
 
-const { lang = 'es' } = Astro.props;
+const title =
+  lang === 'es'
+    ? 'Empanadas con sabor a Medellín'
+    : 'Empanadas with the flavor of Medellín';
+const subtitle =
+  lang === 'es' ? 'Gran variedad de sabores' : 'Great variety of flavors';
 ---
 
 <section class="Hero-Home relative w-full overflow-hidden">
@@ -45,11 +52,11 @@ const { lang = 'es' } = Astro.props;
   <div
     class="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center text-white">
     <h1
-      class="max-w-3xl text-3xl leading-tight font-bold text-[var(--white)] text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
-      Empanadas con sabor a Medellín
+      class="max-w-3xl text-3xl leading-tight font-bold text-(--white) text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
+      {title}
     </h1>
     <p class="mt-4 hidden max-w-2xl text-lg opacity-90 md:block md:text-xl">
-      Gran variedad de sabores
+      {subtitle}
     </p>
   </div>
 </section>

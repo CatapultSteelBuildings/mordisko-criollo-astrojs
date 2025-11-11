@@ -1,5 +1,7 @@
+import { businessData } from './business.data';
+
 export const businessDataSpanish = {
-  name: 'Mordisko Criollo',
+  ...businessData,
   copyRight: 'Todos los derechos reservados',
   history: [
     `-ES- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,

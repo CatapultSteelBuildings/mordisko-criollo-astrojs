@@ -15,18 +15,29 @@ interface Props {
   location: string;
   title: string;
   metaDescription: string;
+  noindex?: boolean;
+  nofollow?: boolean;
 }
 
 const {
-  lang = 'es',
   location = '/',
   title = 'Mordisko Criollo',
   metaDescription = 'Mordisko Criollo',
+  lang = 'es',
+  noindex = false,
+  nofollow = false,
 } = Astro.props;
 ---
 
 <!doctype html>
-<Head location={location} title={title} metaDescription={metaDescription} />
+<Head
+  location={location}
+  title={title}
+  metaDescription={metaDescription}
+  lang={lang}
+  noindex={noindex}
+  nofollow={nofollow}
+/>
 <body>
   <Header lang={lang} />
   <slot transition:animate={fade({ duration: '1s' })} />

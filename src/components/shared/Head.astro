@@ -1,15 +1,26 @@
 ---
+import { SEO } from 'astro-seo';
+
+import { businessData } from '@/core/data/business.data';
+
 interface Props {
   location: string;
   title: string;
   metaDescription: string;
+  lang: string;
+  noindex: boolean;
+  nofollow: boolean;
 }
 
 const {
   location,
   title = 'Mordisko Criollo',
-  metaDescription = '',
+  metaDescription,
+  lang = 'es',
+  noindex = false,
+  nofollow = false,
 } = Astro.props;
+const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
 ---
 
 <head>
@@ -17,6 +28,59 @@ const {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
-  <title>{title}</title>
-  <meta name="description" content={metaDescription} />
+  <SEO
+    title={title}
+    description={metaDescription}
+    noindex={noindex}
+    nofollow={nofollow}
+    openGraph={{
+      basic: {
+        title: title || businessData.name,
+        type: 'website',
+        image: logo,
+        url: businessData.site,
+      },
+      optional: {
+        locale: lang,
+        siteName: businessData.name,
+        description: metaDescription,
+      },
+      image: {
+        alt: businessData.name,
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
+    }}
+    extend={{
+      meta: [
+        { name: 'twitter:image', content: logo },
+        { name: 'twitter:title', content: title },
+        {
+          name: 'twitter:description',
+          content: metaDescription,
+        },
+        { name: 'theme-color', content: businessData.primaryColor },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+        { name: 'author', content: businessData.name },
+        {
+          name: 'keywords',
+          content:
+            'astro, framework, web development, react, vue, svelte, solid',
+        },
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: location,
+        },
+        { rel: 'icon', type: 'image/png', href: businessData.logo },
+        {
+          rel: 'apple-touch-icon',
+          href: `${businessData.site}/apple-touch-icon.png`,
+        },
+      ],
+    }}
+  />
 </head>

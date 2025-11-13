@@ -1,0 +1,15 @@
+---
+import SocialMedia from '@components/ui/Social-media.astro';
+
+const { lang = 'es' } = Astro.props;
+
+const title =
+  lang === 'es'
+    ? 'Síguenos en nuestras redes sociales'
+    : 'Follow us on our social media channels';
+---
+
+<section class="bg-(--secondary) py-6 text-(--primary)">
+  <h4 class="mb-6">{title}</h4>
+  <SocialMedia variant="primary" position="center" />
+</section>

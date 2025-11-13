@@ -7,13 +7,15 @@ import InstagramLink from '@components/ui/Instagram.link.astro';
 interface Props {
   size?: number;
   variant: 'primary' | 'secondary';
+  position?: 'center' | 'end';
 }
 
-const { size = 40, variant = 'primary' } = Astro.props;
-const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
+const { size = 40, variant = 'primary', position = 'end' } = Astro.props;
+
+const positionClass = position === 'center' ? 'justify-center' : 'justify-end';
 ---
 
-<div class="SocialMedia">
+<div class={`SocialMedia ${positionClass}`}>
   <WhatsappLink size={size} variant={variant} />
   <FacebookLink size={size} variant={variant} />
   <TiktokLink size={size} variant={variant} />
@@ -23,6 +25,6 @@ const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 <style>
   @reference "tailwindcss";
   .SocialMedia {
-    @apply flex w-full max-w-[400px] flex-row justify-center gap-x-3 lg:justify-end xl:gap-x-9 2xl:gap-x-12;
+    @apply mx-auto flex w-full max-w-[400px] flex-row justify-center gap-x-3 xl:gap-x-9 2xl:gap-x-12;
   }
 </style>

@@ -4,8 +4,9 @@ import Layout from '@layouts/Layout.astro';
 import HeroHomeSection from '@components/home/hero-home.astro';
 import BusinessHomeSection from '@components/home/business-home.astro';
 import ProductsHomeSection from '@components/home/products-home.astro';
-import BannerHomeSection from '@components/home/banner-home.astro';
+import SocialMediaHomeSection from '@components/home/social-media-home-section.astro';
 import ContactHomeSection from '@components/home/contact-home-section.astro';
+
 interface Props {
   lang: string;
   location: string;
@@ -25,6 +26,6 @@ const metaDescription = 'Mordisko Criollo';
   <HeroHomeSection lang={lang} />
   <BusinessHomeSection lang={lang} />
   <ProductsHomeSection lang={lang} />
-  <BannerHomeSection lang={lang} />
+  <SocialMediaHomeSection lang={lang} />
   <ContactHomeSection lang={lang} />
 </Layout>

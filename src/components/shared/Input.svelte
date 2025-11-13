@@ -5,7 +5,7 @@
   export let placeholder: string;
   export let classes: string = '';
   export let error: string = '';
-  export let value: string = '';
+  export let value: string | number = '';
   export let autocomplete: FullAutoFill | null = null;
   export let validator: (() => any) | undefined = undefined;
   export let required: boolean = false;

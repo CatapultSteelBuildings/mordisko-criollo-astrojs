@@ -1,0 +1,16 @@
+---
+import ContactFormComplete from '@components/contact/contact-form-complete.svelte';
+
+const { lang = 'es', location } = Astro.props;
+---
+
+<main class="ContactFormSection">
+  <ContactFormComplete lang={lang} />
+</main>
+
+<style>
+  @reference "tailwindcss";
+  .ContactFormSection {
+    @apply bg-(--primary) px-3 py-16 text-(--secondary) lg:px-0;
+  }
+</style>

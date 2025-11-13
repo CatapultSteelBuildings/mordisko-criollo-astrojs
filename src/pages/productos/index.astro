@@ -1,16 +1,14 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Products from '@components/products.astro';
 
-const location = Astro.url.href;
 const title = 'Mordisko Criollo';
 const metaDescription = 'Mordisko Criollo';
+const location = Astro.url.href;
 ---
 
-<Layout
+<Products
   lang="es"
   location={location}
   title={title}
   metaDescription={metaDescription}
->
-  <h1>Productos</h1>
-</Layout>
+/>

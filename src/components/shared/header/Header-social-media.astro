@@ -1,15 +1,15 @@
 ---
-import SocialMedia from '../../ui/Social-media.astro';
+import SocialMedia from '@components/ui/Social-media.astro';
 ---
 
 <div class="HeaderSocialMedia">
-  <SocialMedia />
+  <SocialMedia variant="secondary" />
 </div>
 
 <style>
   @reference "tailwindcss";
 
   .HeaderSocialMedia {
-    @apply flex hidden items-center lg:block lg:min-w-[200px] xl:min-w-[300px] xl:items-end xl:justify-end 2xl:min-w-[400px];
+    @apply hidden items-center lg:block lg:min-w-[200px] xl:flex xl:min-w-[300px] xl:items-start xl:justify-end 2xl:min-w-[400px];
   }
 </style>

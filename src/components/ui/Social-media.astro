@@ -4,14 +4,20 @@ import FacebookLink from '@components/ui/Facebook.link.astro';
 import TiktokLink from '@components/ui/Tiktok.link.astro';
 import InstagramLink from '@components/ui/Instagram.link.astro';
 
-const size = 40;
+interface Props {
+  size?: number;
+  variant: 'primary' | 'secondary';
+}
+
+const { size = 40, variant = 'primary' } = Astro.props;
+const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 ---
 
 <div class="SocialMedia">
-  <WhatsappLink size={size} />
-  <FacebookLink size={size} />
-  <TiktokLink size={size} />
-  <InstagramLink size={size} />
+  <WhatsappLink size={size} variant={variant} />
+  <FacebookLink size={size} variant={variant} />
+  <TiktokLink size={size} variant={variant} />
+  <InstagramLink size={size} variant={variant} />
 </div>
 
 <style>

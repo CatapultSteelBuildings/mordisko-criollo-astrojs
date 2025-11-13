@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import Logo from '@assets/images/logo/mordisko-criollo-logo-mid.webp';
+import { businessData } from '@/core/data/business.data';
+
+interface Props {
+  classes?: string;
+}
+
+const { classes = '' } = Astro.props;
+---
+
+<div class={`px-3 w-full ${classes}`.trim()}>
+  <Image
+    src={Logo}
+    class="mx-auto"
+    alt={`${businessData.name} logo`}
+    widths={[150, 300, 400, 600]}
+    sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
+    loading="eager"
+    fetchpriority="low"
+    decoding="async"
+  />
+</div>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import Input from '@components/shared/Input.svelte';
+  import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
   import Button from '@components/shared/Button.svelte';
 
@@ -9,6 +10,7 @@
 
   let message = $state({
     fullname: '',
+    address: '',
     email: '',
     phone: '',
     message: '',
@@ -20,6 +22,7 @@
 
   let errors = $state({
     fullname: '',
+    address: '',
     email: '',
     phone: '',
     message: '',
@@ -65,6 +68,16 @@
     }
   };
 
+  const validateAddress = () => {
+    if (!message.address.trim()) {
+      errors.address = 'La dirección es requerida';
+    } else if (message.address.trim().length < 3) {
+      errors.address = 'La dirección debe ser válida';
+    } else {
+      errors.address = '';
+    }
+  };
+
   const validateEmail = () => {
     if (!message.email.trim()) {
       errors.email = 'El email es requerido';
@@ -95,6 +108,7 @@
 
   const validateForm = () => {
     validateFullname();
+    validateAddress();
     validateEmail();
     validatePhone();
     validateQuantities('hawaiian', message.hawaiian);
@@ -103,6 +117,7 @@
     validateQuantities('shreddedFlankSteak', message.shreddedFlankSteak);
     return (
       errors.fullname ||
+      errors.address ||
       errors.email ||
       errors.phone ||
       errors.hawaiian ||
@@ -122,6 +137,7 @@
     if (lang === 'es') {
       return {
         fullname: 'Nombre',
+        address: 'Dirección',
         email: 'Correo electrónico',
         phone: 'Teléfono',
         message: 'Mensaje',
@@ -129,6 +145,7 @@
     }
     return {
       fullname: 'Fullname',
+      address: 'Address',
       email: 'Email',
       phone: 'Phone',
       message: 'Message',
@@ -136,10 +153,13 @@
   };
 </script>
 
-<form onsubmit={e => handleSubmit(e)} class={classes}>
+<form
+  class={`ContactFormComplete ${classes}`.trim()}
+  onsubmit={e => handleSubmit(e)}>
   <Input
     name="fullname"
     type="text"
+    classes="col-span-2"
     placeholder={getPlaceholder(lang).fullname}
     validator={validateFullname}
     bind:value={message.fullname}
@@ -147,6 +167,7 @@
   <Input
     name="email"
     type="email"
+    classes="2xl:col-span-2"
     placeholder={getPlaceholder(lang).email}
     validator={validateEmail}
     bind:value={message.email}
@@ -154,36 +175,41 @@
   <Input
     name="phone"
     type="tel"
+    classes="2xl:col-span-2"
     placeholder={getPlaceholder(lang).phone}
     validator={validatePhone}
     bind:value={message.phone}
     error={errors.phone} />
   <Input
+    name="address"
+    type="text"
+    classes="col-span-2"
+    placeholder={getPlaceholder(lang).address}
+    validator={validateAddress}
+    bind:value={message.address}
+    error={errors.address} />
+  <InputQuantity
     name="hawaiian"
-    type="number"
-    placeholder="Cantidad de empanadas Hawaiana"
+    label="Hawaiana"
     validator={() => validateQuantities('hawaiian', message.hawaiian)}
     bind:value={message.hawaiian}
     error={errors.hawaiian} />
-  <Input
+  <InputQuantity
     name="shreddedBeef"
-    type="number"
-    placeholder="Cantidad de empanadas de Carne Desmechada"
+    label="Carne Desmechada"
     validator={() => validateQuantities('shreddedBeef', message.shreddedBeef)}
     bind:value={message.shreddedBeef}
     error={errors.shreddedBeef} />
-  <Input
+  <InputQuantity
     name="shreddedChicken"
-    type="number"
-    placeholder="Cantidad de empanadas de Pollo Desmechado"
+    label="Pollo Desmechado"
     validator={() =>
       validateQuantities('shreddedChicken', message.shreddedChicken)}
     bind:value={message.shreddedChicken}
     error={errors.shreddedChicken} />
-  <Input
+  <InputQuantity
     name="shreddedFlankSteak"
-    type="number"
-    placeholder="Cantidad de empanadas de Flanco de Buey"
+    label="Sobrebarriga"
     validator={() =>
       validateQuantities('shreddedFlankSteak', message.shreddedFlankSteak)}
     bind:value={message.shreddedFlankSteak}
@@ -191,13 +217,22 @@
   <TextArea
     name="message"
     id="message"
+    classes="col-span-2 2xl:col-span-4"
     rows={4}
     placeholder={getPlaceholder(lang).message}
     bind:value={message.message}></TextArea>
-  <div class="flex w-full items-center justify-center">
+  <div
+    class="col-span-2 flex w-full items-center justify-center 2xl:col-span-4">
     <Button
       variant="secondary"
       label={lang === 'es' ? 'Enviar' : 'Send'}
       type="submit" />
   </div>
 </form>
+
+<style>
+  @reference "tailwindcss";
+  .ContactFormComplete {
+    @apply mx-auto w-full max-w-[360px] gap-x-3 md:max-w-[410px] lg:max-w-[460px] xl:grid xl:max-w-full xl:grid-cols-2 2xl:grid-cols-4;
+  }
+</style>

@@ -11,9 +11,8 @@
   export let required: boolean = false;
 </script>
 
-<div class="form-group">
+<div class={`form-group ${classes}`.trim()}>
   <input
-    class={classes}
     {type}
     {name}
     {placeholder}

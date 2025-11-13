@@ -10,9 +10,8 @@
   export let required: boolean = false;
 </script>
 
-<div class="form-group">
+<div class={`form-group ${classes}`.trim()}>
   <textarea
-    class={classes}
     {name}
     {id}
     {rows}

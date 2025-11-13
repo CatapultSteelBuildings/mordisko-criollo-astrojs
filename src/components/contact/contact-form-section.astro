@@ -1,16 +1,27 @@
 ---
 import ContactFormComplete from '@components/contact/contact-form-complete.svelte';
+import ContactInfoSection from '@components/contact/contact-info-section.astro';
+import SocialMedia from '@components/ui/Social-media.astro';
 
-const { lang = 'es', location } = Astro.props;
+const { lang = 'es' } = Astro.props;
 ---
 
 <main class="ContactFormSection">
-  <ContactFormComplete lang={lang} />
+  <div class="ContactFormSection__container">
+    <ContactFormComplete lang={lang} />
+    <ContactInfoSection lang={lang} />
+  </div>
+  <div class="pt-6 lg:pt-9">
+    <SocialMedia variant="secondary" size={50} />
+  </div>
 </main>
 
 <style>
   @reference "tailwindcss";
   .ContactFormSection {
-    @apply bg-(--primary) px-3 py-16 text-(--secondary) lg:px-0;
+    @apply bg-(--primary) px-3 pt-16 pb-8 text-(--secondary);
+  }
+  .ContactFormSection__container {
+    @apply mx-auto grid max-w-[1600px] gap-6 lg:grid-cols-2;
   }
 </style>

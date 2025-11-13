@@ -1,1 +1,11 @@
-<h1>Hero Products Section</h1>
+---
+import HeroHomeSection from '@components/home/hero-home.astro';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<HeroHomeSection lang={lang} />

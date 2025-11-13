@@ -1,0 +1,19 @@
+---
+import Layout from '@layouts/Layout.astro';
+import HeroContactSection from '@components/contact/HeroContactSection.astro';
+import ContactFormSection from '@components/contact/ContactFormSection.astro';
+
+const { lang = 'es', location } = Astro.props;
+
+const title = 'Contacto';
+const metaDescription = 'Contacto';
+---
+
+<Layout
+  lang={lang}
+  location={location}
+  title={title}
+  metaDescription={metaDescription}>
+  <HeroContactSection lang={lang} />
+  <ContactFormSection lang={lang} />
+</Layout>

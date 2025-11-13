@@ -1,15 +1,14 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Contact from '@components/contact.astro';
 
 const location = Astro.url.href;
 const title = 'Mordisko Criollo';
 const metaDescription = 'Mordisko Criollo';
 ---
 
-<Layout
+<Contact
   lang="es"
   location={location}
   title={title}
-  metaDescription={metaDescription}>
-  <h1>Contacto</h1>
-</Layout>
+  metaDescription={metaDescription}
+/>

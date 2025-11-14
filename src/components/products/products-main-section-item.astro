@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import type { Product } from '@/core/interfaces/Product.interface';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article class="ProductMainSectionItem">
+  <div class="ProductMainSectionItem__picture">
+    <Image src={product.image} alt={product.title} width={500} height={500} />
+  </div>
+  <div class="ProductMainSectionItem__content">
+    <h3 class="ProductMainSectionItem__title">{product.title}</h3>
+    <p class="ProductMainSectionItem__description">{product.description}</p>
+    <p class="ProductMainSectionItem__price">$ {product.price}</p>
+    <a class="ProductMainSectionItem__link" href={product.url}>Haz tu pedido</a>
+  </div>
+</article>
+
+<style>
+  @reference: 'tailwindcss';
+  .ProductMainSectionItem {
+    @apply mx-auto w-full max-w-[360px] rounded-lg border border-(--secondary) p-3;
+  }
+
+  .ProductMainSectionItem__picture {
+    @apply overflow-hidden rounded-lg;
+  }
+
+  .ProductMainSectionItem__content {
+    @apply pt-3;
+  }
+
+  .ProductMainSectionItem__title {
+    @apply mb-3;
+  }
+
+  .ProductMainSectionItem__description {
+    @apply font-light text-(--secndary);
+  }
+
+  .ProductMainSectionItem__price {
+    @apply text-center font-bold text-(--secondary);
+  }
+
+  .ProductMainSectionItem__link {
+    @apply mx-auto block rounded-lg bg-(--secondary) px-3 py-2 text-center text-(--primary);
+  }
+</style>

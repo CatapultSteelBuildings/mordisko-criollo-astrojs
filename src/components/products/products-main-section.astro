@@ -1,1 +1,36 @@
-<h1>Products Main Section</h1>
+---
+/* Compoonents */
+import ProductMainSectionItem from './products-main-section-item.astro';
+
+/* Data */
+import { empanadaEnglish } from '@/core/data/products.data.en';
+import { empanadaSpanish } from '@/core/data/products.data.es';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
+---
+
+<main class="ProductsMainSection">
+  <h1 class="ProductsMainSection__title">Empanadas</h1>
+  <section class="ProductsMainSection__products">
+    {products.map(product => <ProductMainSectionItem product={product} />)}
+  </section>
+</main>
+
+<style>
+  @reference: 'tailwindcss';
+  .ProductsMainSection {
+    @apply bg-(--primary) px-3 py-6 text-(--secondary);
+  }
+  .ProductsMainSection__title {
+    @apply mb-3;
+  }
+  .ProductsMainSection__products {
+    @apply grid grid-cols-1 gap-y-6;
+  }
+</style>

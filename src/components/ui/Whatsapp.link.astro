@@ -1,13 +1,16 @@
 ---
+import { businessData } from '@/core/data/business.data';
 interface Props {
   size?: number;
   variant: 'primary' | 'secondary';
 }
 import { Icon } from 'astro-icon/components';
 const { size = 48, variant = 'primary' } = Astro.props;
+const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
+const whatsappLinkShare = `https://web.whatsapp.com/send?text=${encodeMessage}`;
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 ---
 
-<a href="#" target="_blank">
+<a href={whatsappLinkShare} target="_blank">
   <Icon name="tabler:brand-whatsapp" size={size} class={color} />
 </a>

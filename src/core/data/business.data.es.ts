@@ -3,6 +3,22 @@ import { businessData } from './business.data';
 export const businessDataSpanish = {
   ...businessData,
   copyRight: 'Todos los derechos reservados',
+  whatsapp: {
+    ...businessData.whatsapp,
+    message: 'Visita y siguenos en nuestra pagina de WhatsApp',
+  },
+  facebook: {
+    ...businessData.facebook,
+    message: 'Visita y siguenos en nuestra pagina de Facebook',
+  },
+  instagram: {
+    ...businessData.instagram,
+    message: 'Visita y siguenos en nuestra pagina de Instagram',
+  },
+  tiktok: {
+    ...businessData.tiktok,
+    message: 'Visita y siguenos en nuestra pagina de Tiktok',
+  },
   history: [
     `-ES- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     `-ES- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,

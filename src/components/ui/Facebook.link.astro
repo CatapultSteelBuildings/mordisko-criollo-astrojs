@@ -1,4 +1,5 @@
 ---
+import { businessData } from '@/core/data/business.data';
 interface Props {
   size?: number;
   variant: 'primary' | 'secondary';
@@ -8,6 +9,6 @@ const { size = 48, variant = 'primary' } = Astro.props;
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 ---
 
-<a href="#" target="_blank">
+<a href={businessData.facebook.url} target="_blank">
   <Icon name="tabler:brand-facebook" size={size} class={color} />
 </a>

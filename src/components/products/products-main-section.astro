@@ -25,12 +25,12 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 <style>
   @reference: 'tailwindcss';
   .ProductsMainSection {
-    @apply bg-(--primary) px-3 py-6 text-(--secondary);
+    @apply bg-(--primary) px-3 py-6 text-(--secondary) md:px-6 xl:px-0;
   }
   .ProductsMainSection__title {
-    @apply mb-3;
+    @apply mb-3 md:mb-6;
   }
   .ProductsMainSection__products {
-    @apply grid grid-cols-1 gap-y-6;
+    @apply grid grid-cols-1 gap-6 md:grid-cols-2 xl:gap-0;
   }
 </style>

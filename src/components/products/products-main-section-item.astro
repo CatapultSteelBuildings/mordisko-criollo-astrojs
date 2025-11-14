@@ -24,7 +24,7 @@ const { product } = Astro.props;
 <style>
   @reference: 'tailwindcss';
   .ProductMainSectionItem {
-    @apply mx-auto w-full max-w-[360px] rounded-lg border border-(--secondary) p-3;
+    @apply mx-auto w-full max-w-[360px] rounded-lg border border-(--secondary) p-3 md:grid md:grid-cols-1 lg:max-w-[500px] xl:max-w-full;
   }
 
   .ProductMainSectionItem__picture {
@@ -32,7 +32,7 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__content {
-    @apply pt-3;
+    @apply border pt-3 md:flex md:flex-col;
   }
 
   .ProductMainSectionItem__title {
@@ -40,7 +40,7 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__description {
-    @apply font-light text-(--secndary);
+    @apply grow font-light text-(--secndary);
   }
 
   .ProductMainSectionItem__price {

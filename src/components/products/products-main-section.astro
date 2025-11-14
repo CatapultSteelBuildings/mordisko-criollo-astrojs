@@ -18,14 +18,18 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 <main class="ProductsMainSection">
   <h1 class="ProductsMainSection__title">Empanadas</h1>
   <section class="ProductsMainSection__products">
-    {products.map(product => <ProductMainSectionItem product={product} />)}
+    {
+      products.map(product => (
+        <ProductMainSectionItem product={product} lang={lang} />
+      ))
+    }
   </section>
 </main>
 
 <style>
   @reference: 'tailwindcss';
   .ProductsMainSection {
-    @apply bg-(--primary) px-3 py-6 text-(--secondary) md:px-6 xl:px-0;
+    @apply bg-(--primary) px-3 py-6 text-(--secondary) md:px-6 xl:overflow-hidden xl:px-0 xl:pb-0;
   }
   .ProductsMainSection__title {
     @apply mb-3 md:mb-6;

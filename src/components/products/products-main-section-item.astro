@@ -4,35 +4,56 @@ import type { Product } from '@/core/interfaces/Product.interface';
 
 interface Props {
   product: Product;
+  lang?: string;
 }
 
-const { product } = Astro.props;
+const { product, lang = 'es' } = Astro.props;
+const contactUrl = lang === 'es' ? '/contacto' : '/en/contact';
 ---
 
 <article class="ProductMainSectionItem">
   <div class="ProductMainSectionItem__picture">
-    <Image src={product.image} alt={product.title} width={500} height={500} />
+    <Image
+      src={product.image}
+      alt={product.title}
+      widths={[360, 400, 600, 900]}
+      sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
+      loading="eager"
+      fetchpriority="low"
+      class="ProductMainSectionItem__image"
+      decoding="async"
+    />
   </div>
   <div class="ProductMainSectionItem__content">
     <h3 class="ProductMainSectionItem__title">{product.title}</h3>
     <p class="ProductMainSectionItem__description">{product.description}</p>
     <p class="ProductMainSectionItem__price">$ {product.price}</p>
-    <a class="ProductMainSectionItem__link" href={product.url}>Haz tu pedido</a>
+    <a class="ProductMainSectionItem__link" href={contactUrl}
+      >{lang === 'es' ? 'Haz tu pedido' : 'Order now'}</a
+    >
   </div>
 </article>
 
 <style>
   @reference: 'tailwindcss';
   .ProductMainSectionItem {
-    @apply mx-auto w-full max-w-[360px] rounded-lg border border-(--secondary) p-3 md:grid md:grid-cols-1 lg:max-w-[500px] xl:max-w-full;
+    @apply mx-auto w-full max-w-[360px] rounded-lg border border-(--secondary) p-3 md:grid md:grid-cols-1 lg:max-w-[500px] xl:relative xl:max-w-full xl:rounded-none xl:border-none xl:p-0;
   }
 
   .ProductMainSectionItem__picture {
-    @apply overflow-hidden rounded-lg;
+    @apply overflow-hidden rounded-lg xl:rounded-none;
+  }
+
+  .ProductMainSectionItem__image {
+    @apply w-full object-cover;
   }
 
   .ProductMainSectionItem__content {
-    @apply border pt-3 md:flex md:flex-col;
+    @apply pt-3 md:flex md:flex-col xl:absolute xl:top-0 xl:left-0 xl:h-full xl:w-full xl:translate-y-full xl:items-center xl:justify-center xl:bg-(--secondary-dark)/90 xl:p-12 xl:text-(--primary) xl:transition-all xl:duration-300;
+  }
+
+  .ProductMainSectionItem:hover .ProductMainSectionItem__content {
+    @apply translate-y-0;
   }
 
   .ProductMainSectionItem__title {
@@ -40,7 +61,7 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__description {
-    @apply grow font-light text-(--secndary);
+    @apply grow font-light text-(--secndary) xl:grow-0;
   }
 
   .ProductMainSectionItem__price {
@@ -48,6 +69,6 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__link {
-    @apply mx-auto block rounded-lg bg-(--secondary) px-3 py-2 text-center text-(--primary);
+    @apply mx-auto block rounded-lg bg-(--secondary) px-3 py-2 text-center text-(--primary) xl:bg-(--primary) xl:text-(--secondary);
   }
 </style>

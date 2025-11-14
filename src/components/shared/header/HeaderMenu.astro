@@ -1,19 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import { menuDataSpanish, menuDataEnglish } from '@data/index.data';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 import SocialMedia from '@components/ui/Social-media.astro';
 
 import ChangeLanguageButton from '@components/ui/buttons/ChangeLanguageButton.astro';
 
-interface Props {
-  lang: string;
-}
-
-const { lang = 'es' } = Astro.props;
-
-const menuData = lang === 'es' ? menuDataSpanish : menuDataEnglish;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const path = lang === 'es' ? '' : '/en';
 ---
 
 <div class="HeaderMenu">
@@ -35,13 +31,15 @@ const menuData = lang === 'es' ? menuDataSpanish : menuDataEnglish;
       alt="Mordisko Criollo"
     />
     <ul>
-      {
-        menuData.map(item => (
-          <li>
-            <a href={item.url}>{item.title}</a>
-          </li>
-        ))
-      }
+      <li>
+        <a href={`${path}${t('nav.home.url')}`}>{t('nav.home')}</a>
+      </li>
+      <li>
+        <a href={`${path}${t('nav.products.url')}`}>{t('nav.products')}</a>
+      </li>
+      <li>
+        <a href={`${path}${t('nav.contact.url')}`}>{t('nav.contact')}</a>
+      </li>
     </ul>
     <div class="lg:hidden">
       <SocialMedia variant="secondary" />

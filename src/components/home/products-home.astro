@@ -57,7 +57,7 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 <style>
   @reference "tailwindcss";
   .ProductsHome {
-    @apply relative -z-50 px-3 py-16 text-(--white) lg:px-0;
+    @apply relative px-3 py-16 text-(--white) lg:px-0;
     background-image: url('assets/images/products/empanada-background.webp');
     background-blend-mode: overlay;
     background-size: cover;
@@ -78,6 +78,10 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
     @apply relative overflow-hidden p-0;
   }
 
+  .ProductsHome__article:hover .ProductsHome__image {
+    @apply scale-110;
+  }
+
   .ProductsHome__article--title {
     @apply col-span-2;
   }
@@ -96,6 +100,6 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
   }
 
   .ProductsHome__image {
-    @apply h-auto max-h-[80vh] w-full object-cover opacity-85 transition-all duration-300 hover:opacity-100 lg:hover:scale-125;
+    @apply h-auto max-h-[80vh] w-full object-cover opacity-85 transition-all duration-300 hover:opacity-100 lg:hover:scale-110;
   }
 </style>

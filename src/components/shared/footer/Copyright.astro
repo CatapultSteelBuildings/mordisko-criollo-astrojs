@@ -1,20 +1,19 @@
 ---
-import { businessDataSpanish } from '@data/index.data';
-import { businessDataEnglish } from '@data/index.data';
+import { businessData } from '@/core/data/business.data';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 interface Props {
   lang: string;
 }
 
-const { lang = 'es' } = Astro.props;
-
-const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="CopyRight">
   <h5>{businessData.name} © {new Date().getFullYear()}</h5>
   <span class="hidden">-</span>
-  <h6>{businessData.copyRight}</h6>
+  <h6>{t('copyRight')}</h6>
 </div>
 
 <style>

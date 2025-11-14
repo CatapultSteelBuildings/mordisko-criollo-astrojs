@@ -2,13 +2,6 @@
 import Contact from '@components/contact.astro';
 
 const location = Astro.url.href;
-const title = 'Mordisko Criollo';
-const metaDescription = 'Mordisko Criollo';
 ---
 
-<Contact
-  lang="es"
-  location={location}
-  title={title}
-  metaDescription={metaDescription}
-/>
+<Contact location={location} />

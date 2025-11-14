@@ -2,10 +2,6 @@
 import { businessData } from '@/core/data/business.data';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
-interface Props {
-  lang: string;
-}
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---

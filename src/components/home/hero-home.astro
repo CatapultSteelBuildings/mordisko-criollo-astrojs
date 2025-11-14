@@ -1,12 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 
+import { getLangFromUrl } from '@i18n/utils';
+
 import hero1 from '@assets/images/hero/empanada-01.webp';
 import hero2 from '@assets/images/hero/empanada-02.webp';
 import hero3 from '@assets/images/hero/empanada-03.webp';
 import hero4 from '@assets/images/hero/empanada-04.webp';
 
-const { lang = 'es' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
 const images = [hero1, hero2, hero3, hero4];
 

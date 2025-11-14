@@ -6,12 +6,14 @@ import Head from '@components/shared/Head.astro';
 import Header from '@components/shared/Header.astro';
 import Footer from '@components/shared/Footer.astro';
 
+/* Utils */
+import { getLangFromUrl } from '@i18n/utils';
+
 /* Styles */
 import '../styles/global.css';
 
 /* Props */
 interface Props {
-  lang: string;
   location: string;
   title: string;
   metaDescription: string;
@@ -23,10 +25,11 @@ const {
   location = '/',
   title = 'Mordisko Criollo',
   metaDescription = 'Mordisko Criollo',
-  lang = 'es',
   noindex = false,
   nofollow = false,
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
@@ -41,5 +44,5 @@ const {
 <body>
   <Header lang={lang} />
   <slot transition:animate={fade({ duration: '1s' })} />
-  <Footer lang={lang} />
+  <Footer />
 </body>

@@ -1,14 +1,7 @@
 ---
 import Products from '@components/products.astro';
 
-const title = 'Mordisko Criollo';
-const metaDescription = 'Mordisko Criollo';
 const location = Astro.url.href;
 ---
 
-<Products
-  lang="es"
-  location={location}
-  title={title}
-  metaDescription={metaDescription}
-/>
+<Products location={location} />

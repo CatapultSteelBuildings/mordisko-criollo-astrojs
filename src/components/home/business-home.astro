@@ -1,6 +1,11 @@
 ---
 import { Image } from 'astro:assets';
+
+/* Components */
 import Section from '@components/shared/Section.astro';
+
+/* Utils */
+import { getLangFromUrl } from '@i18n/utils';
 
 /* Data */
 import { businessDataEnglish } from '@data/business.data.en';
@@ -9,7 +14,7 @@ import { businessDataSpanish } from '@data/business.data.es';
 /* Images */
 import logo from '@assets/images/logo/mordisko-criollo-logo-mid.webp';
 
-const { lang = 'es' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
 const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 ---

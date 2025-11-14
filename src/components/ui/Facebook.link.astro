@@ -1,5 +1,6 @@
 ---
 import { businessData } from '@/core/data/business.data';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 interface Props {
   size?: number;
   variant: 'primary' | 'secondary';
@@ -7,8 +8,13 @@ interface Props {
 import { Icon } from 'astro-icon/components';
 const { size = 48, variant = 'primary' } = Astro.props;
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<a href={businessData.facebook.url} target="_blank">
+<a
+  href={businessData.facebook.url}
+  target="_blank"
+  aria-label={t('message.facebook')}>
   <Icon name="tabler:brand-facebook" size={size} class={color} />
 </a>

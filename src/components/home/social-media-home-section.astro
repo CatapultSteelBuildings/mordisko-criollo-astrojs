@@ -1,7 +1,9 @@
 ---
 import SocialMedia from '@components/ui/Social-media.astro';
 
-const { lang = 'es' } = Astro.props;
+import { getLangFromUrl } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 
 const title =
   lang === 'es'

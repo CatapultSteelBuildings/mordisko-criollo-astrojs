@@ -8,24 +8,19 @@ import SocialMediaHomeSection from '@components/home/social-media-home-section.a
 import ContactHomeSection from '@components/home/contact-home-section.astro';
 
 interface Props {
-  lang: string;
   location: string;
 }
 
-const { lang = 'es', location } = Astro.props;
+const { location } = Astro.props;
 
 const title = 'Mordisko Criollo';
 const metaDescription = 'Mordisko Criollo';
 ---
 
-<Layout
-  lang={lang}
-  location={location}
-  title={title}
-  metaDescription={metaDescription}>
-  <HeroHomeSection lang={lang} />
-  <BusinessHomeSection lang={lang} />
-  <ProductsHomeSection lang={lang} />
-  <SocialMediaHomeSection lang={lang} />
-  <ContactHomeSection lang={lang} />
+<Layout location={location} title={title} metaDescription={metaDescription}>
+  <HeroHomeSection />
+  <BusinessHomeSection />
+  <ProductsHomeSection />
+  <SocialMediaHomeSection />
+  <ContactHomeSection />
 </Layout>

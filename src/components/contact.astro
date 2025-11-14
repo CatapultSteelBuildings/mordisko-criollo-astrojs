@@ -1,19 +1,26 @@
 ---
 import Layout from '@layouts/Layout.astro';
+
+/* Components */
 import HeroContactSection from '@components/contact/hero-contact-section.astro';
 import ContactFormSection from '@components/contact/contact-form-section.astro';
 
-const { lang = 'es', location } = Astro.props;
+/* Utils */
+import { getLangFromUrl } from '@/i18n/utils';
 
-const title = 'Contacto';
-const metaDescription = 'Contacto';
+const lang = getLangFromUrl(Astro.url);
+
+interface Props {
+  location: string;
+}
+
+const { location } = Astro.props;
+
+const title = lang === 'es' ? 'Contacto' : 'Contact';
+const metaDescription = lang === 'es' ? 'Contacto' : 'Contact';
 ---
 
-<Layout
-  lang={lang}
-  location={location}
-  title={title}
-  metaDescription={metaDescription}>
-  <HeroContactSection lang={lang} />
-  <ContactFormSection lang={lang} />
+<Layout location={location} title={title} metaDescription={metaDescription}>
+  <HeroContactSection />
+  <ContactFormSection />
 </Layout>

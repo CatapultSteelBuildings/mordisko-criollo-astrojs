@@ -1,16 +1,13 @@
 ---
 /* Compoonents */
 import ProductMainSectionItem from './products-main-section-item.astro';
+import { getLangFromUrl } from '@/i18n/utils';
 
 /* Data */
 import { empanadaEnglish } from '@/core/data/products.data.en';
 import { empanadaSpanish } from '@/core/data/products.data.es';
 
-interface Props {
-  lang: string;
-}
-
-const { lang } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
 const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 ---

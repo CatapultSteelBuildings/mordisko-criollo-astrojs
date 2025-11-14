@@ -3,17 +3,17 @@ import Layout from '@layouts/Layout.astro';
 import HeroProductsSection from '@components/products/hero-products-section.astro';
 import ProductsMainSection from '@components/products/products-main-section.astro';
 
-const { lang = 'es', location } = Astro.props;
+interface Props {
+  location: string;
+}
+
+const { location } = Astro.props;
 
 const title = 'Productos';
 const metaDescription = 'Productos';
 ---
 
-<Layout
-  lang={lang}
-  location={location}
-  title={title}
-  metaDescription={metaDescription}>
-  <HeroProductsSection lang={lang} />
-  <ProductsMainSection lang={lang} />
+<Layout location={location} title={title} metaDescription={metaDescription}>
+  <HeroProductsSection />
+  <ProductsMainSection />
 </Layout>

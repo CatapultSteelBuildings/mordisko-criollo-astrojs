@@ -19,7 +19,7 @@
     hawaiian: 0,
     shreddedBeef: 0,
     shreddedChicken: 0,
-    shreddedFlankSteak: 0,
+    flankSteak: 0,
   });
 
   let message = $state({
@@ -39,7 +39,7 @@
     hawaiian: '',
     shreddedBeef: '',
     shreddedChicken: '',
-    shreddedFlankSteak: '',
+    flankSteak: '',
   });
 
   const emailRegex = (email: string) => {
@@ -153,7 +153,7 @@
     validateQuantities('hawaiian', quantities.hawaiian);
     validateQuantities('shreddedBeef', quantities.shreddedBeef);
     validateQuantities('shreddedChicken', quantities.shreddedChicken);
-    validateQuantities('shreddedFlankSteak', quantities.shreddedFlankSteak);
+    validateQuantities('flankSteak', quantities.flankSteak);
     return (
       errors.fullname ||
       errors.address ||
@@ -162,7 +162,7 @@
       errors.hawaiian ||
       errors.shreddedBeef ||
       errors.shreddedChicken ||
-      errors.shreddedFlankSteak
+      errors.flankSteak
     );
   };
 
@@ -182,9 +182,9 @@
         phone: 'Teléfono',
         message: 'Mensaje',
         hawaiian: 'Hawaiiana',
-        shreddedBeef: 'Carne Deshebrada',
-        shreddedChicken: 'Pollo Deshebrado',
-        shreddedFlankSteak: 'Filete Deshebrado',
+        shreddedBeef: 'Carne Desmechada',
+        shreddedChicken: 'Pollo Desmechado',
+        flankSteak: 'Sobrebarriga',
       };
     }
     return {
@@ -196,7 +196,7 @@
       hawaiian: 'Hawaiian',
       shreddedBeef: 'Shredded Beef',
       shreddedChicken: 'Shredded Chicken',
-      shreddedFlankSteak: 'Shredded Flank Steak',
+      flankSteak: 'Flank Steak',
     };
   };
 </script>
@@ -238,7 +238,7 @@
     error={errors.address} />
   <InputQuantity
     name="hawaiian"
-    label="Hawaiana"
+    label={getPlaceholder(lang).hawaiian}
     increment={() => incrementQuantity('hawaiian')}
     decrement={() => decrementQuantity('hawaiian')}
     validator={() => validateQuantities('hawaiian', quantities.hawaiian)}
@@ -246,7 +246,7 @@
     error={errors.hawaiian} />
   <InputQuantity
     name="shreddedBeef"
-    label="Carne Desmechada"
+    label={getPlaceholder(lang).shreddedBeef}
     increment={() => incrementQuantity('shreddedBeef')}
     decrement={() => decrementQuantity('shreddedBeef')}
     validator={() =>
@@ -255,7 +255,7 @@
     error={errors.shreddedBeef} />
   <InputQuantity
     name="shreddedChicken"
-    label="Pollo Desmechado"
+    label={getPlaceholder(lang).shreddedChicken}
     increment={() => incrementQuantity('shreddedChicken')}
     decrement={() => decrementQuantity('shreddedChicken')}
     validator={() =>
@@ -263,14 +263,13 @@
     bind:value={quantities.shreddedChicken}
     error={errors.shreddedChicken} />
   <InputQuantity
-    name="shreddedFlankSteak"
-    label="Sobrebarriga"
-    increment={() => incrementQuantity('shreddedFlankSteak')}
-    decrement={() => decrementQuantity('shreddedFlankSteak')}
-    validator={() =>
-      validateQuantities('shreddedFlankSteak', quantities.shreddedFlankSteak)}
-    bind:value={quantities.shreddedFlankSteak}
-    error={errors.shreddedFlankSteak} />
+    name="flankSteak"
+    label={getPlaceholder(lang).flankSteak}
+    increment={() => incrementQuantity('flankSteak')}
+    decrement={() => decrementQuantity('flankSteak')}
+    validator={() => validateQuantities('flankSteak', quantities.flankSteak)}
+    bind:value={quantities.flankSteak}
+    error={errors.flankSteak} />
   <TextArea
     name="message"
     id="message"

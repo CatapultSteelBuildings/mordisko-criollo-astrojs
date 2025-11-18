@@ -4,11 +4,6 @@ import MainLogo from '@components/shared/header/Main-logo.astro';
 import HeaderMenu from '@components/shared/header/HeaderMenu.astro';
 import HeaderSocialMedia from '@components/shared/header/Header-social-media.astro';
 import ChangeLanguageButton from '../ui/buttons/ChangeLanguageButton.astro';
-
-/* Utils */
-import { getLangFromUrl } from '@/i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
 ---
 
 <header class="Header">
@@ -17,7 +12,7 @@ const lang = getLangFromUrl(Astro.url);
   <HeaderSocialMedia />
   <div
     class="hidden lg:absolute lg:top-auto lg:right-3 lg:bottom-0 lg:left-auto lg:z-50 lg:inline">
-    <ChangeLanguageButton lang={lang} />
+    <ChangeLanguageButton />
   </div>
 </header>
 

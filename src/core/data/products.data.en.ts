@@ -37,13 +37,13 @@ export const empanadaEnglish: Product[] = [
     price: 0,
   },
   {
-    code: 'shredded-flank-steak',
-    title: 'Shredded Beef Empanada',
+    code: 'flank-steak',
+    title: 'Flank Steak Empanada',
     description: [
       'A bold choice for true meat lovers. This flank steak is slow-cooked until it’s melt-in-your-mouth tender, then carefully shredded to create the perfect filling. Rich, juicy, and unforgettable, this empanada delivers deep, authentic flavor in every bite.',
     ],
     image: shreddedFlankSteakEmpanada,
-    url: '/shredded-beef-empanada',
+    url: '/flank-steak-empanada',
     price: 0,
   },
 ];

@@ -9,7 +9,6 @@ import ChangeLanguageButton from '@components/ui/buttons/ChangeLanguageButton.as
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const path = lang === 'es' ? '' : '/en';
 ---
 
 <div class="HeaderMenu">

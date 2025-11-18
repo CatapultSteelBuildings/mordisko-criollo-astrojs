@@ -37,7 +37,7 @@ export const empanadaSpanish: Product[] = [
     price: 0,
   },
   {
-    code: 'shredded-flank-steak',
+    code: 'flank-steak',
     title: 'Empanada de Sobrebarriga',
     description: [
       'Una delicia contundente para los amantes de la buena carne. La sobrebarriga se cocina lentamente hasta quedar suave, jugosa y llena de sabor, luego se desmecha con paciencia para convertirse en el relleno perfecto. Su sabor profundo y auténtico conquista corazones y convierte cualquier momento en una experiencia inolvidable.',

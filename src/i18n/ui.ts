@@ -5,7 +5,9 @@ export const languages = {
 
 export const defaultLang = 'es';
 
-export const ui = {
+export type NavKey = 'nav.home' | 'nav.products' | 'nav.contact';
+
+export const uiMenu = {
   es: {
     'nav.home': 'Inicio',
     'nav.home.url': '/',
@@ -13,6 +15,20 @@ export const ui = {
     'nav.products.url': '/productos',
     'nav.contact': 'Contacto',
     'nav.contact.url': '/contacto',
+  },
+  en: {
+    'nav.home': 'Home',
+    'nav.home.url': '/en',
+    'nav.products': 'Products',
+    'nav.products.url': '/en/products',
+    'nav.contact': 'Contact',
+    'nav.contact.url': '/en/contact',
+  },
+};
+
+export const ui = {
+  es: {
+    ...uiMenu.es,
     copyRight: 'Todos los derechos reservados',
     'message.facebook': 'Visita y siguenos en nuestra pagina de Facebook',
     'message.instagram': 'Visita y siguenos en nuestra pagina de Instagram',
@@ -20,12 +36,7 @@ export const ui = {
     'message.whatsapp': 'Visita y siguenos en nuestra pagina de WhatsApp',
   },
   en: {
-    'nav.home': 'Home',
-    'nav.home.url': '',
-    'nav.products': 'Products',
-    'nav.products.url': '/products',
-    'nav.contact': 'Contact',
-    'nav.contact.url': '/contact',
+    ...uiMenu.en,
     copyRight: 'All rights reserved',
     'message.facebook': 'Visit and follow us on our Facebook page',
     'message.instagram': 'Visit and follow us on our Instagram page',

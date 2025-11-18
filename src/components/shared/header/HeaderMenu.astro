@@ -20,7 +20,7 @@ const path = lang === 'es' ? '' : '/en';
   </label>
   <nav class="HeaderMenu__Nav">
     <div class="absolute top-3 left-3 lg:hidden">
-      <ChangeLanguageButton lang={lang} />
+      <ChangeLanguageButton />
     </div>
     <label for="HeaderMenu__Toggle" class="HeaderMenu__Close">
       <Icon name="tabler:x" size={36} />
@@ -32,13 +32,13 @@ const path = lang === 'es' ? '' : '/en';
     />
     <ul>
       <li>
-        <a href={`${path}${t('nav.home.url')}`}>{t('nav.home')}</a>
+        <a href={`${t('nav.home.url')}`}>{t('nav.home')}</a>
       </li>
       <li>
-        <a href={`${path}${t('nav.products.url')}`}>{t('nav.products')}</a>
+        <a href={`${t('nav.products.url')}`}>{t('nav.products')}</a>
       </li>
       <li>
-        <a href={`${path}${t('nav.contact.url')}`}>{t('nav.contact')}</a>
+        <a href={`${t('nav.contact.url')}`}>{t('nav.contact')}</a>
       </li>
     </ul>
     <div class="lg:hidden">

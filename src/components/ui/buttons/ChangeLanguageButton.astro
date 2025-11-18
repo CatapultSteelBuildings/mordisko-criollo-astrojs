@@ -1,12 +1,16 @@
 ---
 import { Icon } from 'astro-icon/components';
 
+/* Utils */
+import { getLangFromUrl } from '@/i18n/utils';
+
 interface Props {
-  lang: string;
   size?: number;
 }
 
-const { lang = 'es', size = 40 } = Astro.props;
+const { size = 40 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 
 const iconName = lang === 'es' ? 'flag:us-1x1' : 'flag:es-1x1';
 ---
@@ -16,37 +20,12 @@ const iconName = lang === 'es' ? 'flag:us-1x1' : 'flag:es-1x1';
 </button>
 
 <script>
-  import { menuDataSpanish, menuDataEnglish } from '@data/index.data';
+  import { getLocalizatedUrl } from '@i18n/utils';
+
   window.addEventListener('load', () => {
     const buttons = document.querySelectorAll('.changeLanguageButtons');
-    const changeLanguaje = () => {
-      const currentUrl = new URL(window.location.href);
-      const domain = currentUrl.origin;
-      const pathname = currentUrl.pathname;
-      const pathNameArrow = pathname.split('/');
-      pathNameArrow.shift();
-      const lang = pathNameArrow[0] === 'en' ? 'en' : 'es';
-      let currentMenu = [];
-      let otherMenu = [];
-      if (lang === 'en') {
-        currentMenu = menuDataEnglish;
-        otherMenu = menuDataSpanish;
-      } else {
-        currentMenu = menuDataSpanish;
-        otherMenu = menuDataEnglish;
-      }
-      let currentIndex = 0;
-      if (pathNameArrow.length > 1) {
-        currentIndex = currentMenu.findIndex(item => item.url === pathname);
-        const url = otherMenu[currentIndex].url;
-        window.location.href = domain + url;
-      } else {
-        const url = otherMenu[0].url;
-        window.location.href = domain + url;
-      }
-    };
     buttons.forEach(button => {
-      button.addEventListener('click', changeLanguaje);
+      button.addEventListener('click', () => getLocalizatedUrl());
     });
   });
 </script>

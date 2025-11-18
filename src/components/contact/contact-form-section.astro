@@ -1,14 +1,15 @@
 ---
+import { getLangFromUrl } from '@/i18n/utils';
 import ContactFormComplete from '@components/contact/contact-form-complete.svelte';
 import ContactInfoSection from '@components/contact/contact-info-section.astro';
 import SocialMedia from '@components/ui/Social-media.astro';
 
-const { lang = 'es' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <main class="ContactFormSection">
   <div class="ContactFormSection__container">
-    <ContactFormComplete lang={lang} />
+    <ContactFormComplete lang={lang} client:only="svelte" />
     <ContactInfoSection lang={lang} />
   </div>
   <div class="pt-6 lg:pt-9">

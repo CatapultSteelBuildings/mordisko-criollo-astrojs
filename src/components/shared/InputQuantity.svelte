@@ -6,6 +6,8 @@
   export let error: string = '';
   export let value: string | number = '';
   export let autocomplete: FullAutoFill | null = null;
+  export let increment: (() => any) | undefined = undefined;
+  export let decrement: (() => any) | undefined = undefined;
   export let validator: (() => any) | undefined = undefined;
   export let required: boolean = false;
 </script>
@@ -13,7 +15,7 @@
 <div class="form-group">
   <label class="form-group__label" for={name}>{label}</label>
   <div class="form-group__inputBox">
-    <button class="cursor-pointer" type="button">-</button>
+    <button class="cursor-pointer" type="button" onclick={decrement}>-</button>
     <input
       class={classes}
       type="text"
@@ -27,7 +29,7 @@
       aria-describedby={`${name}-error`}
       aria-required={required}
       {autocomplete} />
-    <button class="cursor-pointer" type="button">+</button>
+    <button class="cursor-pointer" type="button" onclick={increment}>+</button>
   </div>
   <p
     aria-live="polite"

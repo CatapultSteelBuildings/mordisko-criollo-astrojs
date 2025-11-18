@@ -3,12 +3,17 @@
   import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
   import Button from '@components/shared/Button.svelte';
+  import ModalForms from '../shared/ModalForms.svelte';
+
+  import type { StateForm } from '@types/StateForm.type';
 
   const { lang = 'es', classes = '' } = $props();
 
   type ErrorField = keyof typeof errors;
 
   type QuatityField = keyof typeof quantities;
+
+  let stateForm = $state<StateForm>('init');
 
   let quantities = $state({
     hawaiian: 0,
@@ -281,6 +286,7 @@
       type="submit" />
   </div>
 </form>
+<ModalForms lang={lang as 'es' | 'en'} {stateForm} />
 
 <style>
   @reference "tailwindcss";

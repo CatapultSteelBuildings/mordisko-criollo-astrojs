@@ -12,6 +12,7 @@
       "@data/*": ["./core/data/*"],
       "@i18n/*": ["./i18n/*"],
       "@interfaces/*": ["./core/interfaces/*"],
+      "@types/*": ["./core/types/*"],
       "@utils/*": ["./core/utils/*"]
     }
   }

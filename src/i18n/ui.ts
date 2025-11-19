@@ -29,7 +29,8 @@ export const uiMenu = {
 export const ui = {
   es: {
     ...uiMenu.es,
-    copyRight: 'Todos los derechos reservados',
+    'delivery.message': 'Domicilios a todo Medellín',
+    'copyRight.message': 'Todos los derechos reservados',
     'message.facebook': 'Visita y siguenos en nuestra pagina de Facebook',
     'message.instagram': 'Visita y siguenos en nuestra pagina de Instagram',
     'message.tiktok': 'Visita y siguenos en nuestra pagina de Tiktok',
@@ -37,7 +38,8 @@ export const ui = {
   },
   en: {
     ...uiMenu.en,
-    copyRight: 'All rights reserved',
+    'delivery.message': 'Home delivery throughout Medellín',
+    'copyRight.message': 'All rights reserved',
     'message.facebook': 'Visit and follow us on our Facebook page',
     'message.instagram': 'Visit and follow us on our Instagram page',
     'message.tiktok': 'Visit and follow us on our Tiktok page',

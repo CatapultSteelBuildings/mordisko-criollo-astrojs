@@ -5,6 +5,7 @@ import { getLangFromUrl } from '@i18n/utils';
 
 import ContactForm from '@components/home/contact-form.svelte';
 import ContactLogo from '@components/home/contact-logo.astro';
+import Delivery from '@components/shared/Delivery.astro';
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -22,6 +23,7 @@ const title =
       classes="max-w-[400px] xl:max-w-[600px] mx-auto"
     />
     <ContactLogo />
+    <Delivery classes="lg:col-span-2 lg:flex-row" />
   </div>
 </Section>
 

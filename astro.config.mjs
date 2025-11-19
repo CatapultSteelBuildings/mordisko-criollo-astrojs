@@ -7,8 +7,12 @@ import icon from 'astro-icon';
 
 import svelte from '@astrojs/svelte';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://mordiskocriollo.com',
+  output: 'static',
   vite: {
     plugins: [tailwindcss()],
   },
@@ -16,5 +20,5 @@ export default defineConfig({
     defaultLocale: 'es',
     locales: ['es', 'en'],
   },
-  integrations: [icon(), svelte()],
+  integrations: [icon(), svelte(), sitemap()],
 });

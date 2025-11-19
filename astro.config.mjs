@@ -11,6 +11,8 @@ import sitemap from '@astrojs/sitemap';
 
 import compressor from 'astro-compressor';
 
+import min from 'astro-min';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mordiskocriollo.com',
@@ -26,6 +28,7 @@ export default defineConfig({
     icon(),
     svelte(),
     sitemap(),
+    min(),
     compressor({ gzip: true, brotli: true }),
   ],
 });

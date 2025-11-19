@@ -26,6 +26,9 @@ importers:
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
+      astro-min:
+        specifier: ^1.3.1
+        version: 1.3.1(astro@5.15.3(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1))
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)
@@ -605,6 +608,21 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@minify-html/node-darwin-x64@0.15.0':
+    resolution: {integrity: sha512-D9M9UDku/8I5VEMS0gTLFFQK1DFXK8io+QZvR5cbya4u8NmdDQix/t3EyCR4Wgv/Gfk86gwIS+zfMSvuKcpb5A==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@minify-html/node-linux-x64@0.15.0':
+    resolution: {integrity: sha512-cO893EV6O9ZHUFX+2Yge546OCo/eCiatjzJDmUmrPP56fQ7pzTRquHs4ko3t8Rg6tMKG7RT49mBuF09JWPnrgg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@minify-html/node-win32-x64@0.15.0':
+    resolution: {integrity: sha512-n92IFdtntchlUtyrq13pRI8TT3sOddbzuo4EPTSeocuTJMXaR77v0JYDu0fIjxXNawgGq6nBEeicxAcH4CbvUQ==}
+    cpu: [x64]
+    os: [win32]
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -623,6 +641,11 @@ packages:
   '@pkgr/core@0.2.9':
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@redwerkz/html-min@0.15.1':
+    resolution: {integrity: sha512-Kwi6DSoOKI6q2oyt0kVTfWOBcQHBychE1BvOEyVF/j+nJjjRxEWvA0b0wx+p9ovM46P8CHD/8Y3lptYiAteZrQ==}
+    engines: {node: '>= 18.17.1'}
+    hasBin: true
 
   '@rollup/pluginutils@5.3.0':
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
@@ -1135,6 +1158,11 @@ packages:
 
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
+
+  astro-min@1.3.1:
+    resolution: {integrity: sha512-TvHT24cGygf+h47WVrSxaF/6vUwJ8s+TlmwkKlNHNDqRmW5FNiUHspZnEwLsaHTtVGZWZN4NMSVPoD5oLyyrmQ==}
+    peerDependencies:
+      astro: '*'
 
   astro-seo@0.8.4:
     resolution: {integrity: sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw==}
@@ -3910,6 +3938,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@minify-html/node-darwin-x64@0.15.0':
+    optional: true
+
+  '@minify-html/node-linux-x64@0.15.0':
+    optional: true
+
+  '@minify-html/node-win32-x64@0.15.0':
+    optional: true
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -3925,6 +3962,12 @@ snapshots:
   '@oslojs/encoding@1.1.0': {}
 
   '@pkgr/core@0.2.9': {}
+
+  '@redwerkz/html-min@0.15.1':
+    optionalDependencies:
+      '@minify-html/node-darwin-x64': 0.15.0
+      '@minify-html/node-linux-x64': 0.15.0
+      '@minify-html/node-win32-x64': 0.15.0
 
   '@rollup/pluginutils@5.3.0(rollup@4.52.5)':
     dependencies:
@@ -4458,6 +4501,12 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - supports-color
+
+  astro-min@1.3.1(astro@5.15.3(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)):
+    dependencies:
+      '@redwerkz/html-min': 0.15.1
+      astro: 5.15.3(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      svgo: 3.3.2
 
   astro-seo@0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3):
     dependencies:

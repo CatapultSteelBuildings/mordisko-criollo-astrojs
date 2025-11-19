@@ -1,4 +1,4 @@
-import type { MenuItemInterface } from '@interfaces/index.interfaces';
+import type { MenuItemInterface } from '@/core/interfaces';
 
 export const menuDataEnglish: MenuItemInterface[] = [
   {

@@ -1,7 +1,22 @@
+---
+/* Images */
+import { Image } from 'astro:assets';
+
+import { businessData } from '@/core/data/business.data';
+
+import logo from '@assets/images/logo/mordisko-criollo-logo.webp';
+---
+
 <div class="MainLogo">
-  <img
-    src="/assets/images/logo/mordisko-criollo-logo.webp"
-    alt="Mordisko Criollo"
+  <Image
+    src={logo}
+    alt={businessData.name}
+    widths={[75, 100, 162]}
+    sizes="(max-width: 767px) 75px, (max-width: 1023px) 100px, 162px"
+    loading="eager"
+    fetchpriority="high"
+    class="w-full max-w-[75px] max-lg:object-cover md:max-w-[100px] lg:max-w-[162px]"
+    decoding="async"
   />
 </div>
 

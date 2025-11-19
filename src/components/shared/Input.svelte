@@ -20,6 +20,7 @@
     onchange={validator}
     oninput={validator}
     onkeyup={validator}
+    onblur={validator}
     aria-label={placeholder}
     aria-invalid={error !== ''}
     aria-describedby={`${name}-error`}

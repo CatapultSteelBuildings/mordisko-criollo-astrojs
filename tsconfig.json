@@ -8,12 +8,14 @@
       "@/*": ["*"],
       "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
+      "@config/*": ["./config/*"],
       "@layouts/*": ["./layouts/*"],
       "@data/*": ["./core/data/*"],
       "@i18n/*": ["./i18n/*"],
       "@interfaces/*": ["./core/interfaces/*"],
       "@types/*": ["./core/types/*"],
-      "@utils/*": ["./core/utils/*"]
+      "@utils/*": ["./core/utils/*"],
+      "@validators/*": ["./core/validators/*"]
     }
   }
 }

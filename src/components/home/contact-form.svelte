@@ -1,11 +1,25 @@
 <script lang="ts">
+  /* Components */
   import Input from '@components/shared/Input.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
   import Button from '@components/shared/Button.svelte';
+  import ModalForms from '../shared/ModalForms.svelte';
+
+  /* Interfaces */
+  import type { ContactMessage } from '@interfaces/index';
+
+  /* Validators */
+  import { emailValidator, isValidColombianPhone } from '@validators/index';
+
+  /* Utils */
+  import { sendMessage } from '@utils/index';
+
+  /* Types */
+  import type { StateForm } from '@/core/types/StateForm.type';
 
   const { lang = 'es', classes = '' } = $props();
 
-  let message = $state({
+  let message = $state<ContactMessage>({
     fullname: '',
     email: '',
     phone: '',
@@ -19,37 +33,17 @@
     message: '',
   });
 
-  const emailRegex = (email: string) => {
-    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-    return email.trim().match(regex);
-  };
-
-  function isValidColombianPhone(phone: string) {
-    const digits = phone.replace(/\D/g, '');
-
-    const clean =
-      digits.startsWith('57') && digits.length > 10
-        ? digits.substring(2)
-        : digits;
-
-    if (clean.length < 7 || clean.length > 10) return false;
-
-    if (clean.length === 10 && clean[0] === '3') {
-      return true;
-    }
-
-    if ((clean.length === 7 || clean.length === 8) && clean[0] !== '3') {
-      return true;
-    }
-
-    return false;
-  }
+  let stateForm = $state<StateForm>('init');
 
   const validateFullname = () => {
     if (!message.fullname.trim()) {
-      errors.fullname = 'El nombre es requerido';
+      errors.fullname =
+        lang === 'es' ? 'El nombre es requerido' : 'Fullname is required';
     } else if (message.fullname.trim().length < 3) {
-      errors.fullname = 'El nombre debe tener al menos 3 caracteres';
+      errors.fullname =
+        lang === 'es'
+          ? 'El nombre debe tener al menos 3 caracteres'
+          : 'Fullname must have at least 3 characters';
     } else {
       errors.fullname = '';
     }
@@ -57,9 +51,11 @@
 
   const validateEmail = () => {
     if (!message.email.trim()) {
-      errors.email = 'El email es requerido';
-    } else if (!emailRegex(message.email.trim())) {
-      errors.email = 'El email es inválido';
+      errors.email =
+        lang === 'es' ? 'El email es requerido' : 'Email is required';
+    } else if (!emailValidator(message.email.trim())) {
+      errors.email =
+        lang === 'es' ? 'El email es inválido' : 'Email is invalid';
     } else {
       errors.email = '';
     }
@@ -67,9 +63,11 @@
 
   const validatePhone = () => {
     if (!message.phone.trim()) {
-      errors.phone = 'El teléfono es requerido';
-    } else if (!isValidColombianPhone(message.phone.trim())) {
-      errors.phone = 'El teléfono es inválido';
+      errors.phone =
+        lang === 'es' ? 'El teléfono es requerido' : 'Phone is required';
+    } else if (!isValidColombianPhone(message.phone)) {
+      errors.phone =
+        lang === 'es' ? 'El teléfono es inválido' : 'Phone is invalid';
     } else {
       errors.phone = '';
     }
@@ -79,13 +77,47 @@
     validateFullname();
     validateEmail();
     validatePhone();
-    return errors.fullname || errors.email || errors.phone;
+    if (errors.fullname || errors.email || errors.phone) return false;
+    return true;
+  };
+
+  const resetForm = () => {
+    message = {
+      fullname: '',
+      email: '',
+      phone: '',
+      message: '',
+    };
+    errors = {
+      fullname: '',
+      email: '',
+      phone: '',
+      message: '',
+    };
   };
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
-    console.log(message);
+    console.log(validateForm());
     if (!validateForm()) return;
+    stateForm = 'loading';
+    sendMessage(message)
+      .then(() => {
+        setTimeout(() => {
+          stateForm = 'success';
+          resetForm();
+        }, 3000);
+      })
+      .catch(() => {
+        setTimeout(() => {
+          stateForm = 'error';
+        }, 3000);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          stateForm = 'init';
+        }, 6000);
+      });
   };
 
   const getPlaceholder = (lang: string) => {
@@ -93,14 +125,14 @@
       return {
         fullname: 'Nombre',
         email: 'Correo electrónico',
-        phone: 'Teléfono',
+        phone: 'Teléfono Celular',
         message: 'Mensaje',
       };
     }
     return {
       fullname: 'Fullname',
       email: 'Email',
-      phone: 'Phone',
+      phone: 'Cellphone',
       message: 'Message',
     };
   };
@@ -141,3 +173,4 @@
       type="submit" />
   </div>
 </form>
+<ModalForms {stateForm} lang={lang as 'es' | 'en'} />

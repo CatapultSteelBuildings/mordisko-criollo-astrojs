@@ -9,6 +9,8 @@ import svelte from '@astrojs/svelte';
 
 import sitemap from '@astrojs/sitemap';
 
+import compressor from 'astro-compressor';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mordiskocriollo.com',
@@ -20,5 +22,10 @@ export default defineConfig({
     defaultLocale: 'es',
     locales: ['es', 'en'],
   },
-  integrations: [icon(), svelte(), sitemap()],
+  integrations: [
+    icon(),
+    svelte(),
+    sitemap(),
+    compressor({ gzip: true, brotli: true }),
+  ],
 });

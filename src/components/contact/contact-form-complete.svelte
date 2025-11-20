@@ -1,34 +1,64 @@
 <script lang="ts">
+  /* Components */
   import Input from '@components/shared/Input.svelte';
   import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
   import Button from '@components/shared/Button.svelte';
   import ModalForms from '../shared/ModalForms.svelte';
 
-  import type { StateForm } from '@types/StateForm.type';
+  /* Interfaces */
+  import type { OrderMessage, OrderItem } from '@/core/interfaces';
+
+  import { empanadaSpanish } from '@/core/data/products.data.es';
+  import { empanadaEnglish } from '@/core/data/products.data.en';
+
+  /* Validators */
+  import { emailValidator, isValidColombianPhone } from '@/core/validators';
+
+  /* Utils */
+  import { sendOrder } from '@/core/utils/send-order.util';
+
+  /* Types */
+  import type { StateForm } from '@/core/types/StateForm.type';
 
   const { lang = 'es', classes = '' } = $props();
 
+  const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
+
   type ErrorField = keyof typeof errors;
 
-  type QuatityField = keyof typeof quantities;
+  type DetailField = keyof typeof details;
 
   let stateForm = $state<StateForm>('init');
 
-  let quantities = $state({
-    hawaiian: 0,
-    shreddedBeef: 0,
-    shreddedChicken: 0,
-    flankSteak: 0,
-  });
+  let details = $state(
+    products.reduce(
+      (acc, item) => {
+        acc[item.code] = {
+          code: item.code,
+          name: item.title,
+          quantity: 0,
+          unitPrice: item.price,
+        };
+        return acc;
+      },
+      {} as Record<string, OrderItem>
+    )
+  );
 
-  let message = $state({
+  let message = $state<OrderMessage>({
     fullname: '',
     address: '',
     email: '',
     phone: '',
     message: '',
+    details: Object.values(details),
   });
+
+  const initialDetailErrors: Record<string, string> = {};
+  for (const code of products) {
+    initialDetailErrors[code.code] = '';
+  }
 
   let errors = $state({
     fullname: '',
@@ -36,38 +66,8 @@
     email: '',
     phone: '',
     message: '',
-    hawaiian: '',
-    shreddedBeef: '',
-    shreddedChicken: '',
-    flankSteak: '',
+    details: initialDetailErrors,
   });
-
-  const emailRegex = (email: string) => {
-    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-    return email.trim().match(regex);
-  };
-
-  function isValidColombianPhone(phone: string) {
-    const digits = phone.replace(/\D/g, '');
-
-    const clean =
-      digits.startsWith('57') && digits.length > 10
-        ? digits.substring(2)
-        : digits;
-
-    if (clean.length < 7 || clean.length > 10) return false;
-
-    if (clean.length === 10 && clean[0] === '3') {
-      return true;
-    }
-
-    if ((clean.length === 7 || clean.length === 8) && clean[0] !== '3') {
-      return true;
-    }
-
-    return false;
-  }
-
   const validateFullname = () => {
     if (!message.fullname.trim()) {
       errors.fullname =
@@ -100,7 +100,7 @@
     if (!message.email.trim()) {
       errors.email =
         lang === 'es' ? 'El email es requerido' : 'Email is required';
-    } else if (!emailRegex(message.email.trim())) {
+    } else if (!emailValidator(message.email.trim())) {
       errors.email =
         lang === 'es' ? 'El email es inválido' : 'Email is invalid';
     } else {
@@ -112,7 +112,7 @@
     if (!message.phone.trim()) {
       errors.phone =
         lang === 'es' ? 'El teléfono es requerido' : 'Phone is required';
-    } else if (!isValidColombianPhone(message.phone.trim())) {
+    } else if (!isValidColombianPhone(message.phone)) {
       errors.phone =
         lang === 'es' ? 'El teléfono es inválido' : 'Phone is invalid';
     } else {
@@ -120,29 +120,43 @@
     }
   };
 
-  const incrementQuantity = (name: QuatityField) => {
-    quantities[name]++;
-    validateQuantities(name, quantities[name]);
+  const incrementQuantity = (name: DetailField) => {
+    details[name].quantity++;
+    validateQuantities(name as ErrorField, details[name].quantity);
   };
 
-  const decrementQuantity = (name: QuatityField) => {
-    const quantity = quantities[name];
+  const decrementQuantity = (name: DetailField) => {
+    const quantity = details[name].quantity;
     if (quantity == 0) {
       return;
     }
-    quantities[name]--;
-    validateQuantities(name, quantities[name]);
+    details[name].quantity--;
+    validateQuantities(name as ErrorField, details[name].quantity);
   };
 
   const validateQuantities = (name: ErrorField, quantity: number) => {
-    errors[name] = '';
+    errors.details[name] = '';
+    if (isNaN(quantity)) {
+      errors.details[name] =
+        lang === 'es' ? 'Debe ser un número' : 'Must be a number';
+    }
     if (quantity < 0) {
-      errors[name] =
+      errors.details[name] =
         lang === 'es'
           ? 'Debe ser mayor o igual a 0'
           : 'Must be greater than or equal to 0';
     }
-    return errors[name];
+    return errors.details[name];
+  };
+
+  const validateDetails = (): boolean => {
+    for (const detail of Object.values(details)) {
+      validateQuantities(detail.code as ErrorField, detail.quantity);
+      if (detail.quantity < 0 || isNaN(detail.quantity)) {
+        return true;
+      }
+    }
+    return false;
   };
 
   const validateForm = () => {
@@ -150,27 +164,60 @@
     validateAddress();
     validateEmail();
     validatePhone();
-    validateQuantities('hawaiian', quantities.hawaiian);
-    validateQuantities('shreddedBeef', quantities.shreddedBeef);
-    validateQuantities('shreddedChicken', quantities.shreddedChicken);
-    validateQuantities('flankSteak', quantities.flankSteak);
-    return (
+    validateDetails();
+    if (
       errors.fullname ||
       errors.address ||
       errors.email ||
       errors.phone ||
-      errors.hawaiian ||
-      errors.shreddedBeef ||
-      errors.shreddedChicken ||
-      errors.flankSteak
-    );
+      validateDetails()
+    ) {
+      return false;
+    }
+    return true;
+  };
+
+  const resetForm = () => {
+    Object.values(details).forEach(detail => {
+      detail.quantity = 0;
+    });
+    message.fullname = '';
+    message.email = '';
+    message.phone = '';
+    message.message = '';
+    message.address = '';
+    errors = {
+      fullname: '',
+      email: '',
+      address: '',
+      phone: '',
+      message: '',
+      details: initialDetailErrors,
+    };
   };
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
-    const messageToSend = { ...message, ...quantities };
-    console.log(messageToSend);
+    console.log(message);
     if (!validateForm()) return;
+    stateForm = 'loading';
+    sendOrder(message)
+      .then(() => {
+        setTimeout(() => {
+          stateForm = 'success';
+          resetForm();
+        }, 3000);
+      })
+      .catch(() => {
+        setTimeout(() => {
+          stateForm = 'error';
+        }, 3000);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          stateForm = 'init';
+        }, 6000);
+      });
   };
 
   const getPlaceholder = (lang: string) => {
@@ -236,40 +283,17 @@
     validator={validateAddress}
     bind:value={message.address}
     error={errors.address} />
-  <InputQuantity
-    name="hawaiian"
-    label={getPlaceholder(lang).hawaiian}
-    increment={() => incrementQuantity('hawaiian')}
-    decrement={() => decrementQuantity('hawaiian')}
-    validator={() => validateQuantities('hawaiian', quantities.hawaiian)}
-    bind:value={quantities.hawaiian}
-    error={errors.hawaiian} />
-  <InputQuantity
-    name="shreddedBeef"
-    label={getPlaceholder(lang).shreddedBeef}
-    increment={() => incrementQuantity('shreddedBeef')}
-    decrement={() => decrementQuantity('shreddedBeef')}
-    validator={() =>
-      validateQuantities('shreddedBeef', quantities.shreddedBeef)}
-    bind:value={quantities.shreddedBeef}
-    error={errors.shreddedBeef} />
-  <InputQuantity
-    name="shreddedChicken"
-    label={getPlaceholder(lang).shreddedChicken}
-    increment={() => incrementQuantity('shreddedChicken')}
-    decrement={() => decrementQuantity('shreddedChicken')}
-    validator={() =>
-      validateQuantities('shreddedChicken', quantities.shreddedChicken)}
-    bind:value={quantities.shreddedChicken}
-    error={errors.shreddedChicken} />
-  <InputQuantity
-    name="flankSteak"
-    label={getPlaceholder(lang).flankSteak}
-    increment={() => incrementQuantity('flankSteak')}
-    decrement={() => decrementQuantity('flankSteak')}
-    validator={() => validateQuantities('flankSteak', quantities.flankSteak)}
-    bind:value={quantities.flankSteak}
-    error={errors.flankSteak} />
+  {#each Object.values(message.details) as detail (detail.code)}
+    <InputQuantity
+      name={detail.code}
+      label={detail.name}
+      increment={() => incrementQuantity(detail.code)}
+      decrement={() => decrementQuantity(detail.code)}
+      validator={() =>
+        validateQuantities(detail.code as ErrorField, detail.quantity)}
+      bind:value={detail.quantity}
+      error={errors.details[detail.code]} />
+  {/each}
   <TextArea
     name="message"
     id="message"
@@ -285,7 +309,7 @@
       type="submit" />
   </div>
 </form>
-<ModalForms lang={lang as 'es' | 'en'} {stateForm} />
+<ModalForms {stateForm} lang={lang as 'es' | 'en'} />
 
 <style>
   @reference "tailwindcss";

@@ -1,3 +1,3 @@
-import { sendMessage } from './send-message.util';
+import { sendOrder } from './send-order.util';
 
-export { sendMessage };
+export { sendOrder };

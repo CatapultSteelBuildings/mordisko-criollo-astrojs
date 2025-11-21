@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 
 import ProductsHomeItem from './Products-home-item.astro';
 
+import { uiMenu } from '@/i18n/ui';
 import { getLangFromUrl } from '@i18n/utils';
 
 import { empanadaSpanish } from '@data/products.data.es';
@@ -10,6 +11,7 @@ import { empanadaEnglish } from '@data/products.data.en';
 import hero from '@assets/images/hero/empanada-01.webp';
 
 const lang = getLangFromUrl(Astro.url);
+const url = uiMenu[lang]['nav.products.url'];
 
 const title =
   lang === 'es'
@@ -45,6 +47,11 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
         />
       ))
     }
+    <div class="ProductsHome__callIoAction">
+      <a href={url} class="ProductsHome__call-to-action__button"
+        >{lang === 'es' ? 'Ver todos los productos' : 'See all products'}</a
+      >
+    </div>
   </div>
 </main>
 
@@ -95,5 +102,13 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 
   .ProductsHome__image {
     @apply h-auto max-h-[80vh] w-full object-cover opacity-85 transition-all duration-300 hover:opacity-100 lg:hover:scale-110;
+  }
+
+  .ProductsHome__callIoAction {
+    @apply z-10 col-span-2 flex items-center justify-center pt-6;
+  }
+
+  .ProductsHome__callIoAction a {
+    @apply rounded-xl border-0 bg-(--primary) px-4 py-2 text-(--secondary);
   }
 </style>

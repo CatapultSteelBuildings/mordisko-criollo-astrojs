@@ -3,7 +3,7 @@ import type { Product } from '../interfaces/Product.interface';
 import hawaiianEmpanada from '@assets/images/products/empanada-01.webp';
 import shreddedBeefEmpanada from '@assets/images/products/empanada-02.webp';
 import shreddedChickenEmpanada from '@assets/images/products/empanada-03.webp';
-import shreddedFlankSteakEmpanada from '@assets/images/products/empanada-04.webp';
+import slowSookedBeefEmpanada from '@assets/images/products/empanada-04.webp';
 
 export const empanadaEnglish: Product[] = [
   {
@@ -37,13 +37,13 @@ export const empanadaEnglish: Product[] = [
     price: 0,
   },
   {
-    code: 'flank-steak',
-    title: 'Flank Steak Empanada',
+    code: 'slow-cooked-beef',
+    title: 'Slow-Cooked Beef Empanada',
     description: [
       'A bold choice for true meat lovers. This flank steak is slow-cooked until it’s melt-in-your-mouth tender, then carefully shredded to create the perfect filling. Rich, juicy, and unforgettable, this empanada delivers deep, authentic flavor in every bite.',
     ],
-    image: shreddedFlankSteakEmpanada,
-    url: '/flank-steak-empanada',
+    image: slowSookedBeefEmpanada,
+    url: '/slow-cooked-beef-empanada',
     price: 0,
   },
 ];

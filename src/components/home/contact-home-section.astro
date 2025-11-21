@@ -3,25 +3,18 @@ import Section from '@components/shared/Section.astro';
 
 import { getLangFromUrl } from '@i18n/utils';
 
-import ContactForm from '@components/home/contact-form.svelte';
+import WhatsappHomeSection from './Whatsapp-home-section.astro';
 import ContactLogo from '@components/home/contact-logo.astro';
 import Delivery from '@components/shared/Delivery.astro';
 
 const lang = getLangFromUrl(Astro.url);
 
-const title =
-  lang === 'es'
-    ? 'Escríbenos tus pedidos o sugerencias'
-    : 'Write us your orders or suggestions';
+const title = lang === 'es' ? '¿Te antojaste de algo?' : 'Got a craving?';
 ---
 
 <Section variant="primary" title={title}>
   <div class="ContactHomeSection">
-    <ContactForm
-      client:only="svelte"
-      lang={lang}
-      classes="max-w-[400px] xl:max-w-[600px] mx-auto"
-    />
+    <WhatsappHomeSection />
     <ContactLogo />
     <Delivery classes="lg:col-span-2 lg:flex-row" />
   </div>
@@ -30,6 +23,6 @@ const title =
 <style>
   @reference "tailwindcss";
   .ContactHomeSection {
-    @apply mx-auto max-w-[1200px] lg:grid lg:grid-cols-2;
+    @apply mx-auto max-w-[1200px] lg:grid lg:grid-cols-2 lg:gap-x-3;
   }
 </style>

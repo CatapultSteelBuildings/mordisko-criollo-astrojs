@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl } from '@i18n/utils';
+
+import LogosWhatsappIcon from '../ui/icons/LogosWhatsappIcon.astro';
+
+/* Data */
+import { businessDataSpanish } from '@/core/data/business.data.es';
+import { businessDataEnglish } from '@/core/data/business.data.en';
+
+const lang = getLangFromUrl(Astro.url);
+
+const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
+
+const title =
+  lang === 'es'
+    ? '¡No te quedes con las ganas! Escríbenos ya y asegura tus paquetes de empanadas listos para freír. Te atendemos de una.'
+    : `Don't miss out! Text us now and stock up your freezer with the best empanadas. We reply fast!`;
+const message =
+  lang === 'es'
+    ? 'Respondemos audios y texto. Domicilios a todo el Valle de Aburrá.'
+    : 'We reply to text and voice messages. Delivery throughout the Aburrá Valley';
+const callToAction =
+  lang === 'es' ? 'Pedir por WhatsApp' : 'Order via WhatsApp';
+const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
+const whatsappLink = `https://web.whatsapp.com/send?text=${encodeMessage}`;
+---
+
+<article class="WhatsappHomeSection">
+  <h4 class="WhatsappHomeSection__title">{title}</h4>
+  <p class="WhatsappHomeSection__message">{message}</p>
+  <div class="WhatsappHomeSection__boxLink">
+    <a href={whatsappLink} target="_blank">
+      <LogosWhatsappIcon class="WhatsappHomeSection__icon" />
+      <p>{callToAction}</p>
+    </a>
+  </div>
+</article>
+
+<style>
+  @reference "tailwindcss";
+  .WhatsappHomeSection {
+    @apply text-(--secondary) lg:flex lg:flex-col lg:justify-center;
+  }
+  .WhatsappHomeSection__title {
+    @apply mb-3 lg:text-left;
+  }
+
+  .WhatsappHomeSection__message {
+    @apply mb-0 text-center text-(--secondary) italic lg:text-left;
+  }
+  .WhatsappHomeSection__icon {
+    @apply h-20 w-20;
+  }
+
+  .WhatsappHomeSection__boxLink {
+    @apply pt-6;
+  }
+  .WhatsappHomeSection__boxLink a {
+    @apply flex flex-row items-center justify-center gap-3;
+  }
+
+  .WhatsappHomeSection__boxLink a p {
+    @apply m-0 font-bold text-(--whatsapp-dark-color) underline;
+  }
+</style>

@@ -11,8 +11,8 @@ const lang = getLangFromUrl(Astro.url);
 
 const title =
   lang === 'es'
-    ? 'Las mejores empanadas de Medellín'
-    : 'The best empanadas in Medellín';
+    ? 'De la Típica Empanada Paisa a la Hawaiana y Sobrebarriga: 4 Sabores Listos para Freír'
+    : 'From the Authentic "Paisa" Empanada to Hawaiian and Slow-Cooked Beef: 4 Flavors Ready to Fry';
 const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 ---
 
@@ -31,7 +31,7 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
         class="ProductsHome__image"
         decoding="async"
       />
-      <h1 class="ProductsHome__title">{title}</h1>
+      <h2 class="ProductsHome__title">{title}</h2>
     </article>
     {
       products.map((product: any) => (
@@ -92,7 +92,7 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
   }
 
   .ProductsHome__title {
-    @apply text-2xl font-bold sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl;
+    @apply w-full px-2 text-xl font-bold sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl;
   }
 
   .ProductsHome__subtitle {

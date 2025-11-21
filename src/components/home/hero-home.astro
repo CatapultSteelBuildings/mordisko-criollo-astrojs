@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 
+import Whatsapp from '../ui/buttons/Whatsapp.button.astro';
+
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { t } from '@i18n/ui';
 
@@ -47,7 +49,7 @@ const images = [hero1, hero2, hero3, hero4];
 
   <!-- Texto fijo centrado -->
   <div
-    class="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center text-white">
+    class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-3 px-4 text-center text-white">
     <h1
       class="max-w-3xl text-3xl leading-tight font-bold text-(--white) text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
       {t('hero.title')}
@@ -55,13 +57,14 @@ const images = [hero1, hero2, hero3, hero4];
     <h3 class="hidden text-lg italic opacity-90 md:text-xl">
       {t('hero.subtitle')}
     </h3>
+    <Whatsapp />
   </div>
 </section>
 
 <style>
   @reference "tailwindcss";
   .Hero-Home {
-    @apply relative max-h-[800px] w-full overflow-hidden border max-sm:min-h-[230px];
+    @apply relative max-h-[800px] w-full overflow-hidden max-sm:min-h-[230px];
   }
 
   .hero-slide {

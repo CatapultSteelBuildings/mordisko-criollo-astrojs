@@ -1,0 +1,38 @@
+---
+import { Icon } from 'astro-icon/components';
+
+/* Lang */
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+/* Data */
+import { businessDataSpanish } from '@/core/data/business.data.es';
+import { businessDataEnglish } from '@/core/data/business.data.en';
+
+const lang = getLangFromUrl(Astro.url);
+
+const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
+
+const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
+
+const size = 48;
+const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
+const whatsappLinkShare = `https://web.whatsapp.com/send?text=${encodeMessage}`;
+---
+
+<a href={whatsappLinkShare} target="_blank">
+  <div class="Whatsapp-Button">
+    <Icon name="tabler:brand-whatsapp" size={size} />
+    <p>{callToAction}</p>
+  </div>
+</a>
+
+<style>
+  @reference "tailwindcss";
+  .Whatsapp-Button {
+    @apply flex items-center justify-center gap-2 rounded-2xl bg-(--whatsapp-color) px-2 py-1 md:border-4 md:border-(--whatsapp-dark-color);
+  }
+
+  .Whatsapp-Button p {
+    @apply m-0 font-bold text-(--white);
+  }
+</style>

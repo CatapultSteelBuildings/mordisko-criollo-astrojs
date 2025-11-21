@@ -1,0 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="ProductDescriptionSection">
+  <div class="ProductDescriptionSection__container">
+    <p>{t('product.page.description')}</p>
+  </div>
+</section>
+
+<style>
+  @reference 'tailwindcss';
+
+  .ProductDescriptionSection {
+    @apply bg-(--primary) p-3;
+  }
+  .ProductDescriptionSection__container {
+    @apply mx-auto w-full max-w-[1400px];
+  }
+
+  .ProductDescriptionSection__container p {
+    @apply m-0 text-center text-pretty text-(--secondary);
+  }
+</style>

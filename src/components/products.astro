@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import HeroProductsSection from './products/hero-products-section.astro';
+import HeroProductsSection from '@components/products/hero-products-section.astro';
+import ProductDescriptionSection from '@components/products/Product-description-section.astro';
 import ProductsMainSection from '@components/products/products-main-section.astro';
 
 interface Props {
@@ -15,5 +16,6 @@ const metaDescription = 'Productos';
 
 <Layout location={location} title={title} metaDescription={metaDescription}>
   <HeroProductsSection />
+  <ProductDescriptionSection />
   <ProductsMainSection />
 </Layout>

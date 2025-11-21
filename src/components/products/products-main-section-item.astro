@@ -2,6 +2,9 @@
 import { Image } from 'astro:assets';
 import type { Product } from '@/core/interfaces/Product.interface';
 
+import ProductPageWhatsappButton from '../ui/buttons/ProductPageWhatsapp.button.astro';
+import ProductPageOrderButton from '../ui/buttons/ProductPageOrder.button.astro';
+
 interface Props {
   product: Product;
   lang?: string;
@@ -26,11 +29,17 @@ const contactUrl = lang === 'es' ? '/contacto' : '/en/contact';
   </div>
   <div class="ProductMainSectionItem__content">
     <h3 class="ProductMainSectionItem__title">{product.title}</h3>
-    <p class="ProductMainSectionItem__description">{product.description}</p>
+    <p class="ProductMainSectionItem__description xl:hidden">
+      {product.shortDescription}
+    </p>
+    <p class="ProductMainSectionItem__description hidden xl:block">
+      {product.description}
+    </p>
     <p class="ProductMainSectionItem__price">$ {product.price}</p>
-    <a class="ProductMainSectionItem__link" href={contactUrl}
-      >{lang === 'es' ? 'Haz tu pedido' : 'Order now'}</a
-    >
+    <div class="ProductMainSectionItem__buttons">
+      <ProductPageWhatsappButton />
+      <ProductPageOrderButton />
+    </div>
   </div>
 </article>
 
@@ -61,14 +70,14 @@ const contactUrl = lang === 'es' ? '/contacto' : '/en/contact';
   }
 
   .ProductMainSectionItem__description {
-    @apply grow font-light text-(--secndary) xl:grow-0;
+    @apply grow text-center font-light text-(--secondary) xl:grow-0 xl:text-(--white);
   }
 
   .ProductMainSectionItem__price {
-    @apply text-center font-bold text-(--secondary);
+    @apply text-center font-bold text-(--secondary) xl:text-(--primary);
   }
 
-  .ProductMainSectionItem__link {
-    @apply mx-auto block rounded-lg bg-(--secondary) px-3 py-2 text-center text-(--primary) xl:bg-(--primary) xl:text-(--secondary);
+  .ProductMainSectionItem__buttons {
+    @apply grid w-full grid-cols-2 gap-0 lg:max-w-[450px];
   }
 </style>

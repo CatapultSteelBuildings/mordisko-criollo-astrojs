@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const contactUrl = lang === 'es' ? '/contacto' : '/en/contact';
+const title = lang === 'es' ? 'Haz tu pedido' : 'Order now';
+---
+
+<a href={contactUrl}>
+  <div class="ProductPageOrderButton">
+    <p>{title}</p>
+    <Icon
+      name="tabler:list"
+      class="h-8 w-8 text-(--white) xl:text-(--secondary)"
+    />
+  </div>
+</a>
+
+<style>
+  @reference: 'tailwindcss';
+  .ProductPageOrderButton {
+    @apply m-0 mx-auto flex flex-col items-center justify-center gap-2 rounded-r-lg bg-(--secondary) px-3 py-2 text-center text-(--primary) md:flex-row xl:bg-(--primary) xl:text-(--secondary);
+  }
+
+  .ProductPageOrderButton p {
+    @apply m-0 text-(--white) xl:text-(--secondary);
+  }
+</style>

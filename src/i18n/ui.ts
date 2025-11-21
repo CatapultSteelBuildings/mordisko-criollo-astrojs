@@ -29,6 +29,8 @@ export const uiMenu = {
 export const ui = {
   es: {
     ...uiMenu.es,
+    'hero.title': 'Empanadas Congeladas en Medellín',
+    'hero.subtitle': 'Sabor Criollo listo para freír',
     'delivery.message': 'Domicilios a todo Medellín',
     'copyRight.message': 'Todos los derechos reservados',
     'message.facebook': 'Visita y siguenos en nuestra pagina de Facebook',
@@ -38,6 +40,8 @@ export const ui = {
   },
   en: {
     ...uiMenu.en,
+    'hero.title': 'Frozen Empanadas in Medellín',
+    'hero.subtitle': 'Criollo flavor ready to fry',
     'delivery.message': 'Home delivery throughout Medellín',
     'copyRight.message': 'All rights reserved',
     'message.facebook': 'Visit and follow us on our Facebook page',

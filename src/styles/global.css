@@ -31,11 +31,11 @@
 }
 
 html {
-  @apply scroll-smooth text-base text-[var(--dark-text)] md:text-lg lg:text-xl dark:text-[var(--light)];
+  @apply scroll-smooth text-base text-(--dark-text) md:text-lg lg:text-xl dark:text-(--light);
 }
 
 body {
-  @apply bg-[var(--light)] text-[var(--dark-text)] dark:bg-[var(--dark)] dark:text-[var(--light)];
+  @apply bg-(--primary) text-(--dark-text);
 }
 
 h1,
@@ -75,6 +75,22 @@ p {
   @apply mb-3 text-pretty text-(--white);
 }
 
+.HeroSectionPages {
+  @apply bg-(--primary) pt-6 text-(--secondary);
+}
+
+.HeroSectionPages__container {
+  @apply mx-auto w-full px-3 max-2xl:max-w-[1200px] xl:px-0;
+}
+
+.HeroSectionPages h1 {
+  @apply mb-3 text-2xl font-bold md:text-3xl lg:text-4xl;
+}
+
+.HeroSectionPages h2 {
+  @apply text-lg font-light italic md:text-xl lg:text-2xl;
+}
+
 .form-group {
   @apply relative mb-6 w-full;
 }
@@ -84,5 +100,5 @@ p {
 }
 
 .form-group p {
-  @apply absolute pl-1 text-xs font-bold text-[var(--red)];
+  @apply absolute pl-1 text-xs font-bold text-(--red);
 }

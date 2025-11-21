@@ -37,6 +37,10 @@ export const ui = {
     'message.instagram': 'Visita y siguenos en nuestra pagina de Instagram',
     'message.tiktok': 'Visita y siguenos en nuestra pagina de Tiktok',
     'message.whatsapp': 'Visita y siguenos en nuestra pagina de WhatsApp',
+    'product.page.title':
+      'Nuestros Sabores: Empanadas Congeladas Listas para Freír',
+    'product.page.subtitle':
+      'Elige tu Relleno Favorito: Tradición e Innovación',
   },
   en: {
     ...uiMenu.en,
@@ -48,5 +52,8 @@ export const ui = {
     'message.instagram': 'Visit and follow us on our Instagram page',
     'message.tiktok': 'Visit and follow us on our Tiktok page',
     'message.whatsapp': 'Visit and follow us on our WhatsApp page',
+    'product.page.title': 'Our Flavors: Frozen Empanadas Ready to Fry',
+    'product.page.subtitle':
+      'Choose Your Favorite Filling: Tradition & Innovation',
   },
 };

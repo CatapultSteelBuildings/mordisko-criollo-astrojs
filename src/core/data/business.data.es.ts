@@ -20,7 +20,7 @@ export const businessDataSpanish = {
     message: 'Visita y siguenos en nuestra pagina de Tiktok',
   },
   history: [
-    `-ES- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-    `-ES- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    `En ${businessData.name} revolucionamos la tradición. Vamos mucho más allá de las típicas empanadas, fusionando el inconfundible sazón casero con rellenos atrevidos e innovadores, como nuestra Hawaiana o la potente Sobrebarriga.`,
+    `Somos expertos en empanadas congeladas listas para freír. Si quieres disfrutar una auténtica empanada paisa, de masa crocante y cargada de relleno sin salir de casa, llegaste al lugar indicado. Cubrimos tus antojos llevando las mejores empanadas Medellín directamente hasta tu puerta con nuestro servicio de domicilios.`,
   ],
 };

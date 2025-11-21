@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  image: ImageMetadata;
+  loadingImages?: 'eager' | 'lazy';
+  fetchPriority?: 'high' | 'low';
+}
+const {
+  title,
+  image,
+  loadingImages = 'lazy',
+  fetchPriority = 'low',
+} = Astro.props;
+---
+
+<article class="ProductsHomeItem">
+  <Image
+    src={image}
+    class="ProductsHomeItem__image"
+    alt={title}
+    widths={[150, 300, 400, 600]}
+    sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
+    loading={loadingImages}
+    fetchpriority={fetchPriority}
+    class="ProductsHomeItem__image"
+    decoding="async"
+  />
+  <h3 class="ProductsHomeItem__subtitle">{title}</h3>
+</article>
+
+<style>
+  @reference "tailwindcss";
+  .ProductsHomeItem {
+    @apply relative overflow-hidden p-0;
+  }
+
+  .ProductsHomeItem:hover .ProductsHomeItem__image {
+    @apply scale-110;
+  }
+
+  .ProductsHomeItem__subtitle {
+    @apply absolute top-[50%] left-[50%] m-0 translate-x-[-50%] translate-y-[-50%] transform p-0 font-medium text-shadow-[0_0_2px_var(--secondary)];
+  }
+
+  .ProductsHomeItem__image {
+    @apply h-auto max-h-[80vh] w-full object-cover opacity-85 transition-all duration-300 hover:opacity-100 lg:hover:scale-110;
+  }
+</style>

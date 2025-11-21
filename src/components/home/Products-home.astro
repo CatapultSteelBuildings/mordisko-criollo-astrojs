@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 
+import ProductsHomeItem from './Products-home-item.astro';
+
 import { getLangFromUrl } from '@i18n/utils';
 
 import { empanadaSpanish } from '@data/products.data.es';
@@ -35,20 +37,12 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
     </article>
     {
       products.map((product: any) => (
-        <article class="ProductsHome__article">
-          <Image
-            src={product.image}
-            class="ProductsHome__image"
-            alt={product.title}
-            widths={[150, 300, 400, 600]}
-            sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
-            loading="eager"
-            fetchpriority="low"
-            class="ProductsHome__image"
-            decoding="async"
-          />
-          <h3 class="ProductsHome__subtitle">{product.title}</h3>
-        </article>
+        <ProductsHomeItem
+          title={product.title}
+          image={product.image}
+          loadingImages="lazy"
+          fetchPriority="low"
+        />
       ))
     }
   </div>

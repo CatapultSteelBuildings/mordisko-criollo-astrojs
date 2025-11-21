@@ -2,9 +2,9 @@
 import { Image } from 'astro:assets';
 
 import Whatsapp from '../ui/buttons/Whatsapp.button.astro';
+import SeePrices from '../ui/buttons/SeePrices.button.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import { t } from '@i18n/ui';
 
 import hero1 from '@assets/images/hero/empanada-01.webp';
 import hero2 from '@assets/images/hero/empanada-02.webp';
@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 const images = [hero1, hero2, hero3, hero4];
 ---
 
-<section class="Hero-Home">
+<section class="HeroHome">
   <div>
     <Image
       src={hero1}
@@ -49,21 +49,25 @@ const images = [hero1, hero2, hero3, hero4];
 
   <!-- Texto fijo centrado -->
   <div
-    class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-3 px-4 text-center text-white">
+    class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-3 px-4 text-center text-white sm:gap-y-6">
     <h1
       class="max-w-3xl text-3xl leading-tight font-bold text-(--white) text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
       {t('hero.title')}
     </h1>
-    <h3 class="hidden text-lg italic opacity-90 md:text-xl">
+    <h3
+      class="hidden text-lg font-bold italic text-shadow-[0_0_1px_var(--secondary)] sm:block md:text-xl">
       {t('hero.subtitle')}
     </h3>
-    <Whatsapp />
+    <div class="HeroHome__buttons">
+      <Whatsapp />
+      <SeePrices classes="hidden sm:block" />
+    </div>
   </div>
 </section>
 
 <style>
   @reference "tailwindcss";
-  .Hero-Home {
+  .HeroHome {
     @apply relative max-h-[800px] w-full overflow-hidden max-sm:min-h-[230px];
   }
 
@@ -85,6 +89,10 @@ const images = [hero1, hero2, hero3, hero4];
   }
   .hero-slide:nth-child(4) {
     animation-delay: 12s;
+  }
+
+  .HeroHome__buttons {
+    @apply flex items-center gap-3;
   }
 
   @keyframes fade {

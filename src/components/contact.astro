@@ -2,7 +2,6 @@
 import Layout from '@layouts/Layout.astro';
 
 /* Components */
-import HeroContactSection from '@components/contact/hero-contact-section.astro';
 import ContactFormSection from '@components/contact/contact-form-section.astro';
 import Delivery from '@components/shared/Delivery.astro';
 
@@ -22,7 +21,6 @@ const metaDescription = lang === 'es' ? 'Contacto' : 'Contact';
 ---
 
 <Layout location={location} title={title} metaDescription={metaDescription}>
-  <HeroContactSection />
   <ContactFormSection />
   <Delivery />
 </Layout>

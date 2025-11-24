@@ -9,6 +9,7 @@ export const empanadaEnglish: Product[] = [
   {
     code: 'hawaiian',
     title: 'Hawaiian Empanada',
+    shortTitle: 'Hawaiian',
     description: [
       'The perfect balance of sweet and savory in every bite. Juicy pineapple chunks melt into creamy cheese, wrapped inside our golden, crispy crust. A tropical explosion of freshness and flavor that will make you close your eyes in pure delight.',
     ],
@@ -21,6 +22,7 @@ export const empanadaEnglish: Product[] = [
   {
     code: 'shredded-beef',
     title: 'Shredded Beef Empanada',
+    shortTitle: 'Shredded Beef',
     description: [
       'Tender, juicy, and packed with that homemade flavor you’ll never forget. Our shredded beef is slow-cooked with traditional spices until it reaches absolute perfection, then tucked inside a crispy golden crust. Each bite takes you straight to the heart of authentic Colombian flavor.',
     ],
@@ -33,6 +35,7 @@ export const empanadaEnglish: Product[] = [
   {
     code: 'shredded-chicken',
     title: 'Shredded Chicken Empanada',
+    shortTitle: 'Shredded Chicken',
     description: [
       'A classic everyone loves — but better. Fresh chicken, hand-shredded and seasoned with herbs and spices to highlight its tenderness and juiciness. Combined with our crunchy, golden dough, it becomes a light, flavorful, and absolutely irresistible empanada.',
     ],
@@ -45,6 +48,7 @@ export const empanadaEnglish: Product[] = [
   {
     code: 'slow-cooked-beef',
     title: 'Slow-Cooked Beef Empanada',
+    shortTitle: 'Slow-Cooked Beef',
     description: [
       'A bold choice for true meat lovers. This flank steak is slow-cooked until it’s melt-in-your-mouth tender, then carefully shredded to create the perfect filling. Rich, juicy, and unforgettable, this empanada delivers deep, authentic flavor in every bite.',
     ],

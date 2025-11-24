@@ -1,1 +1,13 @@
-<h1>Hero Contact Section</h1>
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="HeroSectionPages">
+  <div class="HeroSectionPages__container">
+    <h1>{t('contact.page.title')}</h1>
+    <h2>{t('contact.page.subtitle')}</h2>
+  </div>
+</section>

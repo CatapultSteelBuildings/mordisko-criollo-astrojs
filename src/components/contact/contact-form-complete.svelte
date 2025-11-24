@@ -3,8 +3,8 @@
   import Input from '@components/shared/Input.svelte';
   import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
-  import Button from '@components/shared/Button.svelte';
-  import ModalForms from '../shared/ModalForms.svelte';
+  import ModalForms from '@components/shared/ModalForms.svelte';
+  import ButtonContactOrder from '@components/ui/buttons/ButtonContactOrder.svelte';
 
   /* Interfaces */
   import type { OrderMessage, OrderItem } from '@/core/interfaces';
@@ -36,7 +36,7 @@
       (acc, item) => {
         acc[item.code] = {
           code: item.code,
-          name: item.title,
+          name: item.shortTitle,
           quantity: 0,
           unitPrice: item.price,
         };
@@ -224,9 +224,9 @@
     if (lang === 'es') {
       return {
         fullname: 'Nombre',
-        address: 'Dirección',
-        email: 'Correo electrónico',
-        phone: 'Teléfono',
+        address: 'Dirección (Dirección de entrega)',
+        email: 'Correo electrónico (opcional)',
+        phone: 'Número de WhatsApp',
         message: 'Mensaje',
         hawaiian: 'Hawaiiana',
         shreddedBeef: 'Carne Desmechada',
@@ -236,9 +236,9 @@
     }
     return {
       fullname: 'Fullname',
-      address: 'Address',
-      email: 'Email',
-      phone: 'Phone',
+      address: 'Address (Delivery Address)',
+      email: 'Email (optional)',
+      phone: 'WhatsApp Number',
       message: 'Message',
       hawaiian: 'Hawaiian',
       shreddedBeef: 'Shredded Beef',
@@ -303,10 +303,7 @@
     bind:value={message.message}></TextArea>
   <div
     class="col-span-2 flex w-full items-center justify-center 2xl:col-span-4">
-    <Button
-      variant="secondary"
-      label={lang === 'es' ? 'Enviar' : 'Send'}
-      type="submit" />
+    <ButtonContactOrder {lang} />
   </div>
 </form>
 <ModalForms {stateForm} lang={lang as 'es' | 'en'} />

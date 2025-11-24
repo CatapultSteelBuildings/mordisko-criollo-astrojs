@@ -16,7 +16,7 @@
   import { emailValidator, isValidColombianPhone } from '@/core/validators';
 
   /* Utils */
-  import { sendOrder } from '@/core/utils/send-order.util';
+  import { generateOrderWhatsapp } from '@/core/utils/index';
 
   /* Types */
   import type { StateForm } from '@/core/types/StateForm.type';
@@ -97,10 +97,10 @@
   };
 
   const validateEmail = () => {
-    if (!message.email.trim()) {
-      errors.email =
-        lang === 'es' ? 'El email es requerido' : 'Email is required';
-    } else if (!emailValidator(message.email.trim())) {
+    if (
+      message.email.trim().length > 0 &&
+      !emailValidator(message.email.trim())
+    ) {
       errors.email =
         lang === 'es' ? 'El email es inválido' : 'Email is invalid';
     } else {
@@ -201,7 +201,7 @@
     console.log(message);
     if (!validateForm()) return;
     stateForm = 'loading';
-    sendOrder(message)
+    generateOrderWhatsapp(message)
       .then(() => {
         setTimeout(() => {
           stateForm = 'success';

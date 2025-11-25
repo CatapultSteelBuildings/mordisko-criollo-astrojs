@@ -7,10 +7,8 @@
   export let showThanksModal: boolean;
   export let order: OrderMessage;
   export let resetForm: () => void;
-  console.log(order.details);
   const action = () => {
     const linkWhatsapp = generateOrderWhatsapp(order);
-    console.log(linkWhatsapp);
     window.open(linkWhatsapp, '_blank');
     resetForm();
     showOrderModal = false;

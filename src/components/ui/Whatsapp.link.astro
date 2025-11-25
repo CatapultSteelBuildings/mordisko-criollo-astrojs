@@ -1,13 +1,19 @@
 ---
-import { businessData } from '@/core/data/business.data';
+import { getLangFromUrl } from '@/i18n/utils';
+import { Icon } from 'astro-icon/components';
+import { generateLinkWhatsapp } from '@/core/utils';
+import { businessDataEnglish } from '@/core/data/business.data.en';
+import { businessDataSpanish } from '@/core/data/business.data.es';
+
 interface Props {
   size?: number;
   variant: 'primary' | 'secondary';
 }
-import { Icon } from 'astro-icon/components';
+const lang = getLangFromUrl(Astro.url);
+const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 const { size = 48, variant = 'primary' } = Astro.props;
-const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
-const whatsappLinkShare = `https://web.whatsapp.com/send?text=${encodeMessage}`;
+
+const whatsappLinkShare = generateLinkWhatsapp(businessData.whatsapp.message);
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 ---
 

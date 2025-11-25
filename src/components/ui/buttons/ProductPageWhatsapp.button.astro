@@ -8,14 +8,15 @@ import { getLangFromUrl } from '@i18n/utils';
 import { businessDataSpanish } from '@/core/data/business.data.es';
 import { businessDataEnglish } from '@/core/data/business.data.en';
 
+import { generateLinkWhatsapp } from '@/core/utils';
+
 const lang = getLangFromUrl(Astro.url);
 
 const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 
 const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
 
-const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
-const whatsappLinkShare = `https://web.whatsapp.com/send?text=${encodeMessage}`;
+const whatsappLinkShare = generateLinkWhatsapp(businessData.whatsapp.message);
 ---
 
 <a href={whatsappLinkShare} target="_blank">

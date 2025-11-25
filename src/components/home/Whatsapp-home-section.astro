@@ -7,6 +7,8 @@ import LogosWhatsappIcon from '../ui/icons/LogosWhatsappIcon.astro';
 import { businessDataSpanish } from '@/core/data/business.data.es';
 import { businessDataEnglish } from '@/core/data/business.data.en';
 
+import { generateLinkWhatsapp } from '@/core/utils';
+
 const lang = getLangFromUrl(Astro.url);
 
 const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
@@ -21,8 +23,7 @@ const message =
     : 'We reply to text and voice messages. Delivery throughout the Aburrá Valley';
 const callToAction =
   lang === 'es' ? 'Pedir por WhatsApp' : 'Order via WhatsApp';
-const encodeMessage = encodeURIComponent(businessData.whatsapp.message);
-const whatsappLink = `https://web.whatsapp.com/send?text=${encodeMessage}`;
+const whatsappLink = generateLinkWhatsapp(businessData.whatsapp.message);
 ---
 
 <article class="WhatsappHomeSection">

@@ -14,7 +14,6 @@ export const sendOrder = async (order: OrderMessage) => {
     total += item.quantity * item.unitPrice;
   });
   formData.append('total', total.toString());
-  console.log(formData);
   //return await fetch(url, {
   //  method: 'POST',
   //  body: formData,

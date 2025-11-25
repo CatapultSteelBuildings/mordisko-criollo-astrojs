@@ -5,7 +5,7 @@ export const businessDataEnglish = {
   copyRight: 'All rights reserved',
   whatsapp: {
     ...businessData.whatsapp,
-    message: 'Visit and follow us on our WhatsApp page',
+    message: `Hello Mordisko Criollo! I'm on your website and I've got a craving. Could you please share the menu and prices?`,
   },
   facebook: {
     ...businessData.facebook,

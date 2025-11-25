@@ -5,7 +5,8 @@ export const businessDataSpanish = {
   copyRight: 'Todos los derechos reservados',
   whatsapp: {
     ...businessData.whatsapp,
-    message: 'Visita y siguenos en nuestra pagina de WhatsApp',
+    message:
+      '¡Hola Mordisko Criollo! Estoy en la web y me antojé. ¿Me podrían compartir el menú y precios?',
   },
   facebook: {
     ...businessData.facebook,

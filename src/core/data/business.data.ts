@@ -3,11 +3,11 @@ export const businessData = {
   site: 'https://mordiskocriollo.com',
   logo: '/logo.png',
   primaryColor: '#febd2b',
-  phone: '+573000000000',
-  email: 'contacto@mordiskocriollo.com',
+  phone: '+573156115105',
+  email: 'empanadas@mordiskocriollo.com',
   address: 'Calle 123',
   whatsapp: {
-    number: '+573000000000',
+    number: '573156115105',
     message: '',
   },
   facebook: {

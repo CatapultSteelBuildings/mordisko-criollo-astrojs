@@ -1,8 +1,7 @@
 import type { OrderMessage } from '@interfaces/index';
+import { generateLinkWhatsapp } from './generate-link-whatsapp.util';
 
-export const generateOrderWhatsapp = async (
-  order: OrderMessage
-): Promise<string> => {
+export const generateOrderWhatsapp = (order: OrderMessage): string => {
   let message = `Hola mi nombre es ${order.fullname}, me gustaría hacer un pedido de los siguientes productos:\n`;
   order.details.forEach(item => {
     if (item.quantity < 1) return;
@@ -13,6 +12,5 @@ export const generateOrderWhatsapp = async (
   if (order.message.trim().length > 0) {
     message += `Mi mensaje es: ${order.message}\n`;
   }
-  console.log(message);
-  return await message;
+  return generateLinkWhatsapp(message);
 };

@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
   import LogosWhatsappIcon from '@components/ui/icons/LogosWhatsappIcon.svelte';
 
-  const { lang = 'es' } = $props();
+  export let lang: 'es' | 'en' = 'es';
+  export let action: (() => any) | ((e: Event) => any) | undefined = undefined;
 </script>
 
-<button class="flex items-center gap-2">
+<button class="flex items-center gap-2" onclick={action}>
   <LogosWhatsappIcon class="h-10 w-10" />
   <span
     >{lang === 'es'

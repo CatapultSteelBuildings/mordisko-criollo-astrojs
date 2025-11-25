@@ -8,7 +8,10 @@ export const generateOrderWhatsapp = (order: OrderMessage): string => {
     message += `${item.name} - ${item.quantity}\n`;
   });
   message += `Mi número de teléfono es: ${order.phone}\n`;
-  message += `Mi correo electrónico es: ${order.email}\n`;
+  message += `Mi dirección es: ${order.address}\n`;
+  if (order.email) {
+    message += `Mi correo electrónico es: ${order.email}\n`;
+  }
   if (order.message.trim().length > 0) {
     message += `Mi mensaje es: ${order.message}\n`;
   }

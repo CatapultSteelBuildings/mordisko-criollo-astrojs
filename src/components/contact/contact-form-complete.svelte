@@ -3,7 +3,8 @@
   import Input from '@components/shared/Input.svelte';
   import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
-  import ModalForms from '@components/shared/ModalForms.svelte';
+  import ContactOrderModal from './contact-order-modal.svelte';
+  import ContactThanksModal from './contact-thanks-modal.svelte';
   import ButtonContactOrder from '@components/ui/buttons/ButtonContactOrder.svelte';
 
   /* Interfaces */
@@ -15,12 +16,6 @@
   /* Validators */
   import { emailValidator, isValidColombianPhone } from '@/core/validators';
 
-  /* Utils */
-  import { generateOrderWhatsapp } from '@/core/utils/index';
-
-  /* Types */
-  import type { StateForm } from '@/core/types/StateForm.type';
-
   const { lang = 'es', classes = '' } = $props();
 
   const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
@@ -29,7 +24,8 @@
 
   type DetailField = keyof typeof details;
 
-  let stateForm = $state<StateForm>('init');
+  let showOrderModal = $state<boolean>(false);
+  let showThanksModal = $state<boolean>(false);
 
   let details = $state(
     products.reduce(
@@ -198,26 +194,8 @@
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
-    console.log(message);
     if (!validateForm()) return;
-    stateForm = 'loading';
-    generateOrderWhatsapp(message)
-      .then(() => {
-        setTimeout(() => {
-          stateForm = 'success';
-          resetForm();
-        }, 3000);
-      })
-      .catch(() => {
-        setTimeout(() => {
-          stateForm = 'error';
-        }, 3000);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          stateForm = 'init';
-        }, 6000);
-      });
+    showOrderModal = true;
   };
 
   const getPlaceholder = (lang: string) => {
@@ -303,10 +281,15 @@
     bind:value={message.message}></TextArea>
   <div
     class="col-span-2 flex w-full items-center justify-center 2xl:col-span-4">
-    <ButtonContactOrder {lang} />
+    <ButtonContactOrder lang={lang as 'es' | 'en'} action={handleSubmit} />
   </div>
 </form>
-<ModalForms {stateForm} lang={lang as 'es' | 'en'} />
+<ContactOrderModal
+  {showOrderModal}
+  order={message}
+  {resetForm}
+  {showThanksModal} />
+<ContactThanksModal {showThanksModal} lang={lang as 'es' | 'en'} />
 
 <style>
   @reference "tailwindcss";

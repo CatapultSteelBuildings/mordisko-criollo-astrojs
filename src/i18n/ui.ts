@@ -11,6 +11,7 @@ export type NavKey = 'nav.home' | 'nav.products' | 'nav.contact';
 
 export const uiMenu = {
   es: {
+    'nav.label': 'Navegación principal',
     'nav.home': 'Inicio',
     'nav.home.url': '/',
     'nav.products': 'Productos',
@@ -19,6 +20,7 @@ export const uiMenu = {
     'nav.contact.url': '/contacto',
   },
   en: {
+    'nav.label': 'Main navigation',
     'nav.home': 'Home',
     'nav.home.url': '/en',
     'nav.products': 'Products',

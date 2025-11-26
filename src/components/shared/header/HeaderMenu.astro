@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
+import HeaderMenuItem from './HeaderMenuItem.astro';
+
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 import SocialMedia from '@components/ui/Social-media.astro';
@@ -23,7 +25,7 @@ const t = useTranslations(lang);
   <label for="HeaderMenu__Toggle" class="HeaderMenu__Open">
     <Icon name="tabler:menu-2" size={48} />
   </label>
-  <nav class="HeaderMenu__Nav">
+  <nav class="HeaderMenu__Nav" aria-label={t('nav.label')}>
     <div class="absolute top-3 left-3 lg:hidden">
       <ChangeLanguageButton />
     </div>
@@ -40,15 +42,27 @@ const t = useTranslations(lang);
       class="mt-12 w-full max-w-[150px] sm:mt-16 sm:max-w-[250px] md:max-w-[300px] lg:hidden"
       decoding="async"
     />
-    <ul>
+    <ul role="list">
       <li>
-        <a href={`${t('nav.home.url')}`}>{t('nav.home')}</a>
+        <HeaderMenuItem
+          href={`${t('nav.home.url')}`}
+          label={t('nav.home')}
+          tabindex="0"
+        />
       </li>
       <li>
-        <a href={`${t('nav.products.url')}`}>{t('nav.products')}</a>
+        <HeaderMenuItem
+          href={`${t('nav.products.url')}`}
+          label={t('nav.products')}
+          tabindex="1"
+        />
       </li>
       <li>
-        <a href={`${t('nav.contact.url')}`}>{t('nav.contact')}</a>
+        <HeaderMenuItem
+          href={`${t('nav.contact.url')}`}
+          label={t('nav.contact')}
+          tabindex="2"
+        />
       </li>
     </ul>
     <div class="lg:hidden">

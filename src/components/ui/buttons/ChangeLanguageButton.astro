@@ -19,7 +19,7 @@ const iconName = lang === 'es' ? 'flag:us-1x1' : 'flag:es-1x1';
   <Icon name={iconName} size={size} />
 </button>
 
-<script>
+<script is:inline>
   import { getLocalizatedUrl } from '@i18n/utils';
 
   window.addEventListener('load', () => {

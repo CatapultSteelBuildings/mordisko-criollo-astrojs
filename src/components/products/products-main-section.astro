@@ -14,11 +14,7 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 
 <main class="ProductsMainSection">
   <section class="ProductsMainSection__products">
-    {
-      products.map(product => (
-        <ProductMainSectionItem product={product} lang={lang} />
-      ))
-    }
+    {products.map(product => <ProductMainSectionItem product={product} />)}
   </section>
 </main>
 

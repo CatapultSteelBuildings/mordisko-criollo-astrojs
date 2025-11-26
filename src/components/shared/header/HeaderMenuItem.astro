@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  tabindex: string;
+}
+
+const { href, label, tabindex } = Astro.props;
+
+const url = Astro.url;
+const pathname = url.pathname;
+const isActive = pathname === href;
+---
+
+<a
+  href={href}
+  class={isActive
+    ? 'HeaderMenuItem__Link HeaderMenuItem__Link--Active'
+    : 'HeaderMenuItem__Link'}
+  aria-label={label}
+  role="link"
+  tabindex={tabindex}
+  aria-current={isActive ? 'page' : undefined}>{label}</a
+>
+<style>
+  @reference "tailwindcss";
+  .HeaderMenuItem__Link--Active {
+    @apply font-bold;
+  }
+</style>

@@ -18,6 +18,8 @@ const title =
     ? 'De la Típica Empanada Paisa a la Hawaiana y Sobrebarriga: 4 Sabores Listos para Freír'
     : 'From the Authentic "Paisa" Empanada to Hawaiian and Slow-Cooked Beef: 4 Flavors Ready to Fry';
 const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
+const callToAction =
+  lang === 'es' ? 'Ver todos los productos' : 'See all products';
 ---
 
 <main class="ProductsHome">
@@ -48,9 +50,14 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
       ))
     }
     <div class="ProductsHome__callIoAction">
-      <a href={url} class="ProductsHome__call-to-action__button"
-        >{lang === 'es' ? 'Ver todos los productos' : 'See all products'}</a
-      >
+      <a
+        href={url}
+        class="ProductsHome__call-to-action__button"
+        aria-label={callToAction}
+        title={callToAction}
+        >{callToAction}
+        <span class="sr-only">{callToAction}</span>
+      </a>
     </div>
   </div>
 </main>

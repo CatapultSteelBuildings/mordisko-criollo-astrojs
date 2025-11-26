@@ -3,23 +3,28 @@
   import type { OrderMessage } from '@/core/interfaces';
   import { generateOrderWhatsapp } from '@/core/utils/index';
   export let lang: 'es' | 'en' = 'es';
-  export let showOrderModal: boolean;
-  export let showThanksModal: boolean;
+  export let isOpenOrderModal: boolean;
   export let order: OrderMessage;
   export let resetForm: () => void;
+  export let modalActions: () => void;
   const action = () => {
     const linkWhatsapp = generateOrderWhatsapp(order);
     window.open(linkWhatsapp, '_blank');
     resetForm();
-    showOrderModal = false;
-    showThanksModal = true;
+    modalActions();
   };
 </script>
 
-{#if showOrderModal}
-  <div class="ContactOrderModal">
+{#if isOpenOrderModal}
+  <div
+    class="ContactOrderModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-order-modal">
     <div class="ContactOrderModal__container">
-      <h4>{lang === 'es' ? 'Pedido' : 'Order'}</h4>
+      <h4 class="ContactOrderModal__title" id="contact-order-modal">
+        {lang === 'es' ? 'Pedido' : 'Order'}
+      </h4>
       <p>{lang === 'es' ? 'Nombre' : 'Fullname'}: {order.fullname}</p>
       <p>{lang === 'es' ? 'Dirección' : 'Address'}: {order.address}</p>
       {#if order.email}
@@ -38,8 +43,17 @@
       <hr />
       <p>{lang === 'es' ? 'Mensaje' : 'Message'}: {order.message}</p>
       <div class="ContactOrderModal__buttons">
-        <ButtonContactOrder {lang} {action} />
-        <button onclick={() => (showOrderModal = false)}
+        <ButtonContactOrder
+          titleAccessibility={lang === 'es'
+            ? 'Confirmar Pedido y enviar por WhatsApp'
+            : 'Confirm and send order to WhatsApp'}
+          {lang}
+          {action} />
+        <button
+          onclick={() => (isOpenOrderModal = false)}
+          aria-label={lang === 'es'
+            ? 'Cancelar y cerrar el pedido'
+            : 'Cancel and close the order'}
           >{lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
       </div>
     </div>

@@ -2,19 +2,20 @@
   import Check from '@components/ui/icons/check.svelte';
 
   export let lang: 'es' | 'en' = 'es';
-  export let showThanksModal: boolean = false;
+  export let isOpenThanksModal: boolean = false;
   const successMessage =
     lang === 'es'
       ? '¡Gracias por tu pedido! Te contactaremos pronto.'
       : 'Thank you for your order! We will contact you soon.';
 </script>
 
-{#if showThanksModal}
+{#if isOpenThanksModal}
   <div class="ModalForm">
     <div class="ModalForm__container">
       <Check class="h-16 w-16 text-(--green)" />
       <p>{successMessage}</p>
-      <button onclick={() => (showThanksModal = false)}>Close</button>
+      <button onclick={() => (isOpenThanksModal = false)}
+        >{lang === 'es' ? 'Cerrar' : 'Close'}</button>
     </div>
   </div>
 {/if}

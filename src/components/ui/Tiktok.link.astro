@@ -10,11 +10,23 @@ const { size = 48, variant = 'primary' } = Astro.props;
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const title = t('message.tiktok');
 ---
 
 <a
   href={businessData.tiktok.url}
   target="_blank"
-  aria-label={t('message.tiktok')}>
-  <Icon name="tabler:brand-tiktok" size={size} class={color} />
+  rel="noopener noreferrer"
+  aria-label={title}
+  title={title}>
+  <Icon
+    name="tabler:brand-tiktok"
+    size={size}
+    class={color}
+    aria-hidden="true"
+    focusable="false"
+  />
+  <span class="sr-only">
+    {title}
+  </span>
 </a>

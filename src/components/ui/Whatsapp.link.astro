@@ -15,8 +15,23 @@ const { size = 48, variant = 'primary' } = Astro.props;
 
 const whatsappLinkShare = generateLinkWhatsapp(businessData.whatsapp.message);
 const color = variant === 'primary' ? 'text-(--primary)' : 'text-(--secondary)';
+const titleAccesibility = lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
 ---
 
-<a href={whatsappLinkShare} target="_blank">
-  <Icon name="tabler:brand-whatsapp" size={size} class={color} />
+<a
+  href={whatsappLinkShare}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}
+  title={titleAccesibility}>
+  <Icon
+    name="tabler:brand-whatsapp"
+    size={size}
+    class={color}
+    aria-hidden="true"
+    focusable="false"
+  />
+  <span class="sr-only">
+    {titleAccesibility}
+  </span>
 </a>

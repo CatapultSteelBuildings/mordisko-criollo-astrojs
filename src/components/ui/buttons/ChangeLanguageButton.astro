@@ -13,19 +13,42 @@ const { size = 40 } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 
 const iconName = lang === 'es' ? 'flag:us-1x1' : 'flag:es-1x1';
+const dataSpanish = {
+  currentLang: 'es',
+  targetLang: 'en',
+  iconName: 'flag:us-1x1',
+  title: 'Cambiar idioma a inglés',
+};
+const dataEnglish = {
+  currentLang: 'en',
+  targetLang: 'es',
+  iconName: 'flag:es-1x1',
+  title: 'Change language to Spanish',
+};
+
+const data = lang === 'es' ? dataSpanish : dataEnglish;
 ---
 
-<button id="changeLanguageButton" class="changeLanguageButtons cursor-pointer">
-  <Icon name={iconName} size={size} />
+<button
+  id="changeLanguageButton"
+  class="changeLanguageButtons cursor-pointer"
+  type="button"
+  aria-label={data.title}
+  aria-pressed="false"
+  title={data.title}
+  data-current-lang={data.currentLang}
+  data-target-lang={data.targetLang}>
+  <Icon name={iconName} size={size} aria-hidden="true" focusable="false" />
+  <span class="sr-only">
+    {lang === 'es' ? 'Cambiar idioma a inglés' : 'Change language to Spanish'}
+  </span>
 </button>
 
 <script>
   import { getLocalizatedUrl } from '@i18n/utils';
 
-  window.addEventListener('load', () => {
-    const buttons = document.querySelectorAll('.changeLanguageButtons');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => getLocalizatedUrl());
-    });
+  const buttons = document.querySelectorAll('.changeLanguageButtons');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => getLocalizatedUrl());
   });
 </script>

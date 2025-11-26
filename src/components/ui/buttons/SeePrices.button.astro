@@ -19,10 +19,17 @@ const { classes } = Astro.props;
 const url = uiMenu[lang]['nav.products.url'];
 ---
 
-<a href={url}>
+<a href={url} aria-label={callToAction} title={callToAction}>
   <div class={`SeePricesButton ${classes}`.trim()}>
-    <Icon name="tabler:list" size={size} class="text-(--secondary)" />
+    <Icon
+      name="tabler:list"
+      size={size}
+      class="text-(--secondary)"
+      aria-hidden="true"
+      focusable="false"
+    />
     <p>{callToAction}</p>
+    <span class="sr-only">{callToAction}</span>
   </div>
 </a>
 

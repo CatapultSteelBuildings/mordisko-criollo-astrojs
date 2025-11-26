@@ -17,15 +17,24 @@ const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
 
 const whatsappLinkShare = generateLinkWhatsapp(businessData.whatsapp.message);
+const titleAccesibility = lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
 ---
 
-<a href={whatsappLinkShare} target="_blank">
+<a
+  href={whatsappLinkShare}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}
+  title={titleAccesibility}>
   <div class="ProductPageWhatsappButton">
     <p class="md:order-2">{callToAction}</p>
     <Icon
       name="tabler:brand-whatsapp"
       class="h-8 w-8 text-(--whatsapp-dark-color)"
+      aria-hidden="true"
+      focusable="false"
     />
+    <span class="sr-only">{titleAccesibility}</span>
   </div>
 </a>
 

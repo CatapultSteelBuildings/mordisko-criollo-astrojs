@@ -5,15 +5,22 @@ import { getLangFromUrl } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const contactUrl = lang === 'es' ? '/contacto' : '/en/contact';
 const title = lang === 'es' ? 'Haz tu pedido' : 'Order now';
+const titleAccesibility =
+  lang === 'es'
+    ? 'Haz tu pedido en nuestra página de contacto'
+    : 'Order now in our contact page';
 ---
 
-<a href={contactUrl}>
+<a href={contactUrl} aria-label={titleAccesibility} title={titleAccesibility}>
   <div class="ProductPageOrderButton">
     <p>{title}</p>
     <Icon
       name="tabler:list"
       class="h-8 w-8 text-(--white) xl:text-(--secondary)"
+      aria-hidden="true"
+      focusable="false"
     />
+    <span class="sr-only">{titleAccesibility}</span>
   </div>
 </a>
 

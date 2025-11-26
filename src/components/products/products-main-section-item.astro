@@ -7,10 +7,9 @@ import ProductPageOrderButton from '../ui/buttons/ProductPageOrder.button.astro'
 
 interface Props {
   product: Product;
-  lang?: string;
 }
 
-const { product, lang = 'es' } = Astro.props;
+const { product } = Astro.props;
 ---
 
 <article class="ProductMainSectionItem">

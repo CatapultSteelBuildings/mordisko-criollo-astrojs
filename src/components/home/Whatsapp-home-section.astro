@@ -24,15 +24,28 @@ const message =
 const callToAction =
   lang === 'es' ? 'Pedir por WhatsApp' : 'Order via WhatsApp';
 const whatsappLink = generateLinkWhatsapp(businessData.whatsapp.message);
+const titleAccesibility = lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
 ---
 
 <article class="WhatsappHomeSection">
   <h4 class="WhatsappHomeSection__title">{title}</h4>
   <p class="WhatsappHomeSection__message">{message}</p>
   <div class="WhatsappHomeSection__boxLink">
-    <a href={whatsappLink} target="_blank">
-      <LogosWhatsappIcon class="WhatsappHomeSection__icon" />
+    <a
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={titleAccesibility}
+      title={titleAccesibility}>
+      <LogosWhatsappIcon
+        class="WhatsappHomeSection__icon"
+        aria-hidden="true"
+        focusable="false"
+      />
       <p>{callToAction}</p>
+      <span class="sr-only">
+        {titleAccesibility}
+      </span>
     </a>
   </div>
 </article>

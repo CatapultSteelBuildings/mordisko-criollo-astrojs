@@ -3,14 +3,20 @@
 
   export let lang: 'es' | 'en' = 'es';
   export let action: (() => any) | ((e: Event) => any) | undefined = undefined;
+  export let showOrderModal: boolean = false;
+  export let titleAccessibility: string | undefined = undefined;
+  const title =
+    lang === 'es' ? 'Confirmar Pedido en WhatsApp' : 'Confirm via WhatsApp';
 </script>
 
-<button class="flex items-center gap-2" onclick={action}>
+<button
+  class="flex items-center gap-2"
+  onclick={action}
+  aria-label={titleAccessibility}
+  aria-expanded={showOrderModal}
+  aria-haspopup="dialog">
   <LogosWhatsappIcon class="h-10 w-10" />
-  <span
-    >{lang === 'es'
-      ? 'Confirmar Pedido en WhatsApp'
-      : 'Confirm via WhatsApp'}</span>
+  <span>{title}</span>
 </button>
 
 <style>

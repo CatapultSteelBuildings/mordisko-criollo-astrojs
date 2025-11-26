@@ -24,8 +24,13 @@
 
   type DetailField = keyof typeof details;
 
-  let showOrderModal = $state<boolean>(false);
-  let showThanksModal = $state<boolean>(false);
+  let isOpenOrderModal = $state<boolean>(false);
+  let isOpenThanksModal = $state<boolean>(false);
+
+  const modalActions = () => {
+    isOpenOrderModal = false;
+    isOpenThanksModal = true;
+  };
 
   let details = $state(
     products.reduce(
@@ -195,7 +200,7 @@
   const handleSubmit = (e: Event) => {
     e.preventDefault();
     if (!validateForm()) return;
-    showOrderModal = true;
+    isOpenOrderModal = true;
   };
 
   const getPlaceholder = (lang: string) => {
@@ -281,15 +286,21 @@
     bind:value={message.message}></TextArea>
   <div
     class="col-span-2 flex w-full items-center justify-center 2xl:col-span-4">
-    <ButtonContactOrder lang={lang as 'es' | 'en'} action={handleSubmit} />
+    <ButtonContactOrder
+      lang={lang as 'es' | 'en'}
+      titleAccessibility={lang == 'es'
+        ? 'Revisa los detalles de tu pedido'
+        : 'Review your order details'}
+      {isOpenOrderModal}
+      action={handleSubmit} />
   </div>
 </form>
 <ContactOrderModal
-  {showOrderModal}
+  {isOpenOrderModal}
   order={message}
   {resetForm}
-  {showThanksModal} />
-<ContactThanksModal {showThanksModal} lang={lang as 'es' | 'en'} />
+  {modalActions} />
+<ContactThanksModal {isOpenThanksModal} lang={lang as 'es' | 'en'} />
 
 <style>
   @reference "tailwindcss";

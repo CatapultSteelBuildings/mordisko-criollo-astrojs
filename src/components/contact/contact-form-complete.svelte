@@ -56,10 +56,13 @@
     details: Object.values(details),
   });
 
-  const initialDetailErrors: Record<string, string> = {};
-  for (const code of products) {
-    initialDetailErrors[code.code] = '';
-  }
+  const initialDetailErrors: Record<string, string> = products.reduce(
+    (acc, product) => {
+      acc[product.code] = '';
+      return acc;
+    },
+    {} as Record<string, string>
+  );
 
   let errors = $state({
     fullname: '',

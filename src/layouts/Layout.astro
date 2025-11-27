@@ -33,16 +33,18 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<Head
-  location={location}
-  title={title}
-  metaDescription={metaDescription}
-  lang={lang}
-  noindex={noindex}
-  nofollow={nofollow}
-/>
-<body>
-  <Header lang={lang} />
-  <slot transition:animate={fade({ duration: '1s' })} />
-  <Footer />
-</body>
+<html lang={lang}>
+  <Head
+    location={location}
+    title={title}
+    metaDescription={metaDescription}
+    lang={lang}
+    noindex={noindex}
+    nofollow={nofollow}
+  />
+  <body>
+    <Header lang={lang} />
+    <slot transition:animate={fade({ duration: '1s' })} />
+    <Footer />
+  </body>
+</html>

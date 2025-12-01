@@ -9,6 +9,12 @@ import Delivery from '@components/shared/Delivery.astro';
 /* Utils */
 import { getLangFromUrl } from '@/i18n/utils';
 
+/* Schemas */
+import {
+  CONTACT_SCHEMA_ES,
+  CONTACT_SCHEMA_EN,
+} from '@/core/data/schemas/ContactSchemas';
+
 const lang = getLangFromUrl(Astro.url);
 
 interface Props {
@@ -17,11 +23,17 @@ interface Props {
 
 const { location } = Astro.props;
 
+const ContactSchema = lang === 'es' ? CONTACT_SCHEMA_ES : CONTACT_SCHEMA_EN;
+
 const title = lang === 'es' ? 'Contacto' : 'Contact';
 const metaDescription = lang === 'es' ? 'Contacto' : 'Contact';
 ---
 
-<Layout location={location} title={title} metaDescription={metaDescription}>
+<Layout
+  location={location}
+  title={title}
+  metaDescription={metaDescription}
+  schema={ContactSchema}>
   <HeroContactSection />
   <ContactFormSection />
   <Delivery />

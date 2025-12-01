@@ -1,6 +1,6 @@
 ---
 /* Compoonents */
-import ProductMainSectionItem from './products-main-section-item.astro';
+import ProductMainItem from './ProductsMainIitem.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 
 /* Data */
@@ -14,7 +14,7 @@ const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 
 <main class="ProductsMainSection">
   <section class="ProductsMainSection__products">
-    {products.map(product => <ProductMainSectionItem product={product} />)}
+    {products.map(product => <ProductMainItem product={product} />)}
   </section>
 </main>
 

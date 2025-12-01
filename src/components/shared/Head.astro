@@ -10,6 +10,7 @@ interface Props {
   lang: string;
   noindex: boolean;
   nofollow: boolean;
+  schema?: Record<string, unknown> | null;
 }
 
 const {
@@ -19,8 +20,10 @@ const {
   lang = 'es',
   noindex = false,
   nofollow = false,
+  schema = null,
 } = Astro.props;
 const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
+const schemaScriptTag = JSON.stringify(schema);
 ---
 
 <head>
@@ -29,6 +32,11 @@ const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  {
+    schema && (
+      <script type="application/ld+json" is:inline set:html={schemaScriptTag} />
+    )
+  }
   <SEO
     title={title}
     description={metaDescription}

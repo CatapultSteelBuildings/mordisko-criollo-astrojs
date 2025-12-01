@@ -19,6 +19,7 @@ interface Props {
   metaDescription: string;
   noindex?: boolean;
   nofollow?: boolean;
+  schema?: Record<string, unknown>;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   metaDescription = 'Mordisko Criollo',
   noindex = false,
   nofollow = false,
+  schema = null,
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
@@ -41,6 +43,7 @@ const lang = getLangFromUrl(Astro.url);
     lang={lang}
     noindex={noindex}
     nofollow={nofollow}
+    schema={schema}
   />
   <body>
     <Header lang={lang} />

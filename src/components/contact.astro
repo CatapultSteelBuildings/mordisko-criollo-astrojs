@@ -21,19 +21,13 @@ interface Props {
   location: string;
 }
 
-const { location } = Astro.props;
-
 const ContactSchema = lang === 'es' ? CONTACT_SCHEMA_ES : CONTACT_SCHEMA_EN;
 
 const title = lang === 'es' ? 'Contacto' : 'Contact';
 const metaDescription = lang === 'es' ? 'Contacto' : 'Contact';
 ---
 
-<Layout
-  location={location}
-  title={title}
-  metaDescription={metaDescription}
-  schema={ContactSchema}>
+<Layout title={title} metaDescription={metaDescription} schema={ContactSchema}>
   <HeroContactSection />
   <ContactFormSection />
   <Delivery />

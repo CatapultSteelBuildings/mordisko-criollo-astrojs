@@ -11,23 +11,14 @@ import { getLangFromUrl } from '@i18n/utils';
 
 import { HOME_SCHEMA_ES, HOME_SCHEMA_EN } from '@data/schemas/HomeSchemas';
 
-interface Props {
-  location: string;
-}
-
 const lang = getLangFromUrl(Astro.url);
-const { location } = Astro.props;
 const HomeSchema = lang === 'es' ? HOME_SCHEMA_ES : HOME_SCHEMA_EN;
 
 const title = 'Mordisko Criollo';
 const metaDescription = 'Mordisko Criollo';
 ---
 
-<Layout
-  location={location}
-  title={title}
-  metaDescription={metaDescription}
-  schema={HomeSchema}>
+<Layout title={title} metaDescription={metaDescription} schema={HomeSchema}>
   <HeroHomeSection />
   <BusinessHomeSection />
   <ProductsHomeSection />

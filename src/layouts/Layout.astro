@@ -14,7 +14,6 @@ import '../styles/global.css';
 
 /* Props */
 interface Props {
-  location: string;
   title: string;
   metaDescription: string;
   noindex?: boolean;
@@ -23,7 +22,6 @@ interface Props {
 }
 
 const {
-  location = '/',
   title = 'Mordisko Criollo',
   metaDescription = 'Mordisko Criollo',
   noindex = false,
@@ -37,7 +35,6 @@ const lang = getLangFromUrl(Astro.url);
 <!doctype html>
 <html lang={lang}>
   <Head
-    location={location}
     title={title}
     metaDescription={metaDescription}
     lang={lang}

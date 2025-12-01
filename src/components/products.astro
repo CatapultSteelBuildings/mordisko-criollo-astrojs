@@ -1,20 +1,25 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import HeroProductsSection from '@components/products/hero-products-section.astro';
-import ProductDescriptionSection from '@components/products/Product-description-section.astro';
-import ProductsMainSection from '@components/products/products-main-section.astro';
+import HeroProductsSection from '@components/products/HeroProducts.astro';
+import ProductDescriptionSection from '@components/products/ProductDescription.section.astro';
+import ProductsMainSection from '@components/products/ProductsMain.section.astro';
 
-interface Props {
-  location: string;
-}
+import { getLangFromUrl } from '@i18n/utils';
 
-const { location } = Astro.props;
+import {
+  PRODUCT_SCHEMAS_ES,
+  PRODUCT_SCHEMAS_EN,
+} from '@data/schemas/ProductSchemas';
+
+const lang = getLangFromUrl(Astro.url);
+
+const ProductSchema = lang === 'es' ? PRODUCT_SCHEMAS_ES : PRODUCT_SCHEMAS_EN;
 
 const title = 'Productos';
 const metaDescription = 'Productos';
 ---
 
-<Layout location={location} title={title} metaDescription={metaDescription}>
+<Layout title={title} metaDescription={metaDescription} schema={ProductSchema}>
   <HeroProductsSection />
   <ProductDescriptionSection />
   <ProductsMainSection />

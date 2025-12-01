@@ -4,23 +4,26 @@ import { SEO } from 'astro-seo';
 import { businessData } from '@/core/data/business.data';
 
 interface Props {
-  location: string;
   title: string;
   metaDescription: string;
   lang: string;
   noindex: boolean;
   nofollow: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[] | null;
 }
 
 const {
-  location,
   title = 'Mordisko Criollo',
   metaDescription,
   lang = 'es',
   noindex = false,
   nofollow = false,
+  schema = null,
 } = Astro.props;
 const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
+const schemaScriptTag = JSON.stringify(schema);
+
+const url = Astro.url;
 ---
 
 <head>
@@ -29,6 +32,11 @@ const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  {
+    schema && (
+      <script type="application/ld+json" is:inline set:html={schemaScriptTag} />
+    )
+  }
   <SEO
     title={title}
     description={metaDescription}
@@ -65,16 +73,11 @@ const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
         { name: 'author', content: businessData.name },
-        {
-          name: 'keywords',
-          content:
-            'astro, framework, web development, react, vue, svelte, solid',
-        },
       ],
       link: [
         {
           rel: 'canonical',
-          href: location,
+          href: `${businessData.site}${url.pathname}`,
         },
         { rel: 'icon', type: 'image/png', href: businessData.logo },
         {

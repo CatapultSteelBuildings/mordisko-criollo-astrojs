@@ -1,23 +1,24 @@
 ---
 /* Components */
 import Layout from '@layouts/Layout.astro';
-import HeroHomeSection from '@components/home/Hero-home.astro';
-import BusinessHomeSection from '@components/home/business-home.astro';
-import ProductsHomeSection from '@components/home/Products-home.astro';
-import SocialMediaHomeSection from '@components/home/social-media-home-section.astro';
-import ContactHomeSection from '@components/home/contact-home-section.astro';
+import HeroHomeSection from '@components/home/HeroHome.astro';
+import BusinessHomeSection from '@components/home/BusinessHome.astro';
+import ProductsHomeSection from '@components/home/ProductsHome.astro';
+import SocialMediaHomeSection from '@components/home/SocialMediaHome.section.astro';
+import ContactHomeSection from '@components/home/ContactHome.section.astro';
 
-interface Props {
-  location: string;
-}
+import { getLangFromUrl } from '@i18n/utils';
 
-const { location } = Astro.props;
+import { HOME_SCHEMA_ES, HOME_SCHEMA_EN } from '@data/schemas/HomeSchemas';
+
+const lang = getLangFromUrl(Astro.url);
+const HomeSchema = lang === 'es' ? HOME_SCHEMA_ES : HOME_SCHEMA_EN;
 
 const title = 'Mordisko Criollo';
 const metaDescription = 'Mordisko Criollo';
 ---
 
-<Layout location={location} title={title} metaDescription={metaDescription}>
+<Layout title={title} metaDescription={metaDescription} schema={HomeSchema}>
   <HeroHomeSection />
   <BusinessHomeSection />
   <ProductsHomeSection />

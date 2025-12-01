@@ -10,7 +10,7 @@ interface Props {
   lang: string;
   noindex: boolean;
   nofollow: boolean;
-  schema?: Record<string, unknown> | null;
+  schema?: Record<string, unknown> | Record<string, unknown>[] | null;
 }
 
 const {

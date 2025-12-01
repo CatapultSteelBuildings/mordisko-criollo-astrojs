@@ -19,7 +19,7 @@ interface Props {
   metaDescription: string;
   noindex?: boolean;
   nofollow?: boolean;
-  schema?: Record<string, unknown>;
+  schema?: Record<string, unknown> | Record<string, unknown>[] | null;
 }
 
 const {

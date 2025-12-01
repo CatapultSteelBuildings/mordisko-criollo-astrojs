@@ -4,17 +4,31 @@ import HeroProductsSection from '@components/products/HeroProducts.astro';
 import ProductDescriptionSection from '@components/products/ProductDescription.section.astro';
 import ProductsMainSection from '@components/products/ProductsMain.section.astro';
 
+import { getLangFromUrl } from '@i18n/utils';
+
+import {
+  PRODUCT_SCHEMAS_ES,
+  PRODUCT_SCHEMAS_EN,
+} from '@data/schemas/ProductSchemas';
+
 interface Props {
   location: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
 const { location } = Astro.props;
+
+const ProductSchema = lang === 'es' ? PRODUCT_SCHEMAS_ES : PRODUCT_SCHEMAS_EN;
 
 const title = 'Productos';
 const metaDescription = 'Productos';
 ---
 
-<Layout location={location} title={title} metaDescription={metaDescription}>
+<Layout
+  location={location}
+  title={title}
+  metaDescription={metaDescription}
+  schema={ProductSchema}>
   <HeroProductsSection />
   <ProductDescriptionSection />
   <ProductsMainSection />

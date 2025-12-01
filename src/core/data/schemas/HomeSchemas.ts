@@ -1,14 +1,16 @@
+import { businessData } from '@/core/data/business.data';
+
 // 🇪🇸 Spanish version
 export const HOME_SCHEMA_ES = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
-  name: 'Mordisko Criollo',
+  name: businessData.name,
   image:
     'https://mordiskocriollo.com/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp',
   description:
     'Fábrica de empanadas congeladas en Medellín. Sabores tradicionales y gourmet (Hawaiana, Sobrebarriga) listas para freír. Domicilios en todo el Valle de Aburrá.',
-  url: 'https://mordiskocriollo.com/',
-  telephone: '+573156115105',
+  url: businessData.site,
+  telephone: businessData.phone,
   priceRange: '$$',
   servesCuisine: 'Colombian, Empanadas',
   acceptsReservations: 'False',
@@ -60,13 +62,13 @@ export const HOME_SCHEMA_ES = {
 export const HOME_SCHEMA_EN = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
-  name: 'Mordisko Criollo',
+  name: businessData.name,
   image:
     'https://mordiskocriollo.com/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp',
   description:
     'Frozen empanada factory in Medellín. Traditional and gourmet flavors (Hawaiian, Slow-Cooked Beef) ready to fry. Delivery throughout the Aburrá Valley.',
-  url: 'https://mordiskocriollo.com/',
-  telephone: '+573156115105',
+  url: businessData.site,
+  telephone: businessData.phone,
   priceRange: '$$',
   servesCuisine: 'Colombian, Empanadas',
   acceptsReservations: 'False',

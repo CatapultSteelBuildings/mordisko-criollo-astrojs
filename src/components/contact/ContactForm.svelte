@@ -3,8 +3,8 @@
   import Input from '@components/shared/Input.svelte';
   import InputQuantity from '@components/shared/InputQuantity.svelte';
   import TextArea from '@components/shared/TextArea.svelte';
-  import ContactOrderModal from './contact-order-modal.svelte';
-  import ContactThanksModal from './contact-thanks-modal.svelte';
+  import ContactOrderModal from './ContactOrder.modal.svelte';
+  import ContactThanksModal from './ContactThanks.modal.svelte';
   import ButtonContactOrder from '@components/ui/buttons/ButtonContactOrder.svelte';
 
   /* Interfaces */

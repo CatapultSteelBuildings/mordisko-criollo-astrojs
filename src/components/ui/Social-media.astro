@@ -1,7 +1,6 @@
 ---
 import WhatsappLink from '@components/ui/Whatsapp.link.astro';
 import FacebookLink from '@components/ui/Facebook.link.astro';
-import TiktokLink from '@components/ui/Tiktok.link.astro';
 import InstagramLink from '@components/ui/Instagram.link.astro';
 
 interface Props {
@@ -18,7 +17,6 @@ const positionClass = position === 'center' ? 'justify-center' : 'justify-end';
 <div class={`SocialMedia ${positionClass}`}>
   <WhatsappLink size={size} variant={variant} />
   <FacebookLink size={size} variant={variant} />
-  <TiktokLink size={size} variant={variant} />
   <InstagramLink size={size} variant={variant} />
 </div>
 

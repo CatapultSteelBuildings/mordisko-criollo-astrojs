@@ -44,6 +44,14 @@ const data = lang === 'es' ? dataSpanish : dataEnglish;
   </span>
 </button>
 
+<style>
+  @reference "tailwindcss";
+
+  .changeLanguageButtons {
+    @apply lg:m-4;
+  }
+</style>
+
 <script>
   import { getLocalizatedUrl } from '@i18n/utils';
 

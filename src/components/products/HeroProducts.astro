@@ -5,9 +5,25 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="HeroSectionPages">
+<section class="HeroSectionPages HeroProductsSection">
   <div class="HeroSectionPages__container">
     <h1>{t('product.page.title')}</h1>
     <h2>{t('product.page.subtitle')}</h2>
   </div>
 </section>
+
+<style>
+  @reference 'tailwindcss';
+
+  .HeroProductsSection {
+    @apply bg-(--secondary);
+  }
+
+  .HeroProductsSection h1 {
+    @apply text-(--primary);
+  }
+
+  .HeroProductsSection h2 {
+    @apply text-(--dark);
+  }
+</style>

@@ -57,6 +57,6 @@
   }
 
   .form-group__inputBox button {
-    @apply cursor-pointer bg-(--secondary) text-(--primary) active:translate-y-[1px];
+    @apply cursor-pointer bg-(--primary) text-(--secondary) active:translate-y-px;
   }
 </style>

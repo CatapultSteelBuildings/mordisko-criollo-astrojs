@@ -11,11 +11,11 @@ export const businessData = {
     message: '',
   },
   facebook: {
-    url: 'https://facebook.com',
+    url: 'https://www.facebook.com/Mordiskocriollo',
     message: '',
   },
   instagram: {
-    url: 'https://instagram.com',
+    url: 'https://www.instagram.com/mordisko_criollo',
     message: '',
   },
   tiktok: {

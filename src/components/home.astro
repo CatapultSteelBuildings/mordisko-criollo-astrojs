@@ -14,8 +14,8 @@ import { HOME_SCHEMA_ES, HOME_SCHEMA_EN } from '@data/schemas/HomeSchemas';
 const lang = getLangFromUrl(Astro.url);
 const HomeSchema = lang === 'es' ? HOME_SCHEMA_ES : HOME_SCHEMA_EN;
 
-const title = 'Mordisko Criollo';
-const metaDescription = 'Mordisko Criollo';
+const title = 'Mordisko Criollo | Puro sabor de mi tierrita';
+const metaDescription = HomeSchema.description;
 ---
 
 <Layout title={title} metaDescription={metaDescription} schema={HomeSchema}>

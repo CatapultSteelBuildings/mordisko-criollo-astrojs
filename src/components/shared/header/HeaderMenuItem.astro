@@ -24,6 +24,10 @@ const isActive = pathname === href;
 >
 <style>
   @reference "tailwindcss";
+  .HeaderMenuItem__Link {
+    @apply text-(--secondary);
+  }
+
   .HeaderMenuItem__Link--Active {
     @apply font-bold;
   }

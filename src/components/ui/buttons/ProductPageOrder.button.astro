@@ -16,7 +16,7 @@ const titleAccesibility =
     <p>{title}</p>
     <Icon
       name="tabler:list"
-      class="h-8 w-8 text-(--white) xl:text-(--secondary)"
+      class="h-8 w-8 text-(--white) xl:text-(--primary)"
       aria-hidden="true"
       focusable="false"
     />
@@ -27,10 +27,10 @@ const titleAccesibility =
 <style>
   @reference: 'tailwindcss';
   .ProductPageOrderButton {
-    @apply m-0 mx-auto flex flex-col items-center justify-center gap-2 rounded-r-lg bg-(--secondary) px-3 py-2 text-center text-(--primary) md:flex-row xl:bg-(--primary) xl:text-(--secondary);
+    @apply m-0 mx-auto flex flex-col items-center justify-center gap-2 rounded-r-lg bg-(--primary) px-3 py-2 text-center text-(--secondary) md:flex-row xl:bg-(--secondary);
   }
 
   .ProductPageOrderButton p {
-    @apply m-0 text-(--white) xl:text-(--secondary);
+    @apply m-0 text-(--white) xl:text-(--primary);
   }
 </style>

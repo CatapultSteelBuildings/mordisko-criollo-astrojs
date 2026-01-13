@@ -1,21 +1,9 @@
 @import 'tailwindcss';
 
 :root {
-  --primary: #febd2b;
-  --primary-lighter: #ffd67c;
-  --primary-light: #ffc952;
-  --primary-dark: #de9b05;
-  --primary-darker: #ae7800;
-  --secondary: #1a385a;
-  --secondary-lighter: #557190;
-  --secondary-light: #557190;
-  --secondary-dark: #09233f;
-  --secondary-darker: #021326;
-  --third: #ca3224;
-  --third-lighter: #ff897d;
-  --third-light: #df594b;
-  --third-dark: #a31e10;
-  --third-darker: #7b0c00;
+  --primary: #470a68;
+  --secondary: #fdcf00;
+  --third: #db0401;
   --black: #000000;
   --white: #ffffff;
   --green: #5d9d26;
@@ -96,7 +84,7 @@ p {
 }
 .form-group input,
 .form-group textarea {
-  @apply mb-0 block w-full rounded-lg border px-3 py-2 outline-0 transition-all duration-150 focus:shadow;
+  @apply mb-0 block w-full rounded-lg border border-(--primary)/70 px-3 py-2 outline-0 transition-all duration-150 focus:border-(--primary) focus:shadow;
 }
 
 .form-group p {

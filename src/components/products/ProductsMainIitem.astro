@@ -56,7 +56,7 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__content {
-    @apply pt-3 md:flex md:flex-col xl:absolute xl:top-0 xl:left-0 xl:h-full xl:w-full xl:translate-y-full xl:items-center xl:justify-center xl:bg-(--secondary-dark)/90 xl:p-12 xl:text-(--primary) xl:transition-all xl:duration-300;
+    @apply pt-3 md:flex md:flex-col xl:absolute xl:top-0 xl:left-0 xl:h-full xl:w-full xl:translate-y-full xl:items-center xl:justify-center xl:bg-(--primary)/80 xl:p-12 xl:transition-all xl:duration-300;
   }
 
   .ProductMainSectionItem:hover .ProductMainSectionItem__content {
@@ -64,15 +64,15 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__title {
-    @apply mb-3;
+    @apply mb-3 text-(--primary) xl:text-(--secondary);
   }
 
   .ProductMainSectionItem__description {
-    @apply grow text-center font-light text-(--secondary) xl:grow-0 xl:text-(--white);
+    @apply grow text-center font-light text-(--dark) xl:grow-0 xl:text-(--white);
   }
 
   .ProductMainSectionItem__price {
-    @apply text-center font-bold text-(--secondary) xl:text-(--primary);
+    @apply text-center font-bold text-(--primary) xl:text-(--secondary);
   }
 
   .ProductMainSectionItem__buttons {

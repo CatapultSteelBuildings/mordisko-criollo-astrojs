@@ -12,11 +12,11 @@ const lang = getLangFromUrl(Astro.url);
 const title = lang === 'es' ? '¿Te antojaste de algo?' : 'Got a craving?';
 ---
 
-<Section variant="primary" title={title}>
+<Section variant="secondary" title={title}>
   <div class="ContactHomeSection">
     <WhatsappHomeSection />
     <ContactLogo />
-    <Delivery classes="lg:col-span-2 lg:flex-row" />
+    <Delivery variant="secondary" classes="lg:col-span-2 lg:flex-row" />
   </div>
 </Section>
 

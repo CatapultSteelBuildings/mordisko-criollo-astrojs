@@ -1,7 +1,7 @@
 export const businessData = {
   name: 'Mordisko Criollo',
   site: 'https://mordiskocriollo.com',
-  logo: '/logo.png',
+  logo: '/assets/images/logo/mordisko-criollo-logo-text.webp',
   primaryColor: '#febd2b',
   phone: '+573156115105',
   email: 'empanadas@mordiskocriollo.com',

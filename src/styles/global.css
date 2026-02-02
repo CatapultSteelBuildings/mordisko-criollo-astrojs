@@ -19,11 +19,11 @@
 }
 
 html {
-  @apply scroll-smooth text-base text-(--dark-text) md:text-lg lg:text-xl dark:text-(--light);
+  @apply scroll-smooth text-base text-(--light) md:text-lg lg:text-xl dark:text-(--light);
 }
 
 body {
-  @apply bg-(--primary) text-(--dark-text);
+  @apply bg-(--primary) text-(--light);
 }
 
 h1,
@@ -60,7 +60,7 @@ h6 {
 }
 
 p {
-  @apply mb-3 text-pretty text-(--white);
+  @apply mb-3 text-pretty text-(--light);
 }
 
 .HeroSectionPages {

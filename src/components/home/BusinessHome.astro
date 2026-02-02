@@ -12,7 +12,7 @@ import { businessDataEnglish } from '@data/business.data.en';
 import { businessDataSpanish } from '@data/business.data.es';
 
 /* Images */
-import logo from '@assets/images/logo/mordiko-criollo-logo-with-background.webp';
+import logo from '@assets/images/logo/mordisko-criollo-logo-mid.webp';
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -41,6 +41,6 @@ const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 <style>
   @reference "tailwindcss";
   .Business-home__history p {
-    @apply text-(--dark);
+    @apply text-(--light);
   }
 </style>

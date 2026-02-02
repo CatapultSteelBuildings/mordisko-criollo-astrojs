@@ -1,5 +1,5 @@
 {
-  "name": "MordiskoCriollo",
+  "name": "Mordisko Criollo",
   "short_name": "MordiskoCriollo",
   "icons": [
     {
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#470A68",
-  "background_color": "#470A68",
+  "theme_color": "#3d1a54",
+  "background_color": "#3d1a54",
   "display": "standalone"
 }

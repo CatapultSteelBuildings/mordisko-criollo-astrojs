@@ -1,1 +1,4 @@
-{ "workbench.colorTheme": "Bearded Theme Black & Amethyst" }
+{
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "editor.aiStats.enabled": true
+}

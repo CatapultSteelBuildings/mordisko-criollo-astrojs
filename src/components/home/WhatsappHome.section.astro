@@ -53,14 +53,14 @@ const titleAccesibility = lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
 <style>
   @reference "tailwindcss";
   .WhatsappHomeSection {
-    @apply text-(--dark) lg:flex lg:flex-col lg:justify-center;
+    @apply text-(--light) lg:flex lg:flex-col lg:justify-center;
   }
   .WhatsappHomeSection__title {
     @apply mb-3 lg:text-left;
   }
 
   .WhatsappHomeSection__message {
-    @apply mb-0 text-center text-(--dark) italic lg:text-left;
+    @apply mb-0 text-center text-(--light) italic lg:text-left;
   }
   .WhatsappHomeSection__icon {
     @apply h-20 w-20;
@@ -74,6 +74,6 @@ const titleAccesibility = lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
   }
 
   .WhatsappHomeSection__boxLink a p {
-    @apply m-0 font-bold text-(--whatsapp-dark-color) underline;
+    @apply m-0 font-bold text-(--whatsapp-color) underline;
   }
 </style>

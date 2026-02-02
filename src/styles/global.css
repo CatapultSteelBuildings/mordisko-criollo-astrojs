@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  @apply bg-(--primary) text-(--light);
+  @apply bg-(--primary) text-(--dark);
 }
 
 h1,

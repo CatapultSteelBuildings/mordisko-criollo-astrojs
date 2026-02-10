@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import RappiIconWhite from '../icons/RappiIconWhite.astro';
+
+/* Lang */
+import { getLangFromUrl } from '@i18n/utils';
+
+/* Data */
+import { businessData } from '@/core/data/business.data';
+
+/* Utils */
+import { generateLinkWhatsapp } from '@/core/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
+
+const size = 48;
+const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
+---
+
+<a
+  href={businessData.rappi.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}
+  title={titleAccesibility}>
+  <div class="Rappi-Button">
+    <RappiIconWhite />
+    <p>{callToAction}</p>
+    <span class="sr-only">
+      {titleAccesibility}
+    </span>
+  </div>
+</a>
+
+<style>
+  @reference "tailwindcss";
+  .Rappi-Button {
+    @apply flex items-center justify-center gap-2 rounded-2xl bg-(--rappi-color) px-2 py-1 md:border-4 md:border-(--Rappi-dark-color);
+  }
+
+  .Rappi-Button p {
+    @apply m-0 font-bold text-(--white);
+  }
+</style>

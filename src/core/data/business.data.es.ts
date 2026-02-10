@@ -6,7 +6,7 @@ export const businessDataSpanish = {
   whatsapp: {
     ...businessData.whatsapp,
     message:
-      '¡Hola Mordisko Criollo! Estoy en la web y me antojé. ¿Me podrían compartir el menú y precios?',
+      'Hola Mordisko! 👋 Vengo de la web. Tengo una duda especial o consulta sobre eventos/catering. ¿Me ayudan?',
   },
   facebook: {
     ...businessData.facebook,

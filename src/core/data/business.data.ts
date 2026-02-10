@@ -6,6 +6,10 @@ export const businessData = {
   phone: '+573156115105',
   email: 'empanadas@mordiskocriollo.com',
   address: 'Calle 123',
+  rappi: {
+    url: 'https://rappi.com',
+    message: '',
+  },
   whatsapp: {
     number: '573156115105',
     message: '',

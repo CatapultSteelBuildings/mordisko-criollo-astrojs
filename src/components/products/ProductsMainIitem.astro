@@ -2,8 +2,7 @@
 import { Image } from 'astro:assets';
 import type { Product } from '@/core/interfaces/Product.interface';
 
-import ProductPageWhatsappButton from '../ui/buttons/ProductPageWhatsapp.button.astro';
-import ProductPageOrderButton from '../ui/buttons/ProductPageOrder.button.astro';
+import RappiButton from '../ui/buttons/Rappi.button.astro';
 
 interface Props {
   product: Product;
@@ -27,16 +26,11 @@ const { product } = Astro.props;
   </div>
   <div class="ProductMainSectionItem__content">
     <h3 class="ProductMainSectionItem__title">{product.title}</h3>
-    <p class="ProductMainSectionItem__description xl:hidden">
-      {product.shortDescription}
-    </p>
-    <p class="ProductMainSectionItem__description hidden xl:block">
+    <p class="ProductMainSectionItem__description">
       {product.description}
     </p>
-    <p class="ProductMainSectionItem__price">$ {product.price}</p>
     <div class="ProductMainSectionItem__buttons">
-      <ProductPageWhatsappButton />
-      <ProductPageOrderButton />
+      <RappiButton />
     </div>
   </div>
 </article>
@@ -76,6 +70,6 @@ const { product } = Astro.props;
   }
 
   .ProductMainSectionItem__buttons {
-    @apply grid w-full grid-cols-2 gap-0 lg:max-w-[450px];
+    @apply flex items-center justify-center py-3 lg:max-w-[450px];
   }
 </style>

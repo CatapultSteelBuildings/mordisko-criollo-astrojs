@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import RappiIconWhite from '../icons/RappiIconWhite.astro';
+import RappiIcon from '../icons/RappiIcon.astro';
 
 /* Lang */
 import { getLangFromUrl } from '@i18n/utils';
@@ -9,15 +9,19 @@ import { getLangFromUrl } from '@i18n/utils';
 /* Data */
 import { businessData } from '@/core/data/business.data';
 
-/* Utils */
-import { generateLinkWhatsapp } from '@/core/utils';
+interface Props {
+  variant?: 'primary' | 'secondary';
+}
 
 const lang = getLangFromUrl(Astro.url);
 
 const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
 
-const size = 48;
 const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
+
+const { variant = 'primary' } = Astro.props;
+const classes =
+  variant == 'primary' ? 'Rappi-Button--primary' : 'Rappi-Button--secondary';
 ---
 
 <a
@@ -26,8 +30,8 @@ const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
   rel="noopener noreferrer"
   aria-label={titleAccesibility}
   title={titleAccesibility}>
-  <div class="Rappi-Button">
-    <RappiIconWhite />
+  <div class={`Rappi-Button ${classes}`}>
+    <RappiIcon />
     <p>{callToAction}</p>
     <span class="sr-only">
       {titleAccesibility}
@@ -38,10 +42,27 @@ const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
 <style>
   @reference "tailwindcss";
   .Rappi-Button {
-    @apply flex items-center justify-center gap-2 rounded-2xl bg-(--rappi-color) px-2 py-1 md:border-4 md:border-(--Rappi-dark-color);
+    @apply flex items-center justify-center gap-2 rounded-2xl px-2 py-1 md:border-4;
   }
 
   .Rappi-Button p {
-    @apply m-0 font-bold text-(--white);
+    @apply m-0 font-bold;
+  }
+
+  .Rappi-Button--primary {
+    @apply border-(--white) bg-(--rappi-color);
+  }
+
+  .Rappi-Button--primary p,
+  .Rappi-Button--primary svg {
+    @apply text-(--white);
+  }
+
+  .Rappi-Button--secondary {
+    @apply border-(--rappi-color) bg-(--white);
+  }
+
+  .Rappi-Button--secondary * {
+    @apply text-(--rappi-color);
   }
 </style>

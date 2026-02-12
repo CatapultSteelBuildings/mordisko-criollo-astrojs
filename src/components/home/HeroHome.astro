@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-import Rappi from '../ui/buttons/Rappi.button.astro';
+import RappiButton from '../ui/buttons/Rappi.button.astro';
 import SeePrices from '../ui/buttons/SeePrices.button.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
@@ -59,7 +59,7 @@ const images = [hero1, hero2, hero3, hero4];
       {t('hero.subtitle')}
     </h3>
     <div class="HeroHome__buttons">
-      <Rappi class="h-48 w-48" />
+      <RappiButton />
       <SeePrices classes="hidden sm:block" />
     </div>
   </div>

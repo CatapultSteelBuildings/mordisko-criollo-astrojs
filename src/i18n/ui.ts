@@ -46,8 +46,8 @@ export const ui = {
     'product.page.subtitle':
       'Elige tu Relleno Favorito: Tradición e Innovación',
     'product.page.description': `En ${businessData.name} no ahorramos en relleno. Descubre nuestra selección artesanal de empanadas congeladas, elaboradas con masa de maíz 100% natural y guisos que respetan la tradición paisa. Calidad premium lista para disfrutar en tu mesa en minutos.`,
-    'contact.page.title': 'Haz tu pedido en línea',
-    'contact.page.subtitle': 'Elige tus empanadas favoritas y pide ahora',
+    'contact.page.title': '¿Tienes comentarios?',
+    'contact.page.subtitle': 'Escríbenos tus opiniones o sugerencias',
   },
   en: {
     ...uiMenu.en,
@@ -63,7 +63,7 @@ export const ui = {
     'product.page.subtitle':
       'Choose Your Favorite Filling: Tradition & Innovation',
     'product.page.description': `At ${businessData.name}, we don't skimp on the filling. Discover our artisanal selection of frozen empanadas, made with 100% natural corn dough and authentic homemade stews. Premium quality, ready to fry and enjoy at your table in minutes.`,
-    'contact.page.title': 'Place Your Order Online',
-    'contact.page.subtitle': 'Choose your favorite empanadas and order now',
+    'contact.page.title': 'Do you have comments?',
+    'contact.page.subtitle': 'Write us your opinions or suggestions',
   },
 };

@@ -64,6 +64,11 @@ p {
   @apply mb-3 text-pretty text-(--light);
 }
 
+a,
+button {
+  @apply cursor-pointer;
+}
+
 .HeroSectionPages {
   @apply bg-(--primary) pt-6 text-(--secondary);
 }
@@ -90,4 +95,16 @@ p {
 
 .form-group p {
   @apply absolute pl-1 text-xs font-bold text-(--red);
+}
+
+.btn {
+  @apply rounded-lg border px-4 py-2 font-semibold transition-colors duration-300;
+}
+
+.btn-primary {
+  @apply bg-(--primary) text-(--secondary);
+}
+
+.btn-secondary {
+  @apply bg-(--secondary) text-(--primary);
 }

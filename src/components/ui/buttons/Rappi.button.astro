@@ -1,6 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 import RappiIcon from '../icons/RappiIcon.astro';
 
 /* Lang */
@@ -15,7 +13,7 @@ interface Props {
 
 const lang = getLangFromUrl(Astro.url);
 
-const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
+const callToAction = lang === 'es' ? 'Rappi' : 'Rappi';
 
 const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
 
@@ -42,7 +40,7 @@ const classes =
 <style>
   @reference "tailwindcss";
   .Rappi-Button {
-    @apply flex items-center justify-center gap-2 rounded-2xl px-2 py-1 md:border-4;
+    @apply flex h-[66px] w-[140px] items-center justify-center gap-2 rounded-2xl px-2 py-1 md:w-[190px] md:border-4 xl:w-[200px];
   }
 
   .Rappi-Button p {

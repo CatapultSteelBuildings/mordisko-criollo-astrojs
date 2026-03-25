@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl } from '@i18n/utils';
 import RappiIcon from '../ui/icons/RappiIcon.astro';
+import DidiIcon from '../ui/icons/DidiIcon.astro';
 import LogosWhatsappIcon from '../ui/icons/LogosWhatsappIcon.astro';
 
 /* Data */
@@ -15,8 +16,8 @@ const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 
 const title =
   lang === 'es'
-    ? '¡No te quedes con las ganas! "¡Tus empanadas favoritas ahora más cerca! Pídelas directamente por Rappi y recíbelas en minutos sin filas ni esperas.'
-    : `Don't miss out! Your favorite empanadas are now closer than ever. Order directly on Rappi and get them in minutes—no lines, no waiting`;
+    ? '¡No te quedes con las ganas! "¡Tus empanadas favoritas ahora más cerca! Pídelas directamente por Rappi o Didi y recíbelas en minutos sin filas ni esperas.'
+    : `Don't miss out! Your favorite empanadas are now closer than ever. Order directly on Rappi or Didi and get them in minutes—no lines, no waiting`;
 const message =
   lang === 'es'
     ? 'Envío seguro y rastreable en tiempo real.'
@@ -25,7 +26,9 @@ const footerText =
   lang === 'es'
     ? 'Disfruta la misma sazón, entregada por expertos.'
     : 'Enjoy the same authentic flavor, delivered by experts.';
-const callToAction = lang === 'es' ? 'Pide ya por Rappi' : 'Order via Rappi';
+const callToActionRappi =
+  lang === 'es' ? 'Pide ya por Rappi' : 'Order via Rappi';
+const callToActionDidi = lang === 'es' ? 'Pide ya por Didi' : 'Order via Didi';
 
 const whatsappText =
   lang == 'es'
@@ -42,12 +45,25 @@ const titleAccesibilityWhatsapp =
   <p class="RappiHomeSection__message">{message}</p>
   <div class="RappiHomeSection__boxLink">
     <a
+      class="RappiHomeSection__linkRappi"
       href={businessData.rappi.url}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={titleAccesibility}>
-      <RappiIcon class="RappiHomeSection__icon" />
-      <p>{callToAction}</p>
+      <RappiIcon class="RappiHomeSection__iconRappi" />
+      <p>{callToActionRappi}</p>
+      <span class="sr-only">
+        {titleAccesibility}
+      </span>
+    </a>
+    <a
+      class="RappiHomeSection__linkDidi"
+      href={businessData.didi.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={titleAccesibility}>
+      <DidiIcon class="RappiHomeSection__iconDidi text-(--didi-color)" />
+      <p>{callToActionDidi}</p>
       <span class="sr-only">
         {titleAccesibility}
       </span>
@@ -87,19 +103,40 @@ const titleAccesibilityWhatsapp =
   .RappiHomeSection__message {
     @apply mb-0 text-center text-(--light) italic lg:text-left;
   }
-  .RappiHomeSection__icon {
-    @apply h-20 w-40 lg:h-15 lg:w-20;
-  }
 
   .RappiHomeSection__boxLink {
-    @apply py-6 lg:pb-0;
+    @apply flex flex-col gap-3 py-6 md:flex-row lg:pb-0;
   }
   .RappiHomeSection__boxLink a {
-    @apply mx-auto flex w-[260px] flex-col items-center justify-center gap-0 rounded-xl border-4 border-(--rappi-color) bg-white px-16 py-3 md:mb-6 md:w-[360px] md:flex-row md:gap-x-3 md:rounded-2xl md:px-0 md:py-1;
+    @apply relative mx-auto flex w-[260px] flex-col items-center justify-center gap-0 overflow-hidden rounded-xl border-4 bg-white px-16 py-3 md:mb-6 md:w-[360px] md:flex-row md:gap-x-2 md:rounded-2xl md:px-0 md:py-1 lg:flex-col xl:flex-row;
   }
 
   .RappiHomeSection__boxLink a p {
-    @apply m-0 text-2xl font-bold text-nowrap text-(--rappi-color) lg:text-lg;
+    @apply m-0 text-xl font-bold text-nowrap xl:text-lg;
+  }
+
+  .RappiHomeSection__linkRappi {
+    @apply border-(--rappi-color);
+  }
+
+  .RappiHomeSection__iconRappi {
+    @apply h-16 w-16 text-(--rappi-color) lg:h-12 lg:w-12;
+  }
+
+  .RappiHomeSection__linkRappi p {
+    @apply text-(--rappi-color) lg:pb-2 xl:pb-0;
+  }
+
+  .RappiHomeSection__linkDidi {
+    @apply border-(--didi-color);
+  }
+
+  .RappiHomeSection__linkDidi p {
+    @apply pt-0 text-(--didi-color) md:pt-0;
+  }
+
+  .RappiHomeSection__iconDidi {
+    @apply h-14 w-14 p-2 text-(--didi-color) lg:h-12 lg:w-12;
   }
 
   .RappiHomeSection__whatsappArea {

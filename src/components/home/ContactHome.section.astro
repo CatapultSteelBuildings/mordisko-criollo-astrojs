@@ -3,7 +3,7 @@ import Section from '@components/shared/Section.astro';
 
 import { getLangFromUrl } from '@i18n/utils';
 
-import ContactHomeRappi from './ContactHomeRappi.astro';
+import ContactHomeRappiDidi from './ContactHomeRappiDidi.astro';
 import ContactLogo from '@components/home/ContactLogo.astro';
 import Delivery from '@components/shared/Delivery.astro';
 
@@ -14,7 +14,7 @@ const title = lang === 'es' ? '¿Te antojaste de algo?' : 'Got a craving?';
 
 <Section variant="secondary" title={title}>
   <div class="ContactHomeSection">
-    <ContactHomeRappi />
+    <ContactHomeRappiDidi />
     <ContactLogo />
     <Delivery variant="secondary" classes="lg:col-span-2 lg:flex-row" />
   </div>

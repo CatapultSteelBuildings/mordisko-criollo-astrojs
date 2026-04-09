@@ -1,0 +1,73 @@
+---
+/* Lang */
+import { getLangFromUrl } from '@i18n/utils';
+
+import { businessData } from '@/core/data/business.data';
+
+interface Props {
+  variant?: 'primary' | 'secondary';
+  classes?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+
+const callToAction = lang === 'es' ? 'Didi' : 'Didi';
+
+const titleAccesibility = lang === 'es' ? 'Abrir Didi' : 'Open Didi';
+
+const { variant = 'primary', classes: customClasses } = Astro.props;
+const classes =
+  variant == 'primary' ? 'Didi-Button--primary' : 'Didi-Button--secondary';
+
+const logo_officialcolor = 'assets/images/logos/didi-official-color.webp';
+const logo_white = 'assets/images/logos/didi-white.webp';
+
+const logo = variant === 'primary' ? logo_white : logo_officialcolor;
+---
+
+<a
+  href={businessData.didi.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}
+  title={titleAccesibility}
+  class={customClasses}>
+  <div class={`Didi-Button ${classes}`}>
+    <img src={logo} alt="Didi logo" />
+    <p>{callToAction}</p>
+    <span class="sr-only">
+      {titleAccesibility}
+    </span>
+  </div>
+</a>
+
+<style>
+  @reference "tailwindcss";
+  .Didi-Button {
+    @apply flex h-[60px] w-[135px] items-center justify-center gap-2 rounded-2xl md:w-[160px] md:border-4;
+  }
+
+  .Didi-Button p {
+    @apply m-0 font-bold;
+  }
+
+  .Didi-Button img {
+    @apply h-12 w-12;
+  }
+
+  .Didi-Button--primary {
+    @apply bg-(--didi-color);
+  }
+
+  .Didi-Button--primary p {
+    @apply text-(--white);
+  }
+
+  .Didi-Button--secondary {
+    @apply border-(--didi-color) bg-(--white);
+  }
+
+  .Didi-Button--secondary * {
+    @apply text-(--didi-color);
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { businessData } from '@/core/data/business.data';
+
+import { getLangFromUrl } from '@i18n/utils';
+
+interface Props {
+  variant: 'rappi' | 'didi';
+}
+
+const { variant } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+
+const logoRappiOfficialcolor = 'assets/images/logos/rappi-official-color.webp';
+const logoDidiOfficialcolor = 'assets/images/logos/didi-official-color.webp';
+
+const urlRappi = businessData.rappi.url;
+const urlDidi = businessData.didi.url;
+
+const url = variant === 'rappi' ? urlRappi : urlDidi;
+
+const logo =
+  variant === 'rappi' ? logoRappiOfficialcolor : logoDidiOfficialcolor;
+
+const callToActionRappi =
+  lang === 'es' ? 'Pide ya por Rappi' : 'Order via Rappi';
+const callToActionDidi = lang === 'es' ? 'Pide ya por Didi' : 'Order via Didi';
+const callToAction = variant === 'rappi' ? callToActionRappi : callToActionDidi;
+
+const titleAccesibilityRappi = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
+const titleAccesibilityDidi = lang === 'es' ? 'Abrir Didi' : 'Open Didi';
+const titleAccesibility =
+  variant === 'rappi' ? titleAccesibilityRappi : titleAccesibilityDidi;
+
+const className =
+  variant === 'rappi'
+    ? 'ContactHomeRappiDidiButton--rappi'
+    : 'ContactHomeRappiDidiButton--didi';
+const classNameLang = lang === 'es' ? '' : 'ContactHomeRappiDidiButton--en';
+---
+
+<a
+  class={`ContactHomeRappiDidiButton ${className} ${classNameLang}`.trim()}
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}>
+  <img src={logo} alt={titleAccesibility} />
+  <p>{callToAction}</p>
+  <span class="sr-only">
+    {titleAccesibility}
+  </span>
+</a>
+
+<style>
+  @reference "tailwindcss";
+
+  .ContactHomeRappiDidiButton {
+    @apply mx-auto flex w-full max-w-[280px] items-center gap-x-1 rounded-xl border-4 bg-white px-3 py-1 md:max-w-[310px] lg:max-w-[340px];
+  }
+
+  .ContactHomeRappiDidiButton--en {
+    @apply max-w-[260px] md:max-w-[285px] lg:max-w-[315px];
+  }
+
+  .ContactHomeRappiDidiButton img {
+    @apply h-16 w-16;
+  }
+
+  .ContactHomeRappiDidiButton p {
+    @apply m-0 shrink-0 text-xl font-bold text-nowrap;
+  }
+
+  .ContactHomeRappiDidiButton--rappi {
+    @apply border-(--rappi-color);
+  }
+
+  .ContactHomeRappiDidiButton--rappi p {
+    @apply text-(--rappi-color);
+  }
+
+  .ContactHomeRappiDidiButton--didi {
+    @apply border-(--didi-color) xl:hidden;
+  }
+
+  .ContactHomeRappiDidiButton--didi p {
+    @apply text-(--didi-color);
+  }
+</style>

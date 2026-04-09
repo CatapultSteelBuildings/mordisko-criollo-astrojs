@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl } from '@i18n/utils';
-import RappiIcon from '../ui/icons/RappiIcon.astro';
+import ContactHomeRappiDidiButton from './ContactHomeRappiDidiButton.astro';
 import LogosWhatsappIcon from '../ui/icons/LogosWhatsappIcon.astro';
 
 /* Data */
@@ -15,8 +15,8 @@ const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
 
 const title =
   lang === 'es'
-    ? '¡No te quedes con las ganas! "¡Tus empanadas favoritas ahora más cerca! Pídelas directamente por Rappi y recíbelas en minutos sin filas ni esperas.'
-    : `Don't miss out! Your favorite empanadas are now closer than ever. Order directly on Rappi and get them in minutes—no lines, no waiting`;
+    ? '¡No te quedes con las ganas! "¡Tus empanadas favoritas ahora más cerca! Pídelas directamente por Rappi o Didi y recíbelas en minutos sin filas ni esperas.'
+    : `Don't miss out! Your favorite empanadas are now closer than ever. Order directly on Rappi or Didi and get them in minutes—no lines, no waiting`;
 const message =
   lang === 'es'
     ? 'Envío seguro y rastreable en tiempo real.'
@@ -25,37 +25,26 @@ const footerText =
   lang === 'es'
     ? 'Disfruta la misma sazón, entregada por expertos.'
     : 'Enjoy the same authentic flavor, delivered by experts.';
-const callToAction = lang === 'es' ? 'Pide ya por Rappi' : 'Order via Rappi';
 
 const whatsappText =
   lang == 'es'
     ? '¿Tienes dudas o eventos especiales? Escríbenos aquí'
     : 'Questions or catering for events? Chat with us here.';
 const whatsappLink = generateLinkWhatsapp(businessData.whatsapp.message);
-const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
 const titleAccesibilityWhatsapp =
   lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
 ---
 
-<article class="RappiHomeSection">
-  <h4 class="RappiHomeSection__title">{title}</h4>
-  <p class="RappiHomeSection__message">{message}</p>
-  <div class="RappiHomeSection__boxLink">
-    <a
-      href={businessData.rappi.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={titleAccesibility}>
-      <RappiIcon class="RappiHomeSection__icon" />
-      <p>{callToAction}</p>
-      <span class="sr-only">
-        {titleAccesibility}
-      </span>
-    </a>
+<article class="RappiDidiHomeSection">
+  <h4 class="RappiDidiHomeSection__title">{title}</h4>
+  <p class="RappiDidiHomeSection__message">{message}</p>
+  <div class="RappiDidiHomeSection__boxLinks">
+    <ContactHomeRappiDidiButton variant="rappi" />
+    <ContactHomeRappiDidiButton variant="didi" />
   </div>
-  <p class="RappiHomeSection__message">{footerText}</p>
-  <div class="RappiHomeSection__whatsappArea">
-    <p class="RappiHomeSection__message">
+  <p class="RappiDidiHomeSection__message">{footerText}</p>
+  <div class="RappiDidiHomeSection__whatsappArea">
+    <p class="RappiDidiHomeSection__message">
       {whatsappText}
     </p>
     <a
@@ -64,7 +53,7 @@ const titleAccesibilityWhatsapp =
       rel="noopener noreferrer"
       aria-label={titleAccesibilityWhatsapp}>
       <LogosWhatsappIcon
-        class="RappiHomeSection__iconWhatsapp"
+        class="RappiDidiHomeSection__iconWhatsapp"
         aria-hidden="true"
         focusable="false"
       />
@@ -77,36 +66,26 @@ const titleAccesibilityWhatsapp =
 
 <style>
   @reference "tailwindcss";
-  .RappiHomeSection {
+  .RappiDidiHomeSection {
     @apply text-(--light) lg:flex lg:flex-col lg:justify-center;
   }
-  .RappiHomeSection__title {
+  .RappiDidiHomeSection__title {
     @apply mb-3 lg:text-left;
   }
 
-  .RappiHomeSection__message {
+  .RappiDidiHomeSection__message {
     @apply mb-0 text-center text-(--light) italic lg:text-left;
   }
-  .RappiHomeSection__icon {
-    @apply h-20 w-40 lg:h-15 lg:w-20;
+
+  .RappiDidiHomeSection__boxLinks {
+    @apply flex flex-col items-center gap-y-3 py-6 md:flex-row md:items-start md:justify-start lg:flex-col 2xl:flex-row;
   }
 
-  .RappiHomeSection__boxLink {
-    @apply py-6 lg:pb-0;
-  }
-  .RappiHomeSection__boxLink a {
-    @apply mx-auto flex w-[260px] flex-col items-center justify-center gap-0 rounded-xl border-4 border-(--rappi-color) bg-white px-16 py-3 md:mb-6 md:w-[360px] md:flex-row md:gap-x-3 md:rounded-2xl md:px-0 md:py-1;
-  }
-
-  .RappiHomeSection__boxLink a p {
-    @apply m-0 text-2xl font-bold text-nowrap text-(--rappi-color) lg:text-lg;
-  }
-
-  .RappiHomeSection__whatsappArea {
+  .RappiDidiHomeSection__whatsappArea {
     @apply flex flex-col items-center justify-center gap-3 pt-12 pb-6 md:flex-row lg:justify-items-start lg:gap-3;
   }
 
-  .RappiHomeSection__iconWhatsapp {
+  .RappiDidiHomeSection__iconWhatsapp {
     @apply h-10 w-10;
   }
 </style>

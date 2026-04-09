@@ -1,8 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-import RappiIcon from '../icons/RappiIcon.astro';
-
 /* Lang */
 import { getLangFromUrl } from '@i18n/utils';
 
@@ -15,13 +11,18 @@ interface Props {
 
 const lang = getLangFromUrl(Astro.url);
 
-const callToAction = lang === 'es' ? 'Pide Ahora    ' : 'Order Now';
+const callToAction = lang === 'es' ? 'Rappi' : 'Rappi';
 
 const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
 
 const { variant = 'primary' } = Astro.props;
 const classes =
   variant == 'primary' ? 'Rappi-Button--primary' : 'Rappi-Button--secondary';
+
+const logo_officialcolor = '/assets/images/logos/rappi-official-color.webp';
+const logo_white = '/assets/images/logos/rappi-white.webp';
+
+const logo = variant === 'primary' ? logo_white : logo_officialcolor;
 ---
 
 <a
@@ -31,7 +32,7 @@ const classes =
   aria-label={titleAccesibility}
   title={titleAccesibility}>
   <div class={`Rappi-Button ${classes}`}>
-    <RappiIcon />
+    <img src={logo} alt="Rappi logo" />
     <p>{callToAction}</p>
     <span class="sr-only">
       {titleAccesibility}
@@ -42,19 +43,22 @@ const classes =
 <style>
   @reference "tailwindcss";
   .Rappi-Button {
-    @apply flex items-center justify-center gap-2 rounded-2xl px-2 py-1 md:border-4;
+    @apply flex h-[60px] w-[135px] items-center justify-center gap-2 rounded-2xl md:w-[160px] md:border-4 xl:w-[200px];
   }
 
   .Rappi-Button p {
     @apply m-0 font-bold;
   }
 
+  .Rappi-Button img {
+    @apply h-12 w-12;
+  }
+
   .Rappi-Button--primary {
     @apply border-(--white) bg-(--rappi-color);
   }
 
-  .Rappi-Button--primary p,
-  .Rappi-Button--primary svg {
+  .Rappi-Button--primary p {
     @apply text-(--white);
   }
 

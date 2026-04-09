@@ -1,6 +1,4 @@
 ---
-import RappiIcon from '../icons/RappiIcon.astro';
-
 /* Lang */
 import { getLangFromUrl } from '@i18n/utils';
 
@@ -21,8 +19,8 @@ const { variant = 'primary' } = Astro.props;
 const classes =
   variant == 'primary' ? 'Rappi-Button--primary' : 'Rappi-Button--secondary';
 
-const logo_officialcolor = 'assets/images/logos/rappi-official-color.webp';
-const logo_white = 'assets/images/logos/rappi-white.webp';
+const logo_officialcolor = '/assets/images/logos/rappi-official-color.webp';
+const logo_white = '/assets/images/logos/rappi-white.webp';
 
 const logo = variant === 'primary' ? logo_white : logo_officialcolor;
 ---

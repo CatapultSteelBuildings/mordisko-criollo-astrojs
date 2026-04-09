@@ -20,6 +20,11 @@ const titleAccesibility = lang === 'es' ? 'Abrir Didi' : 'Open Didi';
 const { variant = 'primary', classes: customClasses } = Astro.props;
 const classes =
   variant == 'primary' ? 'Didi-Button--primary' : 'Didi-Button--secondary';
+
+const logo_officialcolor = 'assets/images/logos/didi-official-color.webp';
+const logo_white = 'assets/images/logos/didi-white.webp';
+
+const logo = variant === 'primary' ? logo_white : logo_officialcolor;
 ---
 
 <a
@@ -30,7 +35,7 @@ const classes =
   title={titleAccesibility}
   class={customClasses}>
   <div class={`Didi-Button ${classes}`}>
-    <DidiIcon class="h-6 w-6 text-white" />
+    <img src={logo} alt="Didi logo" />
     <p>{callToAction}</p>
     <span class="sr-only">
       {titleAccesibility}
@@ -48,12 +53,15 @@ const classes =
     @apply m-0 font-bold;
   }
 
+  .Didi-Button img {
+    @apply h-12 w-12;
+  }
+
   .Didi-Button--primary {
     @apply bg-(--didi-color);
   }
 
-  .Didi-Button--primary p,
-  .Didi-Button--primary svg {
+  .Didi-Button--primary p {
     @apply text-(--white);
   }
 

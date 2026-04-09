@@ -20,6 +20,11 @@ const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
 const { variant = 'primary' } = Astro.props;
 const classes =
   variant == 'primary' ? 'Rappi-Button--primary' : 'Rappi-Button--secondary';
+
+const logo_officialcolor = 'assets/images/logos/rappi-official-color.webp';
+const logo_white = 'assets/images/logos/rappi-white.webp';
+
+const logo = variant === 'primary' ? logo_white : logo_officialcolor;
 ---
 
 <a
@@ -29,7 +34,7 @@ const classes =
   aria-label={titleAccesibility}
   title={titleAccesibility}>
   <div class={`Rappi-Button ${classes}`}>
-    <RappiIcon />
+    <img src={logo} alt="Rappi logo" />
     <p>{callToAction}</p>
     <span class="sr-only">
       {titleAccesibility}
@@ -47,12 +52,15 @@ const classes =
     @apply m-0 font-bold;
   }
 
+  .Rappi-Button img {
+    @apply h-12 w-12;
+  }
+
   .Rappi-Button--primary {
     @apply border-(--white) bg-(--rappi-color);
   }
 
-  .Rappi-Button--primary p,
-  .Rappi-Button--primary svg {
+  .Rappi-Button--primary p {
     @apply text-(--white);
   }
 

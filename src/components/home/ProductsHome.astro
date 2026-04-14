@@ -8,15 +8,14 @@ import { getLangFromUrl } from '@i18n/utils';
 
 import { empanadaSpanish } from '@data/products.data.es';
 import { empanadaEnglish } from '@data/products.data.en';
-import hero from '@assets/images/hero/empanada-01.webp';
 
 const lang = getLangFromUrl(Astro.url);
 const url = uiMenu[lang]['nav.products.url'];
 
 const title =
   lang === 'es'
-    ? 'De la Típica Empanada Paisa a la Hawaiana y Sobrebarriga: 4 Sabores Listos para Freír'
-    : 'From the Authentic "Paisa" Empanada to Hawaiian and Slow-Cooked Beef: 4 Flavors Ready to Fry';
+    ? 'Empanadas, Pastelitos, Arepas de Queso y más: Puro Sabor Criollo'
+    : 'Empanadas, Pastelitos, Cheese Arepas & More: Authentic Local Flavor';
 const products = lang === 'es' ? empanadaSpanish : empanadaEnglish;
 const callToAction =
   lang === 'es' ? 'Ver todos los productos' : 'See all products';
@@ -26,17 +25,6 @@ const callToAction =
   <div class="ProductsHome__filter"></div>
   <div class="ProductsHome__container">
     <article class="ProductsHome__article ProductsHome__article--title">
-      <Image
-        src={hero}
-        class="ProductsHome__image"
-        alt={title}
-        widths={[360, 640, 768, 1200]}
-        sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px"
-        loading="eager"
-        fetchpriority="low"
-        class="ProductsHome__image"
-        decoding="async"
-      />
       <h2 class="ProductsHome__title">{title}</h2>
     </article>
     {
@@ -65,17 +53,14 @@ const callToAction =
 <style>
   @reference "tailwindcss";
   .ProductsHome {
-    @apply relative px-3 py-16 text-(--white) lg:px-0;
-    background-image: url('/assets/images/products/empanada-background.webp');
+    @apply relative bg-cover bg-fixed bg-center bg-no-repeat px-3 py-16 text-(--white) lg:px-0;
+    background-image: url('/assets/images/home-products/combo-arepas-pastelitos-empanadas-tradicionales-colombianas.webp');
     background-blend-mode: overlay;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-opacity: 1;
   }
 
   .ProductsHome__filter {
-    @apply absolute top-0 right-0 bottom-0 left-0 h-full w-full bg-(--third) opacity-50;
+    @apply absolute top-0 right-0 bottom-0 left-0 h-full w-full bg-(--primary) opacity-90;
   }
 
   .ProductsHome__container {
@@ -83,7 +68,10 @@ const callToAction =
   }
 
   .ProductsHome__article {
-    @apply relative overflow-hidden p-0;
+    @apply relative overflow-hidden bg-cover bg-center bg-no-repeat p-0 py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28;
+    background-image: url('/assets/images/home-products/empanada-gourmet-mordisko-criollo.webp');
+    background-blend-mode: overlay;
+    background-opacity: 1;
   }
 
   .ProductsHome__article:hover .ProductsHome__image {
@@ -96,7 +84,7 @@ const callToAction =
 
   .ProductsHome__title,
   .ProductsHome__subtitle {
-    @apply absolute top-[50%] left-[50%] m-0 translate-x-[-50%] translate-y-[-50%] transform p-0 text-shadow-[0_0_2px_var(--secondary)];
+    @apply transform p-0 text-shadow-[0_0_2px_var(--secondary)];
   }
 
   .ProductsHome__title {

@@ -1,113 +1,40 @@
 ---
-import { Image } from 'astro:assets';
-
 import RappiButton from '../ui/buttons/Rappi.button.astro';
 import SeePrices from '../ui/buttons/SeePrices.button.astro';
 import DidiFoodButton from '../ui/buttons/DidiFoodButton.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
-import hero1 from '@assets/images/hero/empanada-01.webp';
-import hero2 from '@assets/images/hero/empanada-02.webp';
-import hero3 from '@assets/images/hero/empanada-03.webp';
-import hero4 from '@assets/images/hero/empanada-04.webp';
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const images = [hero1, hero2, hero3, hero4];
 ---
 
 <section class="HeroHome">
-  <div>
-    <Image
-      src={hero1}
-      alt={`Steel Building Hero`}
-      widths={[360, 640, 768, 1200, 1920]}
-      sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px, 1920px"
-      loading="eager"
-      quality={1}
-      fetchpriority="low"
-      class="h-auto max-h-[80vh] object-cover opacity-0 max-sm:min-h-[230px]"
-      decoding="async"
-    />
-  </div>
-  {
-    images.map((img, index) => (
-      <div class="hero-slide">
-        <Image
-          src={img}
-          alt={`Steel Building Hero ${index + 1}`}
-          widths={[360, 640, 768, 1200, 1920]}
-          sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px, 1920px"
-          loading={index === 0 ? 'eager' : 'lazy'}
-          fetchpriority={index === 0 ? 'high' : undefined}
-          decoding="async"
-        />
-      </div>
-    ))
-  }
-
-  <div
-    class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-3 px-4 text-center text-white sm:gap-y-6">
-    <h1
-      class="max-w-3xl text-3xl leading-tight font-bold text-(--light) text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
-      {t('hero.title')}
-    </h1>
-    <h3
-      class="hidden text-lg font-bold italic text-shadow-[0_0_1px_var(--secondary)] sm:block md:text-xl">
-      {t('hero.subtitle')}
-    </h3>
-    <p class="mb-0 text-base text-shadow-[0_0_1px_var(--secondary)]">
-      {t('hero.message')}
-    </p>
-    <div class="HeroHome__buttons">
-      <RappiButton />
-      <DidiFoodButton classes="xl:hidden" />
-      <SeePrices classes="hidden xl:block" />
-    </div>
+  <h1
+    class="max-w-3xl text-3xl leading-tight font-bold text-(--light) text-shadow-[0_0_1px_var(--secondary)] md:text-4xl lg:text-5xl">
+    {t('hero.title')}
+  </h1>
+  <h3
+    class="hidden text-lg font-bold text-(--light) italic text-shadow-[0_0_1px_var(--secondary)] sm:block md:text-xl">
+    {t('hero.subtitle')}
+  </h3>
+  <p class="mb-0 text-base text-shadow-[0_0_1px_var(--secondary)]">
+    {t('hero.message')}
+  </p>
+  <div class="HeroHome__buttons">
+    <RappiButton />
+    <DidiFoodButton classes="xl:hidden" />
+    <SeePrices classes="hidden xl:block" />
   </div>
 </section>
 
 <style>
   @reference "tailwindcss";
   .HeroHome {
-    @apply relative max-h-[800px] min-h-[330px] w-full overflow-hidden md:min-h-[500px];
-  }
-
-  .hero-slide {
-    @apply absolute top-0 right-0 bottom-0 left-0 h-full min-h-[330px] w-full;
-    animation: fade 16s infinite;
-  }
-
-  .hero-slide:nth-child(1) {
-    animation-delay: 0s;
-  }
-  .hero-slide:nth-child(2) {
-    animation-delay: 4s;
-  }
-  .hero-slide:nth-child(3) {
-    animation-delay: 8s;
-  }
-  .hero-slide:nth-child(4) {
-    animation-delay: 12s;
-  }
-
-  .hero-slide img {
-    @apply h-full w-full object-cover object-center;
+    @apply relative flex min-h-[70vh] w-full flex-col items-center justify-center gap-y-3 overflow-hidden bg-[url('assets/images/hero/compartir-empanadas-reuniones-amigos-medellin.webp')] bg-cover bg-center bg-no-repeat;
   }
 
   .HeroHome__buttons {
-    @apply flex items-center gap-3;
-  }
-
-  @keyframes fade {
-    0%,
-    100% {
-      opacity: 0;
-    }
-    8.33%,
-    91.66% {
-      opacity: 1;
-    }
+    @apply flex items-center gap-3 pt-6;
   }
 </style>

@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const images = [
+  'compartir-empanadas-reuniones-amigos-medellin.webp',
+  'empanada-gourmet-mordisko-criollo.webp',
+  'caja-combo-arepas-pastelitos-empanadas-mordisko-criollo.webp',
+  'combo-arepas-pastelitos-empanadas-tradicionales-colombianas.webp',
+];
+import sharingEmpanadas from '@assets/images/hero/compartir-empanadas-reuniones-amigos-medellin.jpg';
+import gourmetEmpanada from '@assets/images/hero/empanada-gourmet-mordisko-criollo.jpg';
+import comboArepasBox from '@assets/images/hero/caja-combo-arepas-pastelitos-empanadas-mordisko-criollo.jpg';
+import traditionalCombo from '@assets/images/hero/combo-arepas-pastelitos-empanadas-tradicionales-colombianas.jpg';
+
+const imagesArray = [
+  sharingEmpanadas,
+  gourmetEmpanada,
+  comboArepasBox,
+  traditionalCombo,
+];
+const altTextsEs = [
+  'Compartir empanadas en reuniones con amigos en Medellín',
+  'Empanada gourmet de Mordisko Criollo',
+  'Caja con combo de arepas, pastelitos y empanadas de Mordisko Criollo',
+  'Combo de arepas, pastelitos y empanadas tradicionales colombianas de Mordisko Criollo',
+];
+
+const altTextEn = [
+  'Sharing empanadas at gatherings with friends in Medellín',
+  'Gourmet empanada from Mordisko Criollo',
+  'Box with combo of arepas, pastelitos and empanadas from Mordisko Criollo',
+  'Combo of arepas, pastelitos and traditional Colombian empanadas from Mordisko Criollo',
+];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const altText = lang === 'en' ? altTextEn : altTextsEs;
+
+const finalImages = imagesArray.map((image, index) => ({
+  image,
+  altText: altText[index],
+}));
+---
+
+<div>
+  <Image
+    src={finalImages[0].image}
+    alt={finalImages[0].altText}
+    widths={[360, 640, 768, 1200, 1920]}
+    sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px, 1920px"
+    loading="eager"
+    quality={1}
+    fetchpriority="low"
+    class="h-auto max-h-[80vh] object-cover opacity-0 max-sm:min-h-[230px]"
+    decoding="async"
+  />
+</div>
+{
+  finalImages.map((img, index) => (
+    <div class="hero-slide">
+      <Image
+        src={img.image}
+        alt={img.altText}
+        widths={[360, 640, 768, 1200, 1920]}
+        sizes="(max-width: 360px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 1200px, 1920px"
+        loading={index === 0 ? 'eager' : 'lazy'}
+        fetchpriority={index === 0 ? 'high' : undefined}
+        decoding="async"
+      />
+    </div>
+  ))
+}
+
+<style>
+  @reference "tailwindcss";
+  .hero-slide {
+    @apply absolute top-0 right-0 bottom-0 left-0 h-full min-h-[330px] w-full;
+    animation: fade 16s infinite;
+  }
+
+  .hero-slide:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .hero-slide:nth-child(2) {
+    animation-delay: 4s;
+  }
+  .hero-slide:nth-child(3) {
+    animation-delay: 8s;
+  }
+  .hero-slide:nth-child(4) {
+    animation-delay: 12s;
+  }
+
+  .hero-slide img {
+    @apply h-full w-full object-cover object-center;
+  }
+</style>

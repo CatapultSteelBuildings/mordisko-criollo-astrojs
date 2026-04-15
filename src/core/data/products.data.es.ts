@@ -1,19 +1,14 @@
 import type { Product } from '../interfaces/Product.interface';
 
-import empanadaHawaiana from '@assets/images/products/empanada-01.webp';
-import empanadaCarneDesmechada from '@assets/images/products/empanada-02.webp';
-import empanadaPolloDesmechado from '@assets/images/products/empanada-03.webp';
-import empanadaSobreBarriga from '@assets/images/products/empanada-04.webp';
-
 export const empanadaSpanish: Product[] = [
   {
     code: 'hawaiian',
     title: 'Empanada Hawaiana',
     shortTitle: 'Hawaiana',
     description: [
-      'La combinación que nunca pasa de moda: un toque tropical que fusiona lo dulce y lo salado en cada mordisco. Jugosos trocitos de piña se mezclan con queso fundido y el sabor único de nuestra receta casera, creando una explosión de frescura y cremosidad que te hará cerrar los ojos de puro placer.',
+      'Empanada dorada y crujiente rellena de queso derretido, jugosos trozos de piña y jamón artesanal casero. Una combinación clásica de dulce y salado con un toque tropical que ofrece un sabor intenso en cada bocado, saciante e irresistible. ',
     ],
-    image: empanadaHawaiana,
+    image: 'mordisko-criollo-empanada-hawaiana.webp',
     url: '/empanada-hawaiana',
     price: 0,
   },
@@ -24,7 +19,7 @@ export const empanadaSpanish: Product[] = [
     description: [
       'Una delicia contundente para los amantes de la buena carne,Tierna, jugosa y con ese sabor casero que recuerda a la cocina de abuela. Nuestra carne desmechada se cocina lentamente con especias criollas hasta alcanzar la perfección, para luego abrazar la masa crujiente y dorada. Cada bocado es un viaje al auténtico sabor colombiano.',
     ],
-    image: empanadaCarneDesmechada,
+    image: 'mordisko-criollo-empanada-carne-desmechada.webp',
     url: '/empanada-carne-desmechada',
     price: 0,
   },
@@ -35,7 +30,7 @@ export const empanadaSpanish: Product[] = [
     description: [
       'El clásico que todos aman, pero llevado a otro nivel. Pollo fresco, desmechado a mano, sazonado con hierbas y especias que resaltan su suavidad y jugosidad. Al combinarse con la masa dorada y crocante, nace una empanada ligera, sabrosa y absolutamente irresistible.',
     ],
-    image: empanadaPolloDesmechado,
+    image: 'mordisko-criollo-pastel-de-pollo.webp',
     url: '/pastel-de-pollo',
     price: 0,
   },
@@ -44,21 +39,10 @@ export const empanadaSpanish: Product[] = [
     title: 'Arepa de Queso',
     shortTitle: 'Arepa de Queso',
     description: [
-      'Arepa de queso tradicional, dorada por fuera y suave por dentro, rellena de queso fundido que se derrite en cada mordisco. Perfecta para cualquier momento.',
+      'Dorada lentamente hasta alcanzar el punto perfecto, crujiente por fuera y suave por dentro. Al partirla, el queso se derrite y se estira, liberando un aroma irresistible que convierte cada mordisco en puro placer.',
     ],
-    image: empanadaSobreBarriga,
-    url: '/empanada-sobre-barriga',
-    price: 0,
-  },
-  {
-    code: 'meat-patty',
-    title: 'Torta de Carne',
-    shortTitle: 'Torta de Carne',
-    description: [
-      'Torta de carne colombiana preparada con carne sazonada, dorada por fuera y jugosa por dentro. Ideal para quienes buscan un sabor intenso y tradicional.',
-    ],
-    image: empanadaSobreBarriga,
-    url: '/empanada-sobre-barriga',
+    image: 'mordisko-criollo-arepa-de-queso.webp',
+    url: '/arepa-de-queso',
     price: 0,
   },
   {
@@ -66,10 +50,21 @@ export const empanadaSpanish: Product[] = [
     title: 'Papa Rellena',
     shortTitle: 'Papa Rellena',
     description: [
-      'Papa rellena colombiana con carne jugosa y bien condimentada, cubierta por una capa crujiente y dorada. Un clásico irresistible de la cocina tradicional.',
+      'Papa cremosa y finamente sazonada, rellena con carne jugosa y bien condimentada, sellada en una capa dorada y crujiente que encierra todo el sabor. Un clásico irresistible que conquista desde el primer mordisco.',
     ],
-    image: empanadaSobreBarriga,
-    url: '/empanada-sobre-barriga',
+    image: 'mordisko-criollo-papa-rellena.webp',
+    url: '/papa-rellena',
+    price: 0,
+  },
+  {
+    code: 'traditional-calentado-plus-6-bites',
+    title: 'Calentado + 6 Mordiskos',
+    shortTitle: 'Calentado + 6 Mordiskos',
+    description: [
+      'Calentado acompañado de 6 Mordiskos variados. Ideal para un desayuno completo.',
+    ],
+    image: 'mordisko-criollo-calentado.webp',
+    url: '/calentado-mas-6-mordiskos',
     price: 0,
   },
 ];

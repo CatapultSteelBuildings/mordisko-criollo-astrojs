@@ -1,9 +1,9 @@
 import type { Product } from '../interfaces/Product.interface';
 
-import hawaiianEmpanada from '@assets/images/products/empanada-01.webp';
-import shreddedBeefEmpanada from '@assets/images/products/empanada-02.webp';
-import shreddedChickenEmpanada from '@assets/images/products/empanada-03.webp';
-import slowSookedBeefEmpanada from '@assets/images/products/empanada-04.webp';
+import empanadaHawaiana from '@assets/images/products/empanada-01.webp';
+import empanadaCarneDesmechada from '@assets/images/products/empanada-02.webp';
+import empanadaPolloDesmechado from '@assets/images/products/empanada-03.webp';
+import empanadaSobreBarriga from '@assets/images/products/empanada-04.webp';
 
 export const empanadaEnglish: Product[] = [
   {
@@ -11,9 +11,9 @@ export const empanadaEnglish: Product[] = [
     title: 'Hawaiian Empanada',
     shortTitle: 'Hawaiian',
     description: [
-      'Golden and crispy empanada filled with melted cheese, juicy pineapple chunks, and homemade artisanal ham. A timeless sweet-and-savory combination with a tropical touch that delivers bold flavor in every mouthful—satisfying and irresistible',
+      'Golden and crispy empanada filled with melted cheese, juicy pineapple chunks, and homemade artisanal ham. A classic sweet and savory combination with a tropical touch that offers an intense flavor in every bite. Satisfying and absolutely irresistible.',
     ],
-    image: hawaiianEmpanada,
+    image: empanadaHawaiana,
     url: '/hawaiian-empanada',
     price: 0,
   },
@@ -22,9 +22,9 @@ export const empanadaEnglish: Product[] = [
     title: 'Shredded Beef Empanada',
     shortTitle: 'Shredded Beef',
     description: [
-      'A hearty delight for true meat lovers. Tender, juicy, and filled with that homemade flavor that brings back memories of grandma’s kitchen. Our shredded beef is slowly cooked with traditional Colombian spices until perfectly seasoned, then wrapped in a golden, crispy crust. Every bite is a journey into authentic Colombian flavor.',
+      "A hearty delight for meat lovers. Tender, juicy, and packed with that homemade flavor that reminds you of grandma's cooking. Our shredded beef is slow-cooked to perfection with criollo spices, then embraced by a crispy, golden dough. Every bite is a journey to authentic Colombian flavor.",
     ],
-    image: shreddedBeefEmpanada,
+    image: empanadaCarneDesmechada,
     url: '/shredded-beef-empanada',
     price: 0,
   },
@@ -33,10 +33,10 @@ export const empanadaEnglish: Product[] = [
     title: 'Chicken Pastry',
     shortTitle: 'Chicken Pastry',
     description: [
-      'A classic everyone loves, taken to the next level. Fresh chicken, hand-shredded and seasoned with herbs and spices that highlight its tenderness and juiciness. Combined with a golden, crunchy crust, it becomes a light, flavorful, and absolutely irresistible pastry.',
+      'The classic everyone loves, but taken to another level. Fresh, hand-shredded chicken, seasoned with herbs and spices that highlight its tenderness and juiciness. Combined with our golden and crispy dough, it creates a light, flavorful, and absolutely irresistible pastry.',
     ],
-    image: shreddedChickenEmpanada,
-    url: '/shredded-chicken-empanada',
+    image: empanadaPolloDesmechado,
+    url: '/chicken-pastry',
     price: 0,
   },
   {
@@ -44,21 +44,10 @@ export const empanadaEnglish: Product[] = [
     title: 'Cheese Arepa',
     shortTitle: 'Cheese Arepa',
     description: [
-      'Slowly grilled to perfection, crispy on the outside and soft on the inside. When you break it open, the cheese melts and stretches, releasing an irresistible aroma that turns every bite into pure pleasure.',
+      'Slowly grilled to perfection, crispy on the outside and soft on the inside. When you break it apart, the cheese melts and stretches, releasing an irresistible aroma that turns every bite into pure pleasure.',
     ],
-    image: slowSookedBeefEmpanada,
-    url: '/slow-cooked-beef-empanada',
-    price: 0,
-  },
-  {
-    code: 'meat-patty',
-    title: 'Meat Patty',
-    shortTitle: 'Meat Patty',
-    description: [
-      'Slowly grilled to perfection, crispy on the outside and soft on the inside. When you break it open, the cheese melts and stretches, releasing an irresistible aroma that turns every bite into pure pleasure.',
-    ],
-    image: slowSookedBeefEmpanada,
-    url: '/slow-cooked-beef-empanada',
+    image: empanadaSobreBarriga, // Nota: Mantuve la misma variable de imagen del archivo original
+    url: '/cheese-arepa',
     price: 0,
   },
   {
@@ -66,10 +55,21 @@ export const empanadaEnglish: Product[] = [
     title: 'Stuffed Potato',
     shortTitle: 'Stuffed Potato',
     description: [
-      'Creamy, delicately seasoned potato filled with juicy, well-seasoned beef, sealed in a golden, crispy exterior that locks in all the flavor. A timeless classic that wins you over from the very first bite.',
+      'Creamy and finely seasoned potato, filled with juicy, well-seasoned meat, and sealed in a golden, crispy crust that locks in all the flavor. An irresistible classic that conquers your palate from the very first bite.',
     ],
-    image: slowSookedBeefEmpanada,
-    url: '/slow-cooked-beef-empanada',
+    image: empanadaSobreBarriga, // Nota: Mantuve la misma variable de imagen del archivo original
+    url: '/stuffed-potato',
+    price: 0,
+  },
+  {
+    code: 'traditional-calentado-plus-6-bites',
+    title: 'Traditional Calentado + 6 Bites',
+    shortTitle: 'Calentado + 6 Bites',
+    description: [
+      'Traditional Calentado served with 6 assorted Bites. Perfect for a full and satisfying breakfast.',
+    ],
+    image: empanadaSobreBarriga,
+    url: '/traditional-calentado-plus-6-bites',
     price: 0,
   },
 ];

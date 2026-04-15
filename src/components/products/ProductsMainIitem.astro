@@ -9,11 +9,20 @@ interface Props {
 }
 
 const { product } = Astro.props;
+const urlImage = 'assets/images/products/' + product.image;
 ---
 
 <article class="ProductMainSectionItem">
   <div class="ProductMainSectionItem__picture">
-    <Image
+    <img
+      src={urlImage}
+      alt={product.title}
+      class="ProductsHomeItem__image"
+      loading="lazy"
+      fetchpriority="low"
+      decoding="async"
+    />
+    <!-- <Image
       src={product.image}
       alt={product.title}
       widths={[360, 400, 600, 900]}
@@ -22,7 +31,7 @@ const { product } = Astro.props;
       fetchpriority="low"
       class="ProductMainSectionItem__image"
       decoding="async"
-    />
+    /> -->
   </div>
   <div class="ProductMainSectionItem__content">
     <h3 class="ProductMainSectionItem__title">{product.title}</h3>

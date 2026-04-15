@@ -17,7 +17,7 @@ const urlImage = 'assets/images/products/' + product.image;
     <img
       src={urlImage}
       alt={product.title}
-      class="ProductsHomeItem__image"
+      class="ProductMainSectionItem__image"
       loading="lazy"
       fetchpriority="low"
       decoding="async"
@@ -55,7 +55,7 @@ const urlImage = 'assets/images/products/' + product.image;
   }
 
   .ProductMainSectionItem__image {
-    @apply w-full object-cover;
+    @apply h-auto w-full object-cover;
   }
 
   .ProductMainSectionItem__content {

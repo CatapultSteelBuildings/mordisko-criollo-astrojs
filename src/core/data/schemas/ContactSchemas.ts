@@ -4,9 +4,9 @@ import { businessData } from '@/core/data/business.data';
 export const CONTACT_SCHEMA_ES = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: `Haz tu pedido en línea - ${businessData.name}`,
+  name: `Contacto y Atención al Cliente - ${businessData.name}`,
   description:
-    'Realiza tu pedido de empanadas congeladas en Medellín. Contacto directo por WhatsApp para domicilios y atención al cliente.',
+    '¿Dudas, sugerencias o pedidos especiales? Contáctanos. Disfruta las mejores empanadas, pasteles y arepas a domicilio en Medellín.',
   url: businessData.site,
   mainEntity: {
     '@type': 'FoodEstablishment',
@@ -28,7 +28,7 @@ export const CONTACT_SCHEMA_ES = {
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: businessData.phone,
-      contactType: 'sales',
+      contactType: 'customer service',
       areaServed: 'Medellín',
       availableLanguage: ['es', 'en'],
     },
@@ -39,9 +39,9 @@ export const CONTACT_SCHEMA_ES = {
 export const CONTACT_SCHEMA_EN = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: `Order Online - ${businessData.name}`,
+  name: `Contact & Customer Service - ${businessData.name}`,
   description:
-    'Place your order for frozen empanadas in Medellín. Direct contact via WhatsApp for delivery and customer service.',
+    'Questions, suggestions, or special orders? Contact us. Enjoy the best hot empanadas and paisa snacks delivered in Medellín.',
   url: businessData.site,
   mainEntity: {
     '@type': 'FoodEstablishment',
@@ -63,7 +63,7 @@ export const CONTACT_SCHEMA_EN = {
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: businessData.phone,
-      contactType: 'sales',
+      contactType: 'customer service',
       areaServed: 'Medellín',
       availableLanguage: ['en', 'es'],
     },

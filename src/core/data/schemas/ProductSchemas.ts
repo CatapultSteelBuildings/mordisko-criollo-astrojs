@@ -1,196 +1,51 @@
 import { businessData } from '@/core/data/business.data';
-import { empanadaSpanish, empanadaEnglish } from '@data/index.data';
+
+import type { Product } from '@/core/interfaces';
+
+import { empanadaSpanish } from '../products.data.es';
+import { empanadaEnglish } from '../products.data.en';
+
+/**
+ * Generate product schemas dynamically.
+ * @param productsData Array of products (ES or EN)
+ * @param langPath Language prefix for the URL (e.g., '/en')
+ * @returns Array of Schema.org Product objects
+ */
+const generateProductSchemas = (productsData: Product[], langPath = '') => {
+  return productsData.map(product => ({
+    '@context': 'https://schema.org/',
+    '@type': 'Product',
+    name: product.title,
+    image: `${businessData.site}/assets/images/products/${product.image}`,
+    description: product.description[0],
+    brand: {
+      '@type': 'Brand',
+      name: businessData.name,
+    },
+    offers: {
+      '@type': 'Offer',
+      // OPTION 1: URL with anchor (#) to direct to the specific product ID
+      url: `${businessData.site}${langPath}/productos#${product.code}`,
+      priceCurrency: 'COP',
+      price: product.price.toString(),
+      priceValidUntil: '2025-12-31',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: {
+        '@type': 'Organization',
+        name: businessData.name,
+      },
+    },
+  }));
+};
 
 // 🇪🇸 PRODUCT SCHEMAS IN SPANISH
-export const PRODUCT_SCHEMAS_ES = [
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Empanada Hawaiana - Paquete x 10',
-    image: `${businessData.site}/_astro/empanada-hawaiana.webp`,
-    description: empanadaSpanish[0].description,
-    brand: {
-      '@type': 'Brand',
-      name: businessData.name,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/productos`,
-      priceCurrency: 'COP',
-      price: '0',
-      priceValidUntil: '2025-12-31',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: businessData.name,
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Empanada de Carne Desmechada - Paquete x 10',
-    image: `${businessData.site}/_astro/empanada-carne.webp`,
-    description: empanadaSpanish[1].description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Mordisko Criollo',
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/productos`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: 'Mordisko Criollo',
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Empanada de Pollo Desmechado - Paquete x 10',
-    image: `${businessData.site}/_astro/empanada-pollo.webp`,
-    description: empanadaSpanish[2].description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Mordisko Criollo',
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/productos`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: 'Mordisko Criollo',
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Empanada de Sobrebarriga - Paquete x 10',
-    image: `${businessData.site}/_astro/empanada-sobrebarriga.webp`,
-    description: empanadaSpanish[3].description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Mordisko Criollo',
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/productos`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: 'Mordisko Criollo',
-      },
-    },
-  },
-];
+// Result: https://mordiskocriollo.com/productos#hawaiian
+export const PRODUCT_SCHEMAS_ES = generateProductSchemas(empanadaSpanish);
 
 // 🇺🇸 PRODUCT SCHEMAS IN ENGLISH
-export const PRODUCT_SCHEMAS_EN = [
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Hawaiian Empanada - Pack of 10',
-    image: `${businessData.site}/_astro/empanada-hawaiana.webp`,
-    description: empanadaEnglish[0].description,
-    brand: {
-      '@type': 'Brand',
-      name: businessData.name,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/en/products`,
-      priceCurrency: 'COP',
-      price: '0',
-      priceValidUntil: '2025-12-31',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: businessData.name,
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Shredded Beef Empanada - Pack of 10',
-    image: `${businessData.site}/_astro/empanada-carne.webp`,
-    description: empanadaEnglish[1].description,
-    brand: {
-      '@type': 'Brand',
-      name: businessData.name,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/en/products`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: businessData.name,
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Shredded Chicken Empanada - Pack of 10',
-    image: `${businessData.site}/_astro/empanada-pollo.webp`,
-    description: empanadaEnglish[2].description,
-    brand: {
-      '@type': 'Brand',
-      name: businessData.name,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/en/products`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: businessData.name,
-      },
-    },
-  },
-  {
-    '@context': 'https://schema.org/',
-    '@type': 'Product',
-    name: 'Slow-Cooked Beef Empanada - Pack of 10',
-    image: `${businessData.site}/_astro/empanada-sobrebarriga.webp`,
-    description: empanadaEnglish[3].description,
-    brand: {
-      '@type': 'Brand',
-      name: businessData.name,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `${businessData.site}/en/products`,
-      priceCurrency: 'COP',
-      price: '0',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: {
-        '@type': 'Organization',
-        name: businessData.name,
-      },
-    },
-  },
-];
+// Result: https://mordiskocriollo.com/en/productos#hawaiian
+export const PRODUCT_SCHEMAS_EN = generateProductSchemas(
+  empanadaEnglish,
+  '/en'
+);

@@ -10,7 +10,7 @@ const generateMenuItems = (products: Product[]) => {
     '@type': 'MenuItem',
     name: product.title,
     description: product.description[0],
-    image: `${businessData.site}/_astro/${product.image}`,
+    image: `${businessData.site}/assets/images/products/${product.image}`,
     url: `${businessData.site}${product.url}`,
   }));
 };
@@ -20,7 +20,7 @@ export const HOME_SCHEMA_ES = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
   name: businessData.name,
-  image: `${businessData.site}/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp`,
+  image: `${businessData.site}/assets/images/logo/mordiko-criollo-logo-with-background.webp`,
   description:
     '¿Antojo de empanadas en Medellín? Domicilios de empanadas, pasteles y arepas. Recibe tu pedido calientico y crujiente en minutos. ¡Pide ahora!',
   url: businessData.site,
@@ -76,7 +76,7 @@ export const HOME_SCHEMA_EN = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
   name: businessData.name,
-  image: `${businessData.site}/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp`,
+  image: `${businessData.site}/assets/images/logo/mordiko-criollo-logo-with-background.webp`,
   description:
     'Craving empanadas in Medellín? Get hot, crispy empanadas, pastries, and cheese arepas delivered straight to your door in minutes. Order now!',
   url: businessData.site,

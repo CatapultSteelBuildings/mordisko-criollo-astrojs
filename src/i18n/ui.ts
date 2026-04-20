@@ -49,8 +49,9 @@ export const ui = {
     'product.page.subtitle':
       'El Auténtico Sabor Paisa, Calientico y Directo a tu Puerta',
     'product.page.description': `En ${businessData.name} no ahorramos en relleno. Descubre nuestra selección artesanal elaborada con ingredientes naturales y guisos que respetan la tradición. Desde empanadas crujientes hasta papas rellenas y arepas de queso; calidad premium lista para calmar tu antojo en minutos, sin moverte de casa.`,
-    'contact.page.title': '¿Tienes comentarios?',
-    'contact.page.subtitle': 'Escríbenos tus opiniones o sugerencias',
+    'contact.page.title': '¡Estamos para escucharte!',
+    'contact.page.subtitle':
+      '¿Dudas sobre tu pedido, sugerencias o eventos especiales? Escríbenos y te responderemos de volada.',
   },
   en: {
     ...uiMenu.en,
@@ -70,7 +71,7 @@ export const ui = {
     'product.page.subtitle':
       'Authentic Paisa Flavor, Hot and Straight to Your Door',
     'product.page.description': `At ${businessData.name}, we don't skimp on the filling. Discover our artisanal selection made with natural ingredients and traditional recipes. From crispy empanadas to stuffed potatoes and cheese arepas; premium quality ready to satisfy your cravings in minutes, delivered right to your home.`,
-    'contact.page.title': 'Do you have comments?',
-    'contact.page.subtitle': 'Write us your opinions or suggestions',
+    'contact.page.title': `We're here to listen!`,
+    'contact.page.subtitle': `Questions about your order, suggestions, or catering for special events? Drop us a line and we'll get back to you in no time.`,
   },
 };

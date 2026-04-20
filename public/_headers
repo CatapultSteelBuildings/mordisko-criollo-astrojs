@@ -1,0 +1,50 @@
+# ============================================
+# SECURITY HEADERS - Mordisko Criollo
+# Cloudflare Pages Configuration
+# https://developers.cloudflare.com/pages/platform/headers/
+# ============================================
+
+# --- Prevent Clickjacking ---
+X-Frame-Options: DENY
+
+# --- Prevent MIME Type Sniffing ---
+X-Content-Type-Options: nosniff
+
+# --- XSS Protection (Legacy but supported) ---
+X-XSS-Protection: 1; mode=block
+
+# --- Referrer Policy ---
+Referrer-Policy: strict-origin-when-cross-origin
+
+# --- Permissions Policy ---
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# --- Content Security Policy ---
+# Note: 'unsafe-inline' needed for Astro islands and Svelte interactions
+Content-Security-Policy:
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https: blob:;
+  font-src 'self' data:;
+  connect-src 'self';
+  frame-ancestors 'self';
+  base-uri 'self';
+  form-action 'self';
+
+# --- HSTS (Optional - Uncomment after testing) ---
+# Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# --- Cache Control for Static Assets ---
+# Cache static assets (images, fonts, JS, CSS)
+/_astro/*:
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*:
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- Cache Control for HTML ---
+# Don't cache HTML (or cache briefly)
+/:
+  Cache-Control: no-cache, must-revalidate
+/*.html:
+  Cache-Control: no-cache, must-revalidate

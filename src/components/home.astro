@@ -18,7 +18,12 @@ const title = 'Mordisko Criollo | Puro sabor de mi tierrita';
 const metaDescription = HomeSchema.description;
 ---
 
-<Layout title={title} metaDescription={metaDescription} schema={HomeSchema}>
+<Layout
+  title={title}
+  metaDescription={metaDescription}
+  schema={HomeSchema}
+  preloadHero={true}
+  heroImagePath="/assets/images/hero/compartir-empanadas-reuniones-amigos-medellin.webp">
   <HeroHomeSection />
   <BusinessHomeSection />
   <ProductsHomeSection />

@@ -30,6 +30,8 @@ const {
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
+const skipLinkText =
+  lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content';
 ---
 
 <!doctype html>
@@ -43,8 +45,12 @@ const lang = getLangFromUrl(Astro.url);
     schema={schema}
   />
   <body>
+    <!-- Skip Link for Keyboard Navigation (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">{skipLinkText}</a>
     <Header lang={lang} />
-    <slot transition:animate={fade({ duration: '1s' })} />
+    <main id="main-content">
+      <slot transition:animate={fade({ duration: '1s' })} />
+    </main>
     <Footer />
   </body>
 </html>

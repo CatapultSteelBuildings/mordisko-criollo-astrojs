@@ -18,8 +18,13 @@ const t = useTranslations(lang);
     class="hidden text-lg font-bold text-(--light) italic text-shadow-[0_0_1px_var(--secondary)] sm:block md:text-xl">
     {t('hero.subtitle')}
   </h3>
-  <p class="mb-0 text-base text-shadow-[0_0_1px_var(--secondary)]">
+  <p
+    class="mb-0 text-center text-base text-shadow-[0_0_1px_var(--secondary)] xl:hidden">
     {t('hero.message')}
+  </p>
+  <p
+    class="mb-0 text-center text-base text-shadow-[0_0_1px_var(--secondary)] max-xl:hidden">
+    {t('hero.message-desktop')}
   </p>
   <div class="HeroHome__buttons">
     <RappiButton />

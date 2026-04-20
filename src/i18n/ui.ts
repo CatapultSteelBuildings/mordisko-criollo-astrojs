@@ -33,9 +33,12 @@ export const uiMenu = {
 export const ui = {
   es: {
     ...uiMenu.es,
-    'hero.title': 'Empanadas Congeladas en Medellín',
-    'hero.subtitle': 'Sabor Criollo listo para freír',
-    'hero.message': 'Haz tu pedido online y recíbelo en casa',
+    'hero.title': 'Domicilios de Empanadas en Medellín',
+    'hero.subtitle': 'Calienticas, crujientes y con Puro Sabor Criollo',
+    'hero.message':
+      'Olvídate de cocinar. Pide ahora por Rappi o DiDi Food y recibe tu antojo en minutos, listo para disfrutar.',
+    'hero.message-desktop':
+      'Olvídate de cocinar. Pide tu antojo al instante por Rappi y recíbelo en minutos, o explora nuestro menú para conocer todos los productos.',
     'delivery.message': 'Domicilios a todo Medellín',
     'copyRight.message': 'Todos los derechos reservados',
     'message.facebook': 'Visita y siguenos en nuestra pagina de Facebook',
@@ -52,9 +55,12 @@ export const ui = {
   },
   en: {
     ...uiMenu.en,
-    'hero.title': 'Frozen Empanadas in Medellín',
-    'hero.subtitle': 'Criollo flavor ready to fry',
-    'hero.message': 'Make your order online and have it delivered to your home',
+    'hero.title': 'Empanada Delivery in Medellín',
+    'hero.subtitle': 'Hot, crispy, and full of Authentic Criollo Flavor',
+    'hero.message':
+      'Forget about cooking. Order now on Rappi or DiDi Food and satisfy your cravings in minutes, ready to enjoy.',
+    'hero.message-desktop':
+      'Forget about cooking. Order your cravings instantly on Rappi and get them in minutes, or explore our menu to discover all our products.',
     'delivery.message': 'Home delivery throughout Medellín',
     'copyRight.message': 'All rights reserved',
     'message.facebook': 'Visit and follow us on our Facebook page',

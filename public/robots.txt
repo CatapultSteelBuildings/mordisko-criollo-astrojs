@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-Sitemap: https://mordiskocriollo.com/sitemap-index.xml  
+Sitemap: https://mordiskocriollo.com/sitemap-index.xml

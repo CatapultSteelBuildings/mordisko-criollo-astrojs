@@ -34,7 +34,7 @@ export const ui = {
   es: {
     ...uiMenu.es,
     'hero.title': 'Domicilios de Empanadas en Medellín',
-    'hero.subtitle': 'Calienticas, crujientes y con Puro Sabor Criollo',
+    'hero.subtitle': 'Calienticas, crujientes y con Puro Sabor de mi Tierrita',
     'hero.message':
       'Olvídate de cocinar. Pide ahora por Rappi o DiDi Food y recibe tu antojo en minutos, listo para disfrutar.',
     'hero.message-desktop':
@@ -55,7 +55,7 @@ export const ui = {
   en: {
     ...uiMenu.en,
     'hero.title': 'Empanada Delivery in Medellín',
-    'hero.subtitle': 'Hot, crispy, and full of Authentic Criollo Flavor',
+    'hero.subtitle': 'Hot, crispy, and with the pure taste of home',
     'hero.message':
       'Forget about cooking. Order now on Rappi or DiDi Food and satisfy your cravings in minutes, ready to enjoy.',
     'hero.message-desktop':

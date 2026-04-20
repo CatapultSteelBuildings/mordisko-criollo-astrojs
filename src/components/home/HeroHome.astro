@@ -18,8 +18,13 @@ const t = useTranslations(lang);
     class="hidden text-lg font-bold text-(--light) italic text-shadow-[0_0_1px_var(--secondary)] sm:block md:text-xl">
     {t('hero.subtitle')}
   </h3>
-  <p class="mb-0 text-base text-shadow-[0_0_1px_var(--secondary)]">
+  <p
+    class="mb-0 text-center text-base text-shadow-[0_0_1px_var(--secondary)] xl:hidden">
     {t('hero.message')}
+  </p>
+  <p
+    class="mb-0 text-center text-base text-shadow-[0_0_1px_var(--secondary)] max-xl:hidden">
+    {t('hero.message-desktop')}
   </p>
   <div class="HeroHome__buttons">
     <RappiButton />
@@ -31,7 +36,7 @@ const t = useTranslations(lang);
 <style>
   @reference "tailwindcss";
   .HeroHome {
-    @apply relative flex min-h-[70vh] w-full flex-col items-center justify-center gap-y-3 overflow-hidden bg-[url('assets/images/hero/compartir-empanadas-reuniones-amigos-medellin.webp')] bg-cover bg-center bg-no-repeat;
+    @apply relative flex min-h-[70vh] w-full flex-col items-center justify-center gap-y-3 overflow-hidden bg-[url('/assets/images/hero/compartir-empanadas-reuniones-amigos-medellin.webp')] bg-cover bg-center bg-no-repeat;
   }
 
   .HeroHome__buttons {

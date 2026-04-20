@@ -1,21 +1,14 @@
 import type { Product } from '../interfaces/Product.interface';
 
-import empanadaHawaiana from '@assets/images/products/empanada-01.webp';
-import empanadaCarneDesmechada from '@assets/images/products/empanada-02.webp';
-import empanadaPolloDesmechado from '@assets/images/products/empanada-03.webp';
-import empanadaSobreBarriga from '@assets/images/products/empanada-04.webp';
-
 export const empanadaSpanish: Product[] = [
   {
     code: 'hawaiian',
     title: 'Empanada Hawaiana',
     shortTitle: 'Hawaiana',
     description: [
-      'La combinación que nunca pasa de moda: un toque tropical que fusiona lo dulce y lo salado en cada mordisco. Jugosos trocitos de piña se mezclan con queso fundido y el sabor único de nuestra receta casera, creando una explosión de frescura y cremosidad que te hará cerrar los ojos de puro placer.',
+      'Empanada dorada y crujiente rellena de queso derretido, jugosos trozos de piña y jamón artesanal casero. Una combinación clásica de dulce y salado con un toque tropical que ofrece un sabor intenso en cada bocado, saciante e irresistible. ',
     ],
-    shortDescription:
-      'El equilibrio tropical perfecto. Jugosos trozos de piña calada mezclados con abundante queso doble crema fundido y jamón seleccionado.',
-    image: empanadaHawaiana,
+    image: 'mordisko-criollo-empanada-hawaiana.webp',
     url: '/empanada-hawaiana',
     price: 0,
   },
@@ -24,38 +17,54 @@ export const empanadaSpanish: Product[] = [
     title: 'Empanada de Carne Desmechada',
     shortTitle: 'Carne Desmechada',
     description: [
-      'Tierna, jugosa y con ese sabor casero que recuerda a la cocina de abuela. Nuestra carne desmechada se cocina lentamente con especias criollas hasta alcanzar la perfección, para luego abrazar la masa crujiente y dorada. Cada bocado es un viaje al auténtico sabor colombiano.',
+      'Una delicia contundente para los amantes de la buena carne,Tierna, jugosa y con ese sabor casero que recuerda a la cocina de abuela. Nuestra carne desmechada se cocina lentamente con especias criollas hasta alcanzar la perfección, para luego abrazar la masa crujiente y dorada. Cada bocado es un viaje al auténtico sabor colombiano.',
     ],
-    shortDescription:
-      'La clásica infaltable. Carne de res seleccionada, cocinada lentamente y desmechada a mano, guisada con nuestro hogao criollo secreto.',
-    image: empanadaCarneDesmechada,
+    image: 'mordisko-criollo-empanada-carne-desmechada.webp',
     url: '/empanada-carne-desmechada',
     price: 0,
   },
   {
-    code: 'shredded-chicken',
-    title: 'Empanada de Pollo Desmechado',
-    shortTitle: 'Pollo Desmechado',
+    code: 'chicken-pastry',
+    title: 'Pastel de pollo',
+    shortTitle: 'Pastel de pollo',
     description: [
-      'El clásico que todos aman, pero llevado a otro nivel. Pollo fresco, desmechado a mano, sazonado con hierbas y especias que resaltan su suavidad y jugosidad. Al combinarse con la masa dorada y crocante, nace una empanada ligera, sabrosa y absolutamente irresistible.',
+      'El clásico que todos aman, pero llevado a otro nivel. Pollo fresco, desmechado a mano y sazonado con hierbas que resaltan su suavidad y jugosidad. Al combinarse con nuestra masa especial dorada y crocante, nace un pastel ligero, sabroso y absolutamente irresistible para calmar el antojo.',
     ],
-    shortDescription:
-      'Suave y llena de sabor. Pechuga de pollo fresca desmechada, sazonada con hierbas finas y especias naturales. La opción más ligera.',
-    image: empanadaPolloDesmechado,
-    url: '/empanada-pollo-desmechado',
+    image: 'mordisko-criollo-pastel-de-pollo.webp',
+    url: '/pastel-de-pollo',
     price: 0,
   },
   {
-    code: 'flank-steak',
-    title: 'Empanada de Sobrebarriga',
-    shortTitle: 'Sobrebarriga',
+    code: 'cheese-arepa',
+    title: 'Arepa de Queso',
+    shortTitle: 'Arepa de Queso',
     description: [
-      'Una delicia contundente para los amantes de la buena carne. La sobrebarriga se cocina lentamente hasta quedar suave, jugosa y llena de sabor, luego se desmecha con paciencia para convertirse en el relleno perfecto. Su sabor profundo y auténtico conquista corazones y convierte cualquier momento en una experiencia inolvidable.',
+      'Dorada lentamente hasta alcanzar el punto perfecto, crujiente por fuera y suave por dentro. Al partirla, el queso se derrite y se estira, liberando un aroma irresistible que convierte cada mordisco en puro placer.',
     ],
-    shortDescription:
-      'Nuestra especialidad premium. Corte de sobrebarriga braseada por 8 horas hasta deshacerse, potenciada con un guiso profundo y sustancioso.',
-    image: empanadaSobreBarriga,
-    url: '/empanada-sobre-barriga',
+    image: 'mordisko-criollo-arepa-de-queso.webp',
+    url: '/arepa-de-queso',
+    price: 0,
+  },
+  {
+    code: 'stuffed-potato',
+    title: 'Papa Rellena',
+    shortTitle: 'Papa Rellena',
+    description: [
+      'Papa cremosa y finamente sazonada, rellena con carne jugosa y bien condimentada, sellada en una capa dorada y crujiente que encierra todo el sabor. Un clásico irresistible que conquista desde el primer mordisco.',
+    ],
+    image: 'mordisko-criollo-papa-rellena.webp',
+    url: '/papa-rellena',
+    price: 0,
+  },
+  {
+    code: 'traditional-calentado-plus-6-bites',
+    title: 'Calentado + 6 Mordiskos',
+    shortTitle: 'Calentado + 6 Mordiskos',
+    description: [
+      'Calentado acompañado de 6 Mordiskos variados. Ideal para un desayuno completo.',
+    ],
+    image: 'mordisko-criollo-calentado.webp',
+    url: '/calentado-mas-6-mordiskos',
     price: 0,
   },
 ];

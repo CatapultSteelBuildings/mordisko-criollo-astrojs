@@ -1,21 +1,14 @@
 import type { Product } from '../interfaces/Product.interface';
 
-import hawaiianEmpanada from '@assets/images/products/empanada-01.webp';
-import shreddedBeefEmpanada from '@assets/images/products/empanada-02.webp';
-import shreddedChickenEmpanada from '@assets/images/products/empanada-03.webp';
-import slowSookedBeefEmpanada from '@assets/images/products/empanada-04.webp';
-
 export const empanadaEnglish: Product[] = [
   {
     code: 'hawaiian',
     title: 'Hawaiian Empanada',
     shortTitle: 'Hawaiian',
     description: [
-      'The perfect balance of sweet and savory in every bite. Juicy pineapple chunks melt into creamy cheese, wrapped inside our golden, crispy crust. A tropical explosion of freshness and flavor that will make you close your eyes in pure delight.',
+      'Golden and crispy empanada filled with melted cheese, juicy pineapple chunks, and homemade artisanal ham. A classic sweet and savory combination with a tropical touch that offers an intense flavor in every bite. Satisfying and absolutely irresistible.',
     ],
-    shortDescription:
-      'The perfect tropical mix. Juicy pineapple chunks combined with melted mozzarella cheese and premium ham. A sweet & savory delight.',
-    image: hawaiianEmpanada,
+    image: 'mordisko-criollo-empanada-hawaiana.webp',
     url: '/hawaiian-empanada',
     price: 0,
   },
@@ -24,38 +17,54 @@ export const empanadaEnglish: Product[] = [
     title: 'Shredded Beef Empanada',
     shortTitle: 'Shredded Beef',
     description: [
-      'Tender, juicy, and packed with that homemade flavor you’ll never forget. Our shredded beef is slow-cooked with traditional spices until it reaches absolute perfection, then tucked inside a crispy golden crust. Each bite takes you straight to the heart of authentic Colombian flavor.',
+      "A hearty delight for meat lovers. Tender, juicy, and packed with that homemade flavor that reminds you of grandma's cooking. Our shredded beef is slow-cooked to perfection with criollo spices, then embraced by a crispy, golden dough. Every bite is a journey to authentic Colombian flavor.",
     ],
-    shortDescription:
-      'The classic choice. Selected beef, slow-cooked and hand-shredded, seasoned with our secret "hogao" (Creole sauce). Juicy inside, crispy outside.',
-    image: shreddedBeefEmpanada,
+    image: 'mordisko-criollo-empanada-carne-desmechada.webp',
     url: '/shredded-beef-empanada',
     price: 0,
   },
   {
-    code: 'shredded-chicken',
-    title: 'Shredded Chicken Empanada',
-    shortTitle: 'Shredded Chicken',
+    code: 'chicken-pastry',
+    title: 'Chicken Pastry',
+    shortTitle: 'Chicken Pastry',
     description: [
-      'A classic everyone loves — but better. Fresh chicken, hand-shredded and seasoned with herbs and spices to highlight its tenderness and juiciness. Combined with our crunchy, golden dough, it becomes a light, flavorful, and absolutely irresistible empanada.',
+      'The classic everyone loves, but taken to another level. Fresh, hand-shredded chicken, seasoned with herbs that highlight its tenderness and juiciness. Combined with our special golden and crispy dough, it creates a light, flavorful, and absolutely irresistible pastry to satisfy your cravings.',
     ],
-    shortDescription:
-      'Light and flavorful. Fresh chicken breast, hand-shredded and seasoned with fine herbs and natural spices. A lighter but filling option.',
-    image: shreddedChickenEmpanada,
-    url: '/shredded-chicken-empanada',
+    image: 'mordisko-criollo-pastel-de-pollo.webp',
+    url: '/chicken-pastry',
     price: 0,
   },
   {
-    code: 'slow-cooked-beef',
-    title: 'Slow-Cooked Beef Empanada',
-    shortTitle: 'Slow-Cooked Beef',
+    code: 'cheese-arepa',
+    title: 'Cheese Arepa',
+    shortTitle: 'Cheese Arepa',
     description: [
-      'A bold choice for true meat lovers. This flank steak is slow-cooked until it’s melt-in-your-mouth tender, then carefully shredded to create the perfect filling. Rich, juicy, and unforgettable, this empanada delivers deep, authentic flavor in every bite.',
+      'Slowly grilled to perfection, crispy on the outside and soft on the inside. When you break it apart, the cheese melts and stretches, releasing an irresistible aroma that turns every bite into pure pleasure.',
     ],
-    shortDescription:
-      'Our premium specialty. Flank steak braised for 8 hours until tender, enhanced with a rich, deep-flavored stew. A bold taste for true meat lovers.',
-    image: slowSookedBeefEmpanada,
-    url: '/slow-cooked-beef-empanada',
+    image: 'mordisko-criollo-arepa-de-queso.webp',
+    url: '/cheese-arepa',
+    price: 0,
+  },
+  {
+    code: 'stuffed-potato',
+    title: 'Stuffed Potato',
+    shortTitle: 'Stuffed Potato',
+    description: [
+      'Creamy and finely seasoned potato, filled with juicy, well-seasoned meat, and sealed in a golden, crispy crust that locks in all the flavor. An irresistible classic that conquers your palate from the very first bite.',
+    ],
+    image: 'mordisko-criollo-papa-rellena.webp',
+    url: '/stuffed-potato',
+    price: 0,
+  },
+  {
+    code: 'traditional-calentado-plus-6-bites',
+    title: 'Traditional Calentado + 6 Bites',
+    shortTitle: 'Calentado + 6 Bites',
+    description: [
+      'Traditional Calentado served with 6 assorted Bites. Perfect for a full and satisfying breakfast.',
+    ],
+    image: 'mordisko-criollo-calentado.webp',
+    url: '/traditional-calentado-plus-6-bites',
     price: 0,
   },
 ];

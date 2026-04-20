@@ -1,0 +1,91 @@
+---
+import { getLangFromUrl } from '@i18n/utils';
+import ContactHomeRappiDidiButton from './ContactHomeRappiDidiButton.astro';
+import LogosWhatsappIcon from '../ui/icons/LogosWhatsappIcon.astro';
+
+/* Data */
+import { businessDataSpanish } from '@/core/data/business.data.es';
+import { businessDataEnglish } from '@/core/data/business.data.en';
+
+import { generateLinkWhatsapp } from '@/core/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const businessData = lang === 'es' ? businessDataSpanish : businessDataEnglish;
+
+const title =
+  lang === 'es'
+    ? '¡No te quedes con las ganas! "¡Tus empanadas favoritas ahora más cerca! Pídelas directamente por Rappi o Didi y recíbelas en minutos sin filas ni esperas.'
+    : `Don't miss out! Your favorite empanadas are now closer than ever. Order directly on Rappi or Didi and get them in minutes—no lines, no waiting`;
+const message =
+  lang === 'es'
+    ? 'Envío seguro y rastreable en tiempo real.'
+    : 'Secure delivery with real-time tracking.';
+const footerText =
+  lang === 'es'
+    ? 'Disfruta la misma sazón, entregada por expertos.'
+    : 'Enjoy the same authentic flavor, delivered by experts.';
+
+const whatsappText =
+  lang == 'es'
+    ? '¿Tienes dudas o eventos especiales? Escríbenos aquí'
+    : 'Questions or catering for events? Chat with us here.';
+const whatsappLink = generateLinkWhatsapp(businessData.whatsapp.message);
+const titleAccesibilityWhatsapp =
+  lang === 'es' ? 'Abrir WhatsApp' : 'Open WhatsApp';
+---
+
+<article class="RappiDidiHomeSection">
+  <h4 class="RappiDidiHomeSection__title">{title}</h4>
+  <p class="RappiDidiHomeSection__message">{message}</p>
+  <div class="RappiDidiHomeSection__boxLinks">
+    <ContactHomeRappiDidiButton variant="rappi" />
+    <ContactHomeRappiDidiButton variant="didi" />
+  </div>
+  <p class="RappiDidiHomeSection__message">{footerText}</p>
+  <div class="RappiDidiHomeSection__whatsappArea">
+    <p class="RappiDidiHomeSection__message">
+      {whatsappText}
+    </p>
+    <a
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={titleAccesibilityWhatsapp}>
+      <LogosWhatsappIcon
+        class="RappiDidiHomeSection__iconWhatsapp"
+        aria-hidden="true"
+        focusable="false"
+      />
+      <span class="sr-only">
+        {titleAccesibilityWhatsapp}
+      </span>
+    </a>
+  </div>
+</article>
+
+<style>
+  @reference "tailwindcss";
+  .RappiDidiHomeSection {
+    @apply text-(--light) lg:flex lg:flex-col lg:justify-center;
+  }
+  .RappiDidiHomeSection__title {
+    @apply mb-3 lg:text-left;
+  }
+
+  .RappiDidiHomeSection__message {
+    @apply mb-0 text-center text-(--light) italic lg:text-left;
+  }
+
+  .RappiDidiHomeSection__boxLinks {
+    @apply flex flex-col items-center gap-y-3 py-6 md:flex-row md:items-start md:justify-start lg:flex-col 2xl:flex-row;
+  }
+
+  .RappiDidiHomeSection__whatsappArea {
+    @apply flex flex-col items-center justify-center gap-3 pt-12 pb-6 md:flex-row lg:justify-items-start lg:gap-3;
+  }
+
+  .RappiDidiHomeSection__iconWhatsapp {
+    @apply h-10 w-10;
+  }
+</style>

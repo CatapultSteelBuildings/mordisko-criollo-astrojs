@@ -14,6 +14,8 @@
   --light: #fffbf6;
   --facebook: #3b5998;
   --twitter: #1da1f2;
+  --rappi-color: #ff4940;
+  --didi-color: #fd7c41;
   --whatsapp-color: #25d366;
   --whatsapp-dark-color: #075e54;
 }
@@ -63,6 +65,11 @@ p {
   @apply mb-3 text-pretty text-(--light);
 }
 
+a,
+button {
+  @apply cursor-pointer;
+}
+
 .HeroSectionPages {
   @apply bg-(--primary) pt-6 text-(--secondary);
 }
@@ -89,4 +96,66 @@ p {
 
 .form-group p {
   @apply absolute pl-1 text-xs font-bold text-(--red);
+}
+
+.btn {
+  @apply rounded-lg border px-4 py-2 font-semibold transition-colors duration-300;
+}
+
+.btn-primary {
+  @apply bg-(--primary) text-(--secondary);
+}
+
+.btn-secondary {
+  @apply bg-(--secondary) text-(--primary);
+}
+
+/* ============================================
+   ACCESIBILITY: Skip Link
+   WCAG 2.4.1 - Bypass Blocks
+============================================ */
+.skip-link {
+  @apply absolute top-0 left-0 z-[9999] -translate-y-full bg-(--secondary) p-3 text-(--white) transition-transform;
+}
+
+.skip-link:focus {
+  @apply translate-y-0;
+}
+
+/* ============================================
+   ACCESIBILITY: Focus Visible
+   WCAG 2.4.7 - Focus Visible
+============================================ */
+:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   ACCESIBILITY: Reduced Motion
+   WCAG 2.3.3 - Animation from interactions
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   PERFORMANCE: Image Dimensions
+   CLS Optimization
+============================================ */
+img {
+  max-width: 100%;
+  height: auto;
 }

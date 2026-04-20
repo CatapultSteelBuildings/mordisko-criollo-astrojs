@@ -1,0 +1,72 @@
+---
+/* Lang */
+import { getLangFromUrl } from '@i18n/utils';
+
+/* Data */
+import { businessData } from '@/core/data/business.data';
+
+interface Props {
+  variant?: 'primary' | 'secondary';
+}
+
+const lang = getLangFromUrl(Astro.url);
+
+const callToAction = lang === 'es' ? 'Rappi' : 'Rappi';
+
+const titleAccesibility = lang === 'es' ? 'Abrir Rappi' : 'Open Rappi';
+
+const { variant = 'primary' } = Astro.props;
+const classes =
+  variant == 'primary' ? 'Rappi-Button--primary' : 'Rappi-Button--secondary';
+
+const logo_officialcolor = '/assets/images/logos/rappi-official-color.webp';
+const logo_white = '/assets/images/logos/rappi-white.webp';
+
+const logo = variant === 'primary' ? logo_white : logo_officialcolor;
+---
+
+<a
+  href={businessData.rappi.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={titleAccesibility}
+  title={titleAccesibility}>
+  <div class={`Rappi-Button ${classes}`}>
+    <img src={logo} alt="Rappi logo" />
+    <p>{callToAction}</p>
+    <span class="sr-only">
+      {titleAccesibility}
+    </span>
+  </div>
+</a>
+
+<style>
+  @reference "tailwindcss";
+  .Rappi-Button {
+    @apply flex h-[60px] w-[135px] items-center justify-center gap-2 rounded-2xl md:w-[160px] md:border-4 xl:w-[200px];
+  }
+
+  .Rappi-Button p {
+    @apply m-0 font-bold;
+  }
+
+  .Rappi-Button img {
+    @apply h-12 w-12;
+  }
+
+  .Rappi-Button--primary {
+    @apply border-(--white) bg-(--rappi-color);
+  }
+
+  .Rappi-Button--primary p {
+    @apply text-(--white);
+  }
+
+  .Rappi-Button--secondary {
+    @apply border-(--rappi-color) bg-(--white);
+  }
+
+  .Rappi-Button--secondary * {
+    @apply text-(--rappi-color);
+  }
+</style>

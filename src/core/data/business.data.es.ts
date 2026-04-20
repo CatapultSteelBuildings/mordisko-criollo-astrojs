@@ -6,7 +6,7 @@ export const businessDataSpanish = {
   whatsapp: {
     ...businessData.whatsapp,
     message:
-      '¡Hola Mordisko Criollo! Estoy en la web y me antojé. ¿Me podrían compartir el menú y precios?',
+      'Hola Mordisko! 👋 Vengo de la web. Tengo una duda especial o consulta sobre eventos/catering. ¿Me ayudan?',
   },
   facebook: {
     ...businessData.facebook,
@@ -21,7 +21,7 @@ export const businessDataSpanish = {
     message: 'Visita y siguenos en nuestra pagina de Tiktok',
   },
   history: [
-    `En ${businessData.name} revolucionamos la tradición. Vamos mucho más allá de las típicas empanadas, fusionando el inconfundible sazón casero con rellenos atrevidos e innovadores, como nuestra Hawaiana o la potente Sobrebarriga.`,
-    `Somos expertos en empanadas congeladas listas para freír. Si quieres disfrutar una auténtica empanada paisa, de masa crocante y cargada de relleno sin salir de casa, llegaste al lugar indicado. Cubrimos tus antojos llevando las mejores empanadas Medellín directamente hasta tu puerta con nuestro servicio de domicilios.`,
+    `En ${businessData.name} llevamos la tradición directamente a tu mesa. Fusionamos el inconfundible sazón casero con rellenos generosos y atrevidos, como nuestra irresistible Hawaiana o la clásica Carne Desmechada."`,
+    `Olvídate de cocinar. Somos expertos en calmar tus antojos con auténticas empanadas, pasteles de pollo, papas rellenas y arepas de queso, siempre crocantes y calienticas. Disfrutar del mejor sabor de la tierrita en Medellín es tan fácil como dar un clic: preparamos tu pedido al instante y lo enviamos directo a tu puerta, listo para morder.`,
   ],
 };

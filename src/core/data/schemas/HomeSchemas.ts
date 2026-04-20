@@ -1,18 +1,32 @@
 import { businessData } from '@/core/data/business.data';
 
+import type { Product } from '@/core/interfaces';
+
+import { empanadaSpanish } from '../products.data.es';
+import { empanadaEnglish } from '../products.data.en';
+
+const generateMenuItems = (products: Product[]) => {
+  return products.map(product => ({
+    '@type': 'MenuItem',
+    name: product.title,
+    description: product.description[0],
+    image: `${businessData.site}/assets/images/products/${product.image}`,
+    url: `${businessData.site}${product.url}`,
+  }));
+};
+
 // 🇪🇸 Spanish version
 export const HOME_SCHEMA_ES = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
   name: businessData.name,
-  image:
-    'https://mordiskocriollo.com/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp',
+  image: `${businessData.site}/assets/images/logo/mordiko-criollo-logo-with-background.webp`,
   description:
-    'Fábrica de empanadas congeladas en Medellín. Sabores tradicionales y gourmet (Hawaiana, Sobrebarriga) listas para freír. Domicilios en todo el Valle de Aburrá.',
+    '¿Antojo de empanadas en Medellín? Domicilios de empanadas, pasteles y arepas. Recibe tu pedido calientico y crujiente en minutos. ¡Pide ahora!',
   url: businessData.site,
   telephone: businessData.phone,
   priceRange: '$$',
-  servesCuisine: 'Colombian, Empanadas',
+  servesCuisine: 'Colombian, Empanadas, Comida Rápida, Delivery',
   acceptsReservations: 'False',
   areaServed: [{ '@type': 'City', name: 'Medellín' }],
   address: {
@@ -35,25 +49,24 @@ export const HOME_SCHEMA_ES = {
     opens: '08:00',
     closes: '18:00',
   },
-  sameAs: [
-    'https://www.facebook.com/mordiskocriollo',
-    'https://www.instagram.com/mordiskocriollo',
-    'https://www.tiktok.com/@mordiskocriollo',
-  ],
+  hasMenu: {
+    '@type': 'Menu',
+    name: 'Menú Mordisko Criollo',
+    hasMenuItem: generateMenuItems(empanadaSpanish),
+  },
+  sameAs: [businessData.facebook.url, businessData.instagram.url],
   potentialAction: {
     '@type': 'OrderAction',
+    deliveryMethod:
+      'http://purl.org/goodrelations/v1#DeliveryModeDirectDownload',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://wa.me/573156115105',
+      urlTemplate: `https://wa.me/${businessData.phone.replace('+', '')}`,
       inLanguage: 'es',
       actionPlatform: [
         'http://schema.org/DesktopWebPlatform',
         'http://schema.org/MobileWebPlatform',
       ],
-    },
-    result: {
-      '@type': 'FoodEstablishmentReservation',
-      name: 'Pedir por WhatsApp',
     },
   },
 };
@@ -63,14 +76,13 @@ export const HOME_SCHEMA_EN = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
   name: businessData.name,
-  image:
-    'https://mordiskocriollo.com/_astro/mordisko-criollo-logo.Jok3GEg__Z1H9Xk0.webp',
+  image: `${businessData.site}/assets/images/logo/mordiko-criollo-logo-with-background.webp`,
   description:
-    'Frozen empanada factory in Medellín. Traditional and gourmet flavors (Hawaiian, Slow-Cooked Beef) ready to fry. Delivery throughout the Aburrá Valley.',
+    'Craving empanadas in Medellín? Get hot, crispy empanadas, pastries, and cheese arepas delivered straight to your door in minutes. Order now!',
   url: businessData.site,
   telephone: businessData.phone,
   priceRange: '$$',
-  servesCuisine: 'Colombian, Empanadas',
+  servesCuisine: 'Colombian, Empanadas, Fast Food, Delivery',
   acceptsReservations: 'False',
   areaServed: [{ '@type': 'City', name: 'Medellín' }],
   address: {
@@ -93,25 +105,24 @@ export const HOME_SCHEMA_EN = {
     opens: '08:00',
     closes: '18:00',
   },
-  sameAs: [
-    'https://www.facebook.com/mordiskocriollo',
-    'https://www.instagram.com/mordiskocriollo',
-    'https://www.tiktok.com/@mordiskocriollo',
-  ],
+  hasMenu: {
+    '@type': 'Menu',
+    name: 'Mordisko Criollo Menu',
+    hasMenuItem: generateMenuItems(empanadaEnglish),
+  },
+  sameAs: [businessData.facebook.url, businessData.instagram.url],
   potentialAction: {
     '@type': 'OrderAction',
+    deliveryMethod:
+      'http://purl.org/goodrelations/v1#DeliveryModeDirectDownload',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://wa.me/573156115105',
+      urlTemplate: `https://wa.me/${businessData.phone.replace('+', '')}`,
       inLanguage: 'en',
       actionPlatform: [
         'http://schema.org/DesktopWebPlatform',
         'http://schema.org/MobileWebPlatform',
       ],
-    },
-    result: {
-      '@type': 'FoodEstablishmentReservation',
-      name: 'Order via WhatsApp',
     },
   },
 };

@@ -10,6 +10,8 @@ interface Props {
   noindex: boolean;
   nofollow: boolean;
   schema?: Record<string, unknown> | Record<string, unknown>[] | null;
+  preloadHero?: boolean;
+  heroImagePath?: string;
 }
 
 const {
@@ -19,6 +21,8 @@ const {
   noindex = false,
   nofollow = false,
   schema = null,
+  preloadHero = false,
+  heroImagePath = '',
 } = Astro.props;
 const logo = `${businessData.site}/assets/images/logo/mordisko-criollo.png`;
 const schemaScriptTag = JSON.stringify(schema);
@@ -32,6 +36,18 @@ const url = Astro.url;
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  <!-- PERFORMANCE: Preconnect to static assets origin (WCAG/Performance) -->
+  <link rel="preconnect" href={businessData.site} crossorigin />
+  {
+    preloadHero && heroImagePath && (
+      <link
+        rel="preload"
+        href={heroImagePath}
+        as="image"
+        fetchpriority="high"
+      />
+    )
+  }
   {
     schema && (
       <script type="application/ld+json" is:inline set:html={schemaScriptTag} />

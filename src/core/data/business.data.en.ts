@@ -20,7 +20,7 @@ export const businessDataEnglish = {
     message: 'Visit and follow us on our Tiktok page',
   },
   history: [
-    `At ${businessData.name}, we are revolutionizing tradition. We go far beyond the typical empanadas, fusing unmistakable home-style savory flavor with bold, innovative fillings like our Hawaiian or the hearty slow-cooked beef (Sobrebarriga).`,
-    `We specialize in premium frozen empanadas, ready to fry at home. If you want to enjoy an authentic "paisa" empanada—featuring a crispy corn crust and generous filling—without leaving the house, you’ve found the right spot. We satisfy your cravings by delivering the best empanadas in Medellín straight to your doorstep.`,
+    `At ${businessData.name}, we bring tradition straight to your table. We blend unmistakable homemade flavor with generous and bold fillings, like our irresistible Hawaiian or the classic Shredded Beef.`,
+    `Forget about cooking. We are experts at satisfying your cravings with authentic empanadas, chicken pastries, stuffed potatoes, and cheese arepas, always hot and crispy. Enjoying the best taste of home in Medellín is as easy as a single click: we prepare your order instantly and deliver it straight to your door, ready to bite.`,
   ],
 };

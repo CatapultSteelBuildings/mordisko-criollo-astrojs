@@ -28,7 +28,7 @@ export const empanadaSpanish: Product[] = [
     title: 'Pastel de pollo',
     shortTitle: 'Pastel de pollo',
     description: [
-      'El clásico que todos aman, pero llevado a otro nivel. Pollo fresco, desmechado a mano, sazonado con hierbas y especias que resaltan su suavidad y jugosidad. Al combinarse con la masa dorada y crocante, nace una empanada ligera, sabrosa y absolutamente irresistible.',
+      'El clásico que todos aman, pero llevado a otro nivel. Pollo fresco, desmechado a mano y sazonado con hierbas que resaltan su suavidad y jugosidad. Al combinarse con nuestra masa especial dorada y crocante, nace un pastel ligero, sabroso y absolutamente irresistible para calmar el antojo.',
     ],
     image: 'mordisko-criollo-pastel-de-pollo.webp',
     url: '/pastel-de-pollo',

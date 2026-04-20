@@ -19,7 +19,7 @@ export const businessData = {
     message: '',
   },
   facebook: {
-    url: 'https://www.facebook.com/Mordiskocriollo',
+    url: 'https://www.facebook.com/MordiskoCriollo.oficial',
     message: '',
   },
   instagram: {

@@ -45,11 +45,10 @@ export const ui = {
     'message.instagram': 'Visita y siguenos en nuestra pagina de Instagram',
     'message.tiktok': 'Visita y siguenos en nuestra pagina de Tiktok',
     'message.whatsapp': 'Visita y siguenos en nuestra pagina de WhatsApp',
-    'product.page.title':
-      'Nuestros Sabores: Empanadas Congeladas Listas para Freír',
+    'product.page.title': 'Nuestro Menú: Empanadas, Pasteles y Más',
     'product.page.subtitle':
-      'Elige tu Relleno Favorito: Tradición e Innovación',
-    'product.page.description': `En ${businessData.name} no ahorramos en relleno. Descubre nuestra selección artesanal de empanadas congeladas, elaboradas con masa de maíz 100% natural y guisos que respetan la tradición paisa. Calidad premium lista para disfrutar en tu mesa en minutos.`,
+      'El Auténtico Sabor Paisa, Calientico y Directo a tu Puerta',
+    'product.page.description': `En ${businessData.name} no ahorramos en relleno. Descubre nuestra selección artesanal elaborada con ingredientes naturales y guisos que respetan la tradición. Desde empanadas crujientes hasta papas rellenas y arepas de queso; calidad premium lista para calmar tu antojo en minutos, sin moverte de casa.`,
     'contact.page.title': '¿Tienes comentarios?',
     'contact.page.subtitle': 'Escríbenos tus opiniones o sugerencias',
   },
@@ -67,10 +66,10 @@ export const ui = {
     'message.instagram': 'Visit and follow us on our Instagram page',
     'message.tiktok': 'Visit and follow us on our Tiktok page',
     'message.whatsapp': 'Visit and follow us on our WhatsApp page',
-    'product.page.title': 'Our Flavors: Frozen Empanadas Ready to Fry',
+    'product.page.title': 'Our Menu: Empanadas, Pastries & More',
     'product.page.subtitle':
-      'Choose Your Favorite Filling: Tradition & Innovation',
-    'product.page.description': `At ${businessData.name}, we don't skimp on the filling. Discover our artisanal selection of frozen empanadas, made with 100% natural corn dough and authentic homemade stews. Premium quality, ready to fry and enjoy at your table in minutes.`,
+      'Authentic Paisa Flavor, Hot and Straight to Your Door',
+    'product.page.description': `At ${businessData.name}, we don't skimp on the filling. Discover our artisanal selection made with natural ingredients and traditional recipes. From crispy empanadas to stuffed potatoes and cheese arepas; premium quality ready to satisfy your cravings in minutes, delivered right to your home.`,
     'contact.page.title': 'Do you have comments?',
     'contact.page.subtitle': 'Write us your opinions or suggestions',
   },
